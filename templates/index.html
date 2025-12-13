@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bíblia em 23 Idiomas - Estudo Bíblico com IA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .ai-status {
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            font-size: 0.9em;
+        }
+        
+        .ai-status.available {
+            background: rgba(76, 175, 80, 0.3);
+        }
+        
+        .ai-status.unavailable {
+            background: rgba(244, 67, 54, 0.3);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        select, input, textarea {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        select:focus, input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .verse-display {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+        
+        .verse-text {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #333;
+            font-style: italic;
+        }
+        
+        .verse-reference {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+        
+        .ai-result {
+            background: #e8eaf6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #764ba2;
+        }
+        
+        .ai-result h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        .ai-result p {
+            line-height: 1.6;
+            color: #333;
+            white-space: pre-wrap;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+            font-style: italic;
+        }
+        
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #c62828;
+        }
+        
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .language-badge {
+            background: #f0f0f0;
+            padding: 8px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        
+        .chapter-verses {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .verse-item {
+            padding: 15px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .verse-number {
+            font-weight: bold;
+            color: #667eea;
+            margin-right: 10px;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #2196f3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📖 Bíblia em 23 Idiomas</h1>
+            <p>Sua Ferramenta Completa para Estudo Bíblico Assistido por Inteligência Artificial</p>
+            <div class="ai-status {{ 'available' if ollama_available else 'unavailable' }}">
+                🤖 Ollama AI: {{ 'Disponível ✓' if ollama_available else 'Não disponível (modo demonstração)' }}
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Bible Reading Section -->
+            <div class="section">
+                <h2>📚 Leitura Bíblica</h2>
+                <div class="controls">
+                    <div class="form-group">
+                        <label for="book">Livro:</label>
+                        <select id="book">
+                            {% for book_key, book_name in books.items() %}
+                            <option value="{{ book_key }}">{{ book_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="chapter">Capítulo:</label>
+                        <input type="number" id="chapter" value="1" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="verse">Versículo:</label>
+                        <input type="number" id="verse" value="1" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Idioma:</label>
+                        <select id="language">
+                            {% for lang_code, lang_name in languages.items() %}
+                            <option value="{{ lang_code }}" {% if lang_code == 'pt' %}selected{% endif %}>
+                                {{ lang_name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button onclick="loadVerse()">Carregar Versículo</button>
+                    <button onclick="loadChapter()">Carregar Capítulo Completo</button>
+                </div>
+                <div id="verseDisplay"></div>
+            </div>
+            
+            <!-- AI Analysis Section -->
+            <div class="section">
+                <h2>🤖 Análise com IA</h2>
+                <div class="info-box">
+                    <strong>Como usar:</strong> Primeiro carregue um versículo acima, depois clique em "Analisar com IA" para obter insights profundos.
+                </div>
+                <div class="form-group">
+                    <label for="context">Contexto adicional (opcional):</label>
+                    <textarea id="context" placeholder="Ex: 'Quero entender o contexto histórico desta passagem...'"></textarea>
+                </div>
+                <button onclick="analyzeVerse()" id="analyzeBtn">🔍 Analisar Versículo com IA</button>
+                <div id="aiAnalysis"></div>
+            </div>
+            
+            <!-- Ask Questions Section -->
+            <div class="section">
+                <h2>💬 Pergunte à IA</h2>
+                <div class="info-box">
+                    <strong>Faça perguntas:</strong> Você pode fazer perguntas sobre qualquer tópico bíblico!
+                </div>
+                <div class="form-group">
+                    <label for="question">Sua pergunta:</label>
+                    <textarea id="question" placeholder="Ex: 'Qual é o significado de amor ágape no Novo Testamento?'"></textarea>
+                </div>
+                <button onclick="askQuestion()">❓ Fazer Pergunta</button>
+                <div id="aiAnswer"></div>
+            </div>
+            
+            <!-- Available Languages -->
+            <div class="section">
+                <h2>🌍 Idiomas Disponíveis ({{ languages|length }})</h2>
+                <div class="languages-grid">
+                    {% for lang_code, lang_name in languages.items() %}
+                    <div class="language-badge">{{ lang_name }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentVerse = null;
+        
+        async function loadVerse() {
+            const book = document.getElementById('book').value;
+            const chapter = document.getElementById('chapter').value;
+            const verse = document.getElementById('verse').value;
+            const language = document.getElementById('language').value;
+            
+            const display = document.getElementById('verseDisplay');
+            display.innerHTML = '<div class="loading">Carregando...</div>';
+            
+            try {
+                const response = await fetch(`/api/verse?book=${book}&chapter=${chapter}&verse=${verse}&language=${language}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    currentVerse = data;
+                    display.innerHTML = `
+                        <div class="verse-display">
+                            <div class="verse-text">"${data.text}"</div>
+                            <div class="verse-reference">${data.book.charAt(0).toUpperCase() + data.book.slice(1)} ${data.chapter}:${data.verse}</div>
+                        </div>
+                    `;
+                } else {
+                    display.innerHTML = `<div class="error">❌ ${data.error}</div>`;
+                }
+            } catch (error) {
+                display.innerHTML = `<div class="error">❌ Erro ao carregar versículo: ${error.message}</div>`;
+            }
+        }
+        
+        async function loadChapter() {
+            const book = document.getElementById('book').value;
+            const chapter = document.getElementById('chapter').value;
+            const language = document.getElementById('language').value;
+            
+            const display = document.getElementById('verseDisplay');
+            display.innerHTML = '<div class="loading">Carregando capítulo...</div>';
+            
+            try {
+                const response = await fetch(`/api/chapter?book=${book}&chapter=${chapter}&language=${language}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    let html = '<div class="chapter-verses">';
+                    for (const [verseNum, verseText] of Object.entries(data.verses)) {
+                        html += `
+                            <div class="verse-item">
+                                <span class="verse-number">${verseNum}.</span>
+                                <span>${verseText}</span>
+                            </div>
+                        `;
+                    }
+                    html += '</div>';
+                    display.innerHTML = html;
+                } else {
+                    display.innerHTML = `<div class="error">❌ ${data.error}</div>`;
+                }
+            } catch (error) {
+                display.innerHTML = `<div class="error">❌ Erro ao carregar capítulo: ${error.message}</div>`;
+            }
+        }
+        
+        async function analyzeVerse() {
+            if (!currentVerse) {
+                alert('Por favor, carregue um versículo primeiro!');
+                return;
+            }
+            
+            const context = document.getElementById('context').value;
+            const language = document.getElementById('language').value;
+            const analysisDiv = document.getElementById('aiAnalysis');
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            
+            analysisDiv.innerHTML = '<div class="loading">🤖 Analisando com IA... Isso pode levar alguns segundos...</div>';
+            analyzeBtn.disabled = true;
+            
+            try {
+                const response = await fetch('/api/ai/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        verse_text: currentVerse.text,
+                        language: language,
+                        context: context
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    analysisDiv.innerHTML = `
+                        <div class="ai-result">
+                            <h3>🤖 Análise da IA</h3>
+                            <p>${data.analysis}</p>
+                        </div>
+                    `;
+                } else {
+                    analysisDiv.innerHTML = `
+                        <div class="error">
+                            ❌ ${data.error}<br>
+                            ${data.message || ''}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                analysisDiv.innerHTML = `<div class="error">❌ Erro: ${error.message}</div>`;
+            } finally {
+                analyzeBtn.disabled = false;
+            }
+        }
+        
+        async function askQuestion() {
+            const question = document.getElementById('question').value;
+            const language = document.getElementById('language').value;
+            
+            if (!question.trim()) {
+                alert('Por favor, digite uma pergunta!');
+                return;
+            }
+            
+            const answerDiv = document.getElementById('aiAnswer');
+            answerDiv.innerHTML = '<div class="loading">🤖 Processando sua pergunta... Isso pode levar alguns segundos...</div>';
+            
+            try {
+                const response = await fetch('/api/ai/question', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        question: question,
+                        verse_text: currentVerse ? currentVerse.text : '',
+                        language: language
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    answerDiv.innerHTML = `
+                        <div class="ai-result">
+                            <h3>💡 Resposta da IA</h3>
+                            <p>${data.answer}</p>
+                        </div>
+                    `;
+                } else {
+                    answerDiv.innerHTML = `
+                        <div class="error">
+                            ❌ ${data.error}<br>
+                            ${data.message || ''}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                answerDiv.innerHTML = `<div class="error">❌ Erro: ${error.message}</div>`;
+            }
+        }
+        
+        // Load first verse on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadVerse();
+        });
+    </script>
+</body>
+</html>
