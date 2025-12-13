@@ -79,14 +79,14 @@
     "multiple_books": "Multiple Books",
     "entire_bible": "Entire Bible",
     "scope": "Scope",
-    "selected_book_colon": "Selected book:",
-    "select_books": "Select books",
-    "selected_books_colon": "Selected books:",
+    "selected_book_colon": "चयनित पुस्तक:",
+    "select_books": "पुस्तकें चुनें",
+    "selected_books_colon": "चयनित पुस्तकें:",
     "scope_colon": "Scope:",
     "questions_count": "Number of questions",
-    "questions_count_help": "Number of questions to generate",
+    "questions_count_help": "उत्पन्न करने के लिए प्रश्नों की संख्या",
     "with_answers": "With Answers",
-    "only_questions": "Questions Only",
+    "only_questions": "केवल प्रश्न",
     "generation_mode": "Generation Mode",
     "filter_by_mode": "Filter by mode",
     "all": "All",
@@ -167,7 +167,7 @@
     "generating_questions": "❓ Generating Bible questions...",
     "questions_generated": "✅ Questions generated and saved!",
     "check_questions_history": "📚 Go to 'Questions History' tab.",
-    "no_questions_history": "No questions generated yet."
+    "no_questions_history": "अभी तक कोई प्रश्न उत्पन्न नहीं हुए"
   },
   "expanders": {
     "explanation_preview": "👁️ व्याख्या पूर्वावलोकन",
@@ -216,8 +216,8 @@
     "reference": "📝 संदर्भ:",
     "feeling": "❤️ भावना:",
     "folder_instruction": "फ़ोल्डर मैन्युअल रूप से बनाएं या आयात करते समय एप्लिकेशन स्वचालित रूप से इसे बना देगा।",
-    "questions_description": "Generate questions about biblical knowledge.",
-    "questions_history_description": "All generated questions are automatically saved here.",
+    "questions_description": "बाइबिल ज्ञान के बारे में प्रश्न उत्पन्न करें",
+    "questions_history_description": "सभी उत्पन्न प्रश्न स्वचालित रूप से यहाँ सहेजे जाते हैं",
     "questions_found": "❓ {count} question set(s) found"
   },
   "errors": {

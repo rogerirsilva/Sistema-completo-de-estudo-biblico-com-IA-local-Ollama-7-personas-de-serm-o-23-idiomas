@@ -79,14 +79,14 @@
     "multiple_books": "Multiple Books",
     "entire_bible": "Entire Bible",
     "scope": "Scope",
-    "selected_book_colon": "Selected book:",
-    "select_books": "Select books",
-    "selected_books_colon": "Selected books:",
+    "selected_book_colon": "หนังสือที่เลือก:",
+    "select_books": "เลือกหนังสือ",
+    "selected_books_colon": "หนังสือที่เลือก:",
     "scope_colon": "Scope:",
     "questions_count": "Number of questions",
-    "questions_count_help": "Number of questions to generate",
+    "questions_count_help": "จำนวนคำถามที่จะสร้าง",
     "with_answers": "With Answers",
-    "only_questions": "Questions Only",
+    "only_questions": "เฉพาะคำถาม",
     "generation_mode": "Generation Mode",
     "filter_by_mode": "Filter by mode",
     "all": "All",
@@ -167,7 +167,7 @@
     "generating_questions": "❓ Generating Bible questions...",
     "questions_generated": "✅ Questions generated and saved!",
     "check_questions_history": "📚 Go to 'Questions History' tab.",
-    "no_questions_history": "No questions generated yet."
+    "no_questions_history": "ยังไม่มีคำถามที่สร้างขึ้น"
   },
   "expanders": {
     "explanation_preview": "👁️ ดูตัวอย่างคำอธิบาย",
@@ -216,8 +216,8 @@
     "reference": "📝 อ้างอิง:",
     "feeling": "❤️ ความรู้สึก:",
     "folder_instruction": "สร้างโฟลเดอร์ด้วยตนเองหรือแอปจะสร้างอัตโนมัติเมื่อนำเข้า",
-    "questions_description": "Generate questions about biblical knowledge.",
-    "questions_history_description": "All generated questions are automatically saved here.",
+    "questions_description": "สร้างคำถามเกี่ยวกับความรู้ในพระคัมภีร์",
+    "questions_history_description": "คำถามที่สร้างทั้งหมดจะถูกบันทึกที่นี่โดยอัตโนมัติ",
     "questions_found": "❓ {count} question set(s) found"
   },
   "errors": {
