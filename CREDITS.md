@@ -1,5 +1,9 @@
 # 🙏 Agradecimentos e Créditos
 
+**🌍 Idiomas / Languages / Idiomas:** [🇧🇷 Português](CREDITS.md) • [🇺🇸 English](CREDITS.en.md) • [🇪🇸 Español](CREDITS.es.md)
+
+---
+
 Este projeto foi construído com a ajuda de diversas fontes abertas e repositórios da comunidade. Agradecemos profundamente a todos os desenvolvedores e organizações que disponibilizaram esses recursos gratuitamente.
 
 ---

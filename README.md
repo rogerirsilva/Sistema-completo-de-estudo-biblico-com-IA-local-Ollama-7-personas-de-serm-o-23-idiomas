@@ -9,6 +9,8 @@
 [![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-000000?logo=ai&logoColor=white)](https://ollama.ai/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
+**🌍 Idiomas / Languages / Idiomas:** [🇧🇷 Português](README.md) • [🇺🇸 English](README.en.md) • [🇪🇸 Español](README.es.md)
+
 [✨ Funcionalidades](#-funcionalidades) • [🚀 Instalação](#-instalação) • [📚 Como Usar](#-como-usar) • [🎭 Personas](#-personas-de-sermão) • [💝 Apoiar](#-apoie-o-projeto)
 
 **Clone o projeto:**
