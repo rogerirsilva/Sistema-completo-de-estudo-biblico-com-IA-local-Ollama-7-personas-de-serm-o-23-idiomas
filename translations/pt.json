@@ -48,6 +48,23 @@
     "select_multiple_books_help": "Marque para selecionar livros específicos manualmente",
     "select_books_for_sermon": "Selecione os livros para o sermão:",
     "devotional_scope_prompt": "Selecione o escopo para geração do devocional:",
+    "specific_book": "Livro Específico",
+    "multiple_books": "Múltiplos Livros",
+    "entire_bible": "Bíblia Toda",
+    "scope": "Escopo",
+    "selected_book_colon": "Livro selecionado:",
+    "select_books": "Selecione os livros",
+    "selected_books_colon": "Livros selecionados:",
+    "scope_colon": "Escopo:",
+    "questions_count": "Quantidade de perguntas",
+    "questions_count_help": "Número de perguntas a serem geradas",
+    "with_answers": "Com Respostas",
+    "only_questions": "Só Perguntas",
+    "generation_mode": "Modo de Geração",
+    "filter_by_mode": "Filtrar por modo",
+    "all": "Todos",
+    "search": "🔍 Buscar",
+    "search_placeholder": "Digite para buscar...",
     "devotional_book_label": "Devocional",
     "select_books_for_devotional": "Selecione os livros para o devocional:",
     "book_selector": "Livro",
@@ -142,7 +159,14 @@
     "ollama_offline_detail": "Ollama esta offline ({detail}). Ligue o servidor e tente novamente.",
     "no_verses_in_chapter": "Nenhum versículo encontrado neste capítulo.",
     "no_local_versions": "Nenhuma versão local encontrada. Use Importar Dados para carregar conteúdo.",
-    "importing_versions": "⏳ Importando versões..."
+    "importing_versions": "⏳ Importando versões...",
+    "select_at_least_two_books": "⚠️ Selecione pelo menos 2 livros para continuar.",
+    "select_books_to_continue": "📚 Selecione os livros para continuar",
+    "select_valid_scope": "Por favor, selecione um escopo válido.",
+    "generating_questions": "❓ Gerando perguntas bíblicas...",
+    "questions_generated": "✅ Perguntas geradas e salvas no histórico!",
+    "check_questions_history": "📚 Acesse a aba 'Histórico de Perguntas' para ver todas as suas perguntas.",
+    "no_questions_history": "Nenhuma pergunta gerada ainda."
   },
   "expanders": {
     "explanation_preview": "👁️ Prévia da Explicação",
@@ -150,7 +174,8 @@
     "devotional_preview": "👁️ Prévia do Devocional",
     "biblical_context": "📜 Ver Contexto Bíblico",
     "full_explanation": "💡 Ver Explicação Completa",
-    "how_to_add_versions": "ℹ️ Como Adicionar Versões Bíblicas"
+    "how_to_add_versions": "ℹ️ Como Adicionar Versões Bíblicas",
+    "questions_preview": "👁️ Prévia das Perguntas"
   },
   "headers": {
     "bible_studies_history": "📚 Histórico de Estudos Bíblicos",
@@ -161,7 +186,9 @@
     "theological_chat": "Chat Teológico",
     "sermons_history": "📋 Histórico de Sermões",
     "devotionals_history": "🕊️ Histórico de Devocionais",
-    "conversations_history": "💭 Histórico de Conversas"
+    "conversations_history": "💭 Histórico de Conversas",
+    "questions_generator": "❓ Gerador de Perguntas Bíblicas",
+    "chat_scope": "📚 Escopo da Consulta"
   },
   "prompts": {
     "explain_context": "Explique o contexto historico e teologico, pondere sobre palavras-chave e sugira aplicacoes pastorais.",
@@ -187,7 +214,10 @@
     "model": "🤖 Modelo:",
     "reference": "📝 Referência:",
     "feeling": "❤️ Sentimento:",
-    "folder_instruction": "Crie a pasta manualmente ou a aplicação criará automaticamente ao importar."
+    "folder_instruction": "Crie a pasta manualmente ou a aplicação criará automaticamente ao importar.",
+    "questions_description": "Gere perguntas sobre curiosidades e conhecimentos bíblicos de um livro específico, múltiplos livros ou da Bíblia toda.",
+    "questions_history_description": "Todas as perguntas geradas são salvas automaticamente aqui.",
+    "questions_found": "❓ {count} conjunto(s) de perguntas encontrado(s)"
   },
   "errors": {
     "load_bible_data": "⚠️ Erro ao carregar bible_data.json: {error}. Usando dados vazios.",
