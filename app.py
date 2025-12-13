@@ -1724,7 +1724,7 @@ def main() -> None:
         t(trans, "menu.sermon_gen", "🗣️ Gerador Sermões"),
         t(trans, "menu.devotional", "🧘 Devocional & Meditação"),
         t(trans, "menu.chat", "💬 Chat Teológico"),
-        t(trans, "menu.questions", "❓ Gerar Perguntas"),
+        t(trans, "menu.questions_gen", "❓ Gerar Perguntas"),
         t(trans, "menu.import", "📥 Importar Dados"),
     ])
 
@@ -3124,8 +3124,8 @@ def main() -> None:
         else:
             # Criar subtabs para geração e histórico
             questions_subtabs = st.tabs([
-                t(trans, "menu.generate_questions", "❓ Gerar Perguntas"),
-                t(trans, "menu.questions_history", "📚 Histórico de Perguntas")
+                t(trans, "menu.questions_gen", "❓ Gerar Perguntas"),
+                t(trans, "menu.questions_hist", "📚 Histórico de Perguntas")
             ])
             
             with questions_subtabs[0]:
