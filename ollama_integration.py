@@ -20,7 +20,7 @@ class OllamaAI:
         try:
             response = requests.get(f"{self.host}/api/tags", timeout=2)
             return response.status_code == 200
-        except:
+        except Exception:
             return False
     
     def analyze_verse(self, verse_text, language="pt", context=""):
