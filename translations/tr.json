@@ -116,7 +116,9 @@
     "devotional_hist": "🕊️ Devotional History",
     "chat": "💬 Teolojik Sohbet",
     "chat_hist": "💭 Chat History",
-    "import": "📥 Veri İçe Aktar"
+    "import": "📥 Veri İçe Aktar",
+    "questions_gen": "❓ Soru Üretici",
+    "questions_hist": "📚 Soru Geçmişi"
   },
   "messages": {
     "no_data": "Import a Bible version to start guided reading.",

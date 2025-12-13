@@ -116,7 +116,9 @@
     "devotional_hist": "🕊️ Devotional History",
     "chat": "💬 신학 채팅",
     "chat_hist": "💭 Chat History",
-    "import": "📥 데이터 가져오기"
+    "import": "📥 데이터 가져오기",
+    "questions_gen": "❓ 질문 생성기",
+    "questions_hist": "📚 질문 기록"
   },
   "messages": {
     "no_data": "Import a Bible version to start guided reading.",

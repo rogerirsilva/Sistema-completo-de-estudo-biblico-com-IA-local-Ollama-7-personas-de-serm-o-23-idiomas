@@ -20,7 +20,7 @@
     "theme_or_feeling": "Tema ou sentimento a meditar",
     "your_question": "Digite sua dúvida bíblica",
     "search_history": "🔍 Buscar no histórico",
-    "search_placeholder": "Digite livro, capítulo ou palavra-chave...",
+    "search_placeholder": "Digite para buscar...",
     "sort_by": "Ordenar por",
     "most_recent": "Mais recente",
     "oldest": "Mais antigo",
@@ -64,7 +64,6 @@
     "filter_by_mode": "Filtrar por modo",
     "all": "Todos",
     "search": "🔍 Buscar",
-    "search_placeholder": "Digite para buscar...",
     "devotional_book_label": "Devocional",
     "select_books_for_devotional": "Selecione os livros para o devocional:",
     "book_selector": "Livro",
@@ -117,7 +116,9 @@
     "devotional_hist": "🕊️ Histórico Devocionais",
     "chat": "💬 Chat Teológico",
     "chat_hist": "💭 Histórico Chat",
-    "import": "📥 Importar Dados"
+    "import": "📥 Importar Dados",
+    "questions_gen": "❓ Gerar Perguntas",
+    "questions_hist": "📚 Histórico de Perguntas"
   },
   "messages": {
     "no_data": "Importe uma versão bíblica para começar a leitura guiada.",

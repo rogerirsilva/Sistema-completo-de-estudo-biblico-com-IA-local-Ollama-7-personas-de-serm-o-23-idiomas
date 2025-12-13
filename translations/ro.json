@@ -116,7 +116,9 @@
     "devotional_hist": "🕊️ Devotional History",
     "chat": "💬 Chat Teologic",
     "chat_hist": "💭 Chat History",
-    "import": "📥 Importă Date"
+    "import": "📥 Importă Date",
+    "questions_gen": "❓ Generator de Întrebări",
+    "questions_hist": "📚 Istoric Întrebări"
   },
   "messages": {
     "no_data": "Import a Bible version to start guided reading.",

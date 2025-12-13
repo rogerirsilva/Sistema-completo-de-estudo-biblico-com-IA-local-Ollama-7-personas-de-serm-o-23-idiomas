@@ -9,7 +9,9 @@
     "devotional_hist": "🕊️ Cronologia dei Devozionali",
     "chat": "💬 Chat Teologica",
     "chat_hist": "💭 Cronologia Chat",
-    "import": "📥 Importa Dati"
+    "import": "📥 Importa Dati",
+    "questions_gen": "❓ Generatore di Domande",
+    "questions_hist": "📚 Cronologia Domande"
   },
   "labels": {
     "bible_version": "Versione della Bibbia",

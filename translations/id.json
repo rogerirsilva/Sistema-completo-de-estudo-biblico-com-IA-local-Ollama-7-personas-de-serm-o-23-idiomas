@@ -116,7 +116,9 @@
     "devotional_hist": "🕊️ Devotional History",
     "chat": "💬 Obrolan Teologi",
     "chat_hist": "💭 Chat History",
-    "import": "📥 Impor Data"
+    "import": "📥 Impor Data",
+    "questions_gen": "❓ Generator Pertanyaan",
+    "questions_hist": "📚 Riwayat Pertanyaan"
   },
   "messages": {
     "no_data": "Import a Bible version to start guided reading.",

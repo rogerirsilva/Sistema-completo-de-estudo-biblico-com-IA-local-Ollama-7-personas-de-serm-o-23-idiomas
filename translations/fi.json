@@ -116,7 +116,9 @@
     "devotional_hist": "🕊️ Devotional History",
     "chat": "💬 Teologinen Keskustelu",
     "chat_hist": "💭 Chat History",
-    "import": "📥 Tuo Tiedot"
+    "import": "📥 Tuo Tiedot",
+    "questions_gen": "❓ Kysymysgeneraattori",
+    "questions_hist": "📚 Kysymyshistoria"
   },
   "messages": {
     "no_data": "Import a Bible version to start guided reading.",

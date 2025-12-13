@@ -116,7 +116,9 @@
     "devotional_hist": "🕊️ Devotional History",
     "chat": "💬 Mazungumzo ya Kiteolojia",
     "chat_hist": "💭 Chat History",
-    "import": "📥 Leta Data"
+    "import": "📥 Leta Data",
+    "questions_gen": "❓ Kizalishi cha Maswali",
+    "questions_hist": "📚 Historia ya Maswali"
   },
   "messages": {
     "no_data": "Import a Bible version to start guided reading.",

@@ -116,7 +116,9 @@
     "devotional_hist": "🕊️ Devotional History",
     "chat": "💬 گفتگوی الهیاتی",
     "chat_hist": "💭 Chat History",
-    "import": "📥 وارد کردن داده‌ها"
+    "import": "📥 وارد کردن داده‌ها",
+    "questions_gen": "❓ تولیدکننده سوال",
+    "questions_hist": "📚 تاریخچه سوالات"
   },
   "messages": {
     "no_data": "Import a Bible version to start guided reading.",

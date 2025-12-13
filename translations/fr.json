@@ -9,7 +9,9 @@
     "devotional_hist": "🕊️ Historique des Dévotions",
     "chat": "💬 Chat Théologique",
     "chat_hist": "💭 Historique des Discussions",
-    "import": "📥 Importer des Données"
+    "import": "📥 Importer des Données",
+    "questions_gen": "❓ Générateur de Questions",
+    "questions_hist": "📚 Historique des Questions"
   },
   "labels": {
     "bible_version": "Version de la Bible",

@@ -20,7 +20,7 @@
     "theme_or_feeling": "Theme or feeling to meditate on",
     "your_question": "Type your biblical question",
     "search_history": "🔍 Search history",
-    "search_placeholder": "Type book, chapter or keyword...",
+    "search_placeholder": "Type to search...",
     "sort_by": "Sort by",
     "most_recent": "Most recent",
     "oldest": "Oldest",
@@ -64,7 +64,6 @@
     "filter_by_mode": "Filter by mode",
     "all": "All",
     "search": "🔍 Search",
-    "search_placeholder": "Type to search...",
     "devotional_book_label": "Devotional",
     "select_books_for_devotional": "Select the books for the devotional:",
     "book_selector": "Book",
@@ -117,7 +116,9 @@
     "devotional_hist": "🕊️ Devotional History",
     "chat": "💬 Theological Chat",
     "chat_hist": "💭 Chat History",
-    "import": "📥 Import Data"
+    "import": "📥 Import Data",
+    "questions_gen": "❓ Questions Generator",
+    "questions_hist": "📚 Questions History"
   },
   "messages": {
     "no_data": "Import a Bible version to start guided reading.",

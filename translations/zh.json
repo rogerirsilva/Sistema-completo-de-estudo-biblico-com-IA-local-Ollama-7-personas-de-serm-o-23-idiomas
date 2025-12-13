@@ -9,7 +9,9 @@
     "devotional_hist": "🕊️ 灵修历史",
     "chat": "💬 神学聊天",
     "chat_hist": "💭 聊天历史",
-    "import": "📥 导入数据"
+    "import": "📥 导入数据",
+    "questions_gen": "❓ 问题生成器",
+    "questions_hist": "📚 问题历史"
   },
   "labels": {
     "bible_version": "圣经版本",

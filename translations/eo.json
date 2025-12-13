@@ -116,7 +116,9 @@
     "devotional_hist": "🕊️ Devotional History",
     "chat": "💬 Teologo Babilo",
     "chat_hist": "💭 Chat History",
-    "import": "📥 Importi Datumojn"
+    "import": "📥 Importi Datumojn",
+    "questions_gen": "❓ Questions Generator",
+    "questions_hist": "📚 Questions History"
   },
   "messages": {
     "no_data": "Import a Bible version to start guided reading.",

@@ -116,7 +116,9 @@
     "devotional_hist": "🕊️ 黙想履歴",
     "chat": "💬 神学チャット",
     "chat_hist": "💭 チャット履歴",
-    "import": "📥 データをインポート"
+    "import": "📥 データをインポート",
+    "questions_gen": "❓ 質問ジェネレーター",
+    "questions_hist": "📚 質問履歴"
   },
   "messages": {
     "no_data": "ガイド付き読書を開始するには、聖書のバージョンをインポートしてください。",

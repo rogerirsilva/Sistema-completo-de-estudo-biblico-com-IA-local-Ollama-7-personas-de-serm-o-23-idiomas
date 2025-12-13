@@ -116,7 +116,9 @@
     "devotional_hist": "🕊️ Devotional History",
     "chat": "💬 Trò Chuyện Thần Học",
     "chat_hist": "💭 Chat History",
-    "import": "📥 Nhập Dữ Liệu"
+    "import": "📥 Nhập Dữ Liệu",
+    "questions_gen": "❓ Trình Tạo Câu Hỏi",
+    "questions_hist": "📚 Lịch Sử Câu Hỏi"
   },
   "messages": {
     "no_data": "Import a Bible version to start guided reading.",
