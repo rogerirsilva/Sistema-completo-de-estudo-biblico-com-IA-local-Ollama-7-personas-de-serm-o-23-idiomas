@@ -74,7 +74,24 @@
     "devotional_verse_label": "Devotional Verse",
     "chat_book_label": "Chat",
     "reading_page": "Reading page",
-    "set_default_version": "Set as default version on startup"
+    "set_default_version": "Set as default version on startup",
+    "specific_book": "특정 책",
+    "multiple_books": "여러 책",
+    "entire_bible": "전체 성경",
+    "scope": "범위",
+    "selected_book_colon": "선택한 책:",
+    "select_books": "책 선택",
+    "selected_books_colon": "선택한 책:",
+    "scope_colon": "범위:",
+    "questions_count": "질문 수",
+    "questions_count_help": "생성할 질문 수",
+    "with_answers": "답변 포함",
+    "only_questions": "질문만",
+    "generation_mode": "생성 모드",
+    "filter_by_mode": "모드별 필터",
+    "all": "모두",
+    "search": "🔍 검색",
+    "search_placeholder_general": "검색하려면 입력..."
   },
   "buttons": {
     "generate_explanation": "✨ 성경 해설 생성",
@@ -141,7 +158,14 @@
     "ollama_offline_detail": "Ollama is offline ({detail}). Start the server and try again.",
     "no_verses_in_chapter": "No verses found in this chapter.",
     "no_local_versions": "No local versions found. Use Import Data to load content.",
-    "importing_versions": "⏳ Importing versions..."
+    "importing_versions": "⏳ Importing versions...",
+    "select_at_least_two_books": "⚠️ 최소 2개의 책을 선택하세요.",
+    "select_books_to_continue": "📚 계속하려면 책을 선택하세요",
+    "select_valid_scope": "유효한 범위를 선택하세요.",
+    "generating_questions": "❓ 성경 질문 생성 중...",
+    "questions_generated": "✅ 질문이 생성되고 저장되었습니다!",
+    "check_questions_history": "📚 '질문 기록' 탭으로 이동합니다.",
+    "no_questions_history": "아직 질문이 생성되지 않았습니다."
   },
   "expanders": {
     "explanation_preview": "👁️ Explanation Preview",
@@ -149,7 +173,8 @@
     "devotional_preview": "👁️ Devotional Preview",
     "biblical_context": "📜 View Biblical Context",
     "full_explanation": "💡 View Full Explanation",
-    "how_to_add_versions": "ℹ️ How to Add Bible Versions"
+    "how_to_add_versions": "ℹ️ How to Add Bible Versions",
+    "questions_preview": "👁️ 질문 미리보기"
   },
   "headers": {
     "bible_studies_history": "📚 성경 연구 기록",
@@ -160,7 +185,9 @@
     "theological_chat": "신학 채팅",
     "sermons_history": "📋 설교 기록",
     "devotionals_history": "🕊️ 묵상 기록",
-    "conversations_history": "💭 대화 기록"
+    "conversations_history": "💭 대화 기록",
+    "questions_generator": "❓ 성경 질문 생성기",
+    "chat_scope": "📚 쿼리 범위"
   },
   "prompts": {
     "explain_context": "Explain the historical and theological context, ponder key words and suggest pastoral applications.",
@@ -186,7 +213,10 @@
     "model": "🤖 Model:",
     "reference": "📝 Reference:",
     "feeling": "❤️ Feeling:",
-    "folder_instruction": "Create the folder manually or the application will create it automatically when importing."
+    "folder_instruction": "Create the folder manually or the application will create it automatically when importing.",
+    "questions_description": "성경 지식에 대한 질문을 생성합니다.",
+    "questions_history_description": "생성된 모든 질문이 여기에 자동 저장됩니다.",
+    "questions_found": "❓ {count}개의 질문 세트를 찾았습니다"
   },
   "errors": {
     "load_bible_data": "⚠️ Error loading bible_data.json: {error}. Using empty data.",

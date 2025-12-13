@@ -74,7 +74,24 @@
     "devotional_verse_label": "ข้อคำภาวนา",
     "chat_book_label": "แชท",
     "reading_page": "หน้าการอ่าน",
-    "set_default_version": "ตั้งเป็นฉบับเริ่มต้น"
+    "set_default_version": "ตั้งเป็นฉบับเริ่มต้น",
+    "specific_book": "Specific Book",
+    "multiple_books": "Multiple Books",
+    "entire_bible": "Entire Bible",
+    "scope": "Scope",
+    "selected_book_colon": "Selected book:",
+    "select_books": "Select books",
+    "selected_books_colon": "Selected books:",
+    "scope_colon": "Scope:",
+    "questions_count": "Number of questions",
+    "questions_count_help": "Number of questions to generate",
+    "with_answers": "With Answers",
+    "only_questions": "Questions Only",
+    "generation_mode": "Generation Mode",
+    "filter_by_mode": "Filter by mode",
+    "all": "All",
+    "search": "🔍 Search",
+    "search_placeholder_general": "Type to search..."
   },
   "buttons": {
     "generate_explanation": "✨ สร้างคำอธิบายพระคัมภีร์",
@@ -141,7 +158,14 @@
     "ollama_offline_detail": "Ollama ออฟไลน์ ({detail}) เปิดเซิร์ฟเวอร์และลองอีกครั้ง",
     "no_verses_in_chapter": "ไม่พบข้อพระคัมภีร์ในบทนี้",
     "no_local_versions": "ไม่พบฉบับท้องถิ่น ใช้นำเข้าข้อมูลเพื่อโหลดเนื้อหา",
-    "importing_versions": "⏳ กำลังนำเข้าฉบับ..."
+    "importing_versions": "⏳ กำลังนำเข้าฉบับ...",
+    "select_at_least_two_books": "⚠️ Select at least 2 books.",
+    "select_books_to_continue": "📚 Select books to continue",
+    "select_valid_scope": "Please select a valid scope.",
+    "generating_questions": "❓ Generating Bible questions...",
+    "questions_generated": "✅ Questions generated and saved!",
+    "check_questions_history": "📚 Go to 'Questions History' tab.",
+    "no_questions_history": "No questions generated yet."
   },
   "expanders": {
     "explanation_preview": "👁️ ดูตัวอย่างคำอธิบาย",
@@ -149,7 +173,8 @@
     "devotional_preview": "👁️ ดูตัวอย่างคำภาวนา",
     "biblical_context": "📜 ดูบริบทพระคัมภีร์",
     "full_explanation": "💡 ดูคำอธิบายฉบับเต็ม",
-    "how_to_add_versions": "ℹ️ วิธีเพิ่มพระคัมภีร์ฉบับต่างๆ"
+    "how_to_add_versions": "ℹ️ วิธีเพิ่มพระคัมภีร์ฉบับต่างๆ",
+    "questions_preview": "👁️ Questions Preview"
   },
   "headers": {
     "bible_studies_history": "📚 ประวัติการศึกษาพระคัมภีร์",
@@ -160,7 +185,9 @@
     "theological_chat": "แชทเทววิทยา",
     "sermons_history": "📋 ประวัติคำเทศนา",
     "devotionals_history": "🕊️ ประวัติคำภาวนา",
-    "conversations_history": "💭 ประวัติบทสนทนา"
+    "conversations_history": "💭 ประวัติบทสนทนา",
+    "questions_generator": "❓ Bible Questions Generator",
+    "chat_scope": "📚 Query Scope"
   },
   "prompts": {
     "explain_context": "อธิบายบริบททางประวัติศาสตร์และเทววิทยา พิจารณาคำสำคัญและแนะนำการประยุกต์ใช้ในงานอภิบาล",
@@ -186,7 +213,10 @@
     "model": "🤖 โมเดล:",
     "reference": "📝 อ้างอิง:",
     "feeling": "❤️ ความรู้สึก:",
-    "folder_instruction": "สร้างโฟลเดอร์ด้วยตนเองหรือแอปจะสร้างอัตโนมัติเมื่อนำเข้า"
+    "folder_instruction": "สร้างโฟลเดอร์ด้วยตนเองหรือแอปจะสร้างอัตโนมัติเมื่อนำเข้า",
+    "questions_description": "Generate questions about biblical knowledge.",
+    "questions_history_description": "All generated questions are automatically saved here.",
+    "questions_found": "❓ {count} question set(s) found"
   },
   "errors": {
     "load_bible_data": "⚠️ ข้อผิดพลาดในการโหลด bible_data.json: {error} ใช้ข้อมูลว่าง",

@@ -38,6 +38,23 @@
     "select_books_for_sermon": "اختر الكتب للوعظ:",
     "devotional_scope_prompt": "حدد نطاق إنشاء التأمل:",
     "select_books_for_devotional": "اختر الكتب للتأمل:",
+    "specific_book": "كتاب محدد",
+    "multiple_books": "كتب متعددة",
+    "entire_bible": "الكتاب المقدس بأكمله",
+    "scope": "نطاق",
+    "selected_book_colon": "الكتاب المحدد:",
+    "select_books": "اختر الكتب",
+    "selected_books_colon": "الكتب المحددة:",
+    "scope_colon": "نطاق:",
+    "questions_count": "عدد الأسئلة",
+    "questions_count_help": "عدد الأسئلة المراد إنشاؤها",
+    "with_answers": "مع الإجابات",
+    "only_questions": "الأسئلة فقط",
+    "generation_mode": "وضع التوليد",
+    "filter_by_mode": "تصفية حسب الوضع",
+    "all": "الكل",
+    "search": "🔍 بحث",
+    "search_placeholder_general": "اكتب للبحث...",
     "ollama_model": "نموذج Ollama",
     "ollama_status": "حالة Ollama",
     "ollama_status_online": "متصل",
@@ -105,6 +122,13 @@
     "no_verses_in_chapter": "لم يتم العثور على آيات في هذا الفصل.",
     "no_local_versions": "لم يتم العثور على إصدارات محلية. استخدم استيراد البيانات لتحميل المحتوى.",
     "importing_versions": "⏳ جارٍ استيراد الإصدارات...",
+    "select_at_least_two_books": "⚠️ حدد كتابين على الأقل للمتابعة.",
+    "select_books_to_continue": "📚 حدد الكتب للمتابعة",
+    "select_valid_scope": "يرجى تحديد نطاق صالح.",
+    "generating_questions": "❓ إنشاء أسئلة كتابية...",
+    "questions_generated": "✅ تم إنشاء الأسئلة وحفظها في السجل!",
+    "check_questions_history": "📚 انتقل إلى علامة تبويب 'سجل الأسئلة' لرؤية جميع أسئلتك.",
+    "no_questions_history": "لم يتم إنشاء أسئلة بعد.",
     "no_data": "Import a Bible version to start guided reading.",
     "select_book_chapter": "Select a book and chapter to start guided reading.",
     "no_verses_chapter": "No verses found in this chapter.",
@@ -165,7 +189,9 @@
     "devotional_scope": "📚 نطاق التأمل",
     "sermons_history": "📋 تاريخ العظات",
     "devotionals_history": "🕊️ تاريخ التأملات",
-    "conversations_history": "💭 تاريخ المحادثات"
+    "conversations_history": "💭 تاريخ المحادثات",
+    "questions_generator": "❓ مولد الأسئلة الكتابية",
+    "chat_scope": "📚 نطاق الاستعلام"
   },
   "formatting": {
     "question_label": "💬 سؤال:",
@@ -182,7 +208,8 @@
     "devotional_preview": "👁️ Devotional Preview",
     "biblical_context": "📜 View Biblical Context",
     "full_explanation": "💡 View Full Explanation",
-    "how_to_add_versions": "ℹ️ كيفية إضافة إصدارات الكتاب المقدس"
+    "how_to_add_versions": "ℹ️ كيفية إضافة إصدارات الكتاب المقدس",
+    "questions_preview": "👁️ معاينة الأسئلة"
   },
   "prompts": {
     "explain_context": "Explain the historical and theological context, ponder key words and suggest pastoral applications.",
@@ -208,7 +235,10 @@
     "model": "🤖 Model:",
     "reference": "📝 Reference:",
     "feeling": "❤️ Feeling:",
-    "folder_instruction": "Create the folder manually or the application will create it automatically when importing."
+    "folder_instruction": "Create the folder manually or the application will create it automatically when importing.",
+    "questions_description": "قم بإنشاء أسئلة حول الفضول والمعرفة الكتابية من كتاب محدد أو كتب متعددة أو الكتاب المقدس بأكمله.",
+    "questions_history_description": "يتم حفظ جميع الأسئلة التي تم إنشاؤها تلقائيًا هنا.",
+    "questions_found": "❓ {count} مجموعة (مجموعات) من الأسئلة"
   },
   "errors": {
     "load_bible_data": "⚠️ Error loading bible_data.json: {error}. Using empty data.",

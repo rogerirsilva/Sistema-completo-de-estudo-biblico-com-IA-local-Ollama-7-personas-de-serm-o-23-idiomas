@@ -91,7 +91,24 @@
     "selected_colon": "Selected:",
     "import_folder": "Import folder:",
     "files_found": "file(s) found",
-    "filter_versions": "Filter versions (optional)"
+    "filter_versions": "Filter versions (optional)",
+    "specific_book": "特定书卷",
+    "multiple_books": "多本书卷",
+    "entire_bible": "整本圣经",
+    "scope": "范围",
+    "selected_book_colon": "选定的书卷：",
+    "select_books": "选择书卷",
+    "selected_books_colon": "选定的书卷：",
+    "scope_colon": "范围：",
+    "questions_count": "问题数量",
+    "questions_count_help": "要生成的问题数量",
+    "with_answers": "带答案",
+    "only_questions": "仅问题",
+    "generation_mode": "生成模式",
+    "filter_by_mode": "按模式筛选",
+    "all": "全部",
+    "search": "🔍 搜索",
+    "search_placeholder_general": "输入搜索..."
   },
   "scope_options": {
     "specific_book": "📖 特定书卷",
@@ -140,7 +157,14 @@
     "generating_sermon": "🔮 Generating sermon outline...",
     "generating_devotional": "🔮 Generating devotional...",
     "generating_answer": "🔮 Generating theological answer...",
-    "ollama_offline_detail": "Ollama is offline ({detail}). Start the server and try again."
+    "ollama_offline_detail": "Ollama is offline ({detail}). Start the server and try again.",
+    "select_at_least_two_books": "⚠️ 至少选择2本书。",
+    "select_books_to_continue": "📚 选择书卷继续",
+    "select_valid_scope": "请选择有效的范围。",
+    "generating_questions": "❓ 生成圣经问题...",
+    "questions_generated": "✅ 问题已生成并保存！",
+    "check_questions_history": "📚 转到问题历史选项卡。",
+    "no_questions_history": "尚未生成问题。"
   },
   "buttons": {
     "clear_cache": "🔄 清除缓存",
@@ -165,7 +189,9 @@
     "devotional_scope": "📚 灵修范围",
     "sermons_history": "📋 讲道历史",
     "devotionals_history": "🕊️ 灵修历史",
-    "conversations_history": "💭 对话历史"
+    "conversations_history": "💭 对话历史",
+    "questions_generator": "❓ 圣经问题生成器",
+    "chat_scope": "📚 查询范围"
   },
   "formatting": {
     "question_label": "💬 问题:",
@@ -182,7 +208,8 @@
     "devotional_preview": "👁️ Devotional Preview",
     "biblical_context": "📜 View Biblical Context",
     "full_explanation": "💡 View Full Explanation",
-    "how_to_add_versions": "ℹ️ 如何添加圣经版本"
+    "how_to_add_versions": "ℹ️ 如何添加圣经版本",
+    "questions_preview": "👁️ 问题预览"
   },
   "prompts": {
     "explain_context": "Explain the historical and theological context, ponder key words and suggest pastoral applications.",
@@ -208,7 +235,10 @@
     "model": "🤖 Model:",
     "reference": "📝 Reference:",
     "feeling": "❤️ Feeling:",
-    "folder_instruction": "Create the folder manually or the application will create it automatically when importing."
+    "folder_instruction": "Create the folder manually or the application will create it automatically when importing.",
+    "questions_description": "生成关于圣经知识的问题。",
+    "questions_history_description": "所有生成的问题都自动保存在这里。",
+    "questions_found": "❓ 找到 {count} 个问题集"
   },
   "errors": {
     "load_bible_data": "⚠️ Error loading bible_data.json: {error}. Using empty data.",

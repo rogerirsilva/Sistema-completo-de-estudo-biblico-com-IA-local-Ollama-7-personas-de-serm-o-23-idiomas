@@ -74,7 +74,24 @@
     "devotional_verse_label": "デボーション節",
     "chat_book_label": "チャット",
     "reading_page": "読書ページ",
-    "set_default_version": "起動時のデフォルトバージョンとして設定"
+    "set_default_version": "起動時のデフォルトバージョンとして設定",
+    "specific_book": "特定の書",
+    "multiple_books": "複数の書",
+    "entire_bible": "聖書全体",
+    "scope": "範囲",
+    "selected_book_colon": "選択した書：",
+    "select_books": "書を選択",
+    "selected_books_colon": "選択した書：",
+    "scope_colon": "範囲：",
+    "questions_count": "質問数",
+    "questions_count_help": "生成する質問の数",
+    "with_answers": "回答付き",
+    "only_questions": "質問のみ",
+    "generation_mode": "生成モード",
+    "filter_by_mode": "モードで絞り込み",
+    "all": "すべて",
+    "search": "🔍 検索",
+    "search_placeholder_general": "検索するには入力..."
   },
   "buttons": {
     "generate_explanation": "✨ 聖書の説明を生成",
@@ -141,7 +158,14 @@
     "ollama_offline_detail": "Ollamaはオフラインです（{detail}）。サーバーを起動して再試行してください。",
     "no_verses_in_chapter": "この章には節が見つかりませんでした。",
     "no_local_versions": "ローカルバージョンが見つかりません。データインポートを使用してコンテンツをロードしてください。",
-    "importing_versions": "⏳ バージョンをインポート中..."
+    "importing_versions": "⏳ バージョンをインポート中...",
+    "select_at_least_two_books": "⚠️ 少なくとも2つの書を選択してください。",
+    "select_books_to_continue": "📚 書を選択して続行",
+    "select_valid_scope": "有効な範囲を選択してください。",
+    "generating_questions": "❓ 聖書の質問を生成中...",
+    "questions_generated": "✅ 質問が生成され、保存されました！",
+    "check_questions_history": "📚 質問履歴タブに移動します。",
+    "no_questions_history": "まだ質問は生成されていません。"
   },
   "expanders": {
     "explanation_preview": "👁️ 説明のプレビュー",
@@ -149,7 +173,8 @@
     "devotional_preview": "👁️ 黙想のプレビュー",
     "biblical_context": "📜 聖書のコンテキストを表示",
     "full_explanation": "💡 完全な説明を表示",
-    "how_to_add_versions": "ℹ️ 聖書のバージョンを追加する方法"
+    "how_to_add_versions": "ℹ️ 聖書のバージョンを追加する方法",
+    "questions_preview": "👁️ 質問のプレビュー"
   },
   "headers": {
     "bible_studies_history": "📚 聖書学習履歴",
@@ -160,7 +185,9 @@
     "theological_chat": "神学チャット",
     "sermons_history": "📋 説教履歴",
     "devotionals_history": "🕊️ 黙想履歴",
-    "conversations_history": "💭 会話履歴"
+    "conversations_history": "💭 会話履歴",
+    "questions_generator": "❓ 聖書質問ジェネレーター",
+    "chat_scope": "📚 クエリ範囲"
   },
   "prompts": {
     "explain_context": "歴史的および神学的コンテキストを説明し、キーワードについて考察し、牧会的応用を提案してください。",
@@ -186,7 +213,10 @@
     "model": "🤖 モデル:",
     "reference": "📝 参照:",
     "feeling": "❤️ 感情:",
-    "folder_instruction": "フォルダを手動で作成するか、インポート時にアプリケーションが自動的に作成します。"
+    "folder_instruction": "フォルダを手動で作成するか、インポート時にアプリケーションが自動的に作成します。",
+    "questions_description": "聖書の知識に関する質問を生成します。",
+    "questions_history_description": "生成されたすべての質問はここに自動保存されます。",
+    "questions_found": "❓ {count} 件の質問セットが見つかりました"
   },
   "errors": {
     "load_bible_data": "⚠️ bible_data.jsonの読み込みエラー: {error}。空のデータを使用しています。",

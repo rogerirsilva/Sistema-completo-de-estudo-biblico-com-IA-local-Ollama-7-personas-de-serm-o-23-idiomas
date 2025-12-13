@@ -91,7 +91,24 @@
     "selected_colon": "Selected:",
     "import_folder": "Import folder:",
     "files_found": "file(s) found",
-    "filter_versions": "Filter versions (optional)"
+    "filter_versions": "Filter versions (optional)",
+    "specific_book": "Libro Specifico",
+    "multiple_books": "Libri Multipli",
+    "entire_bible": "Bibbia Intera",
+    "scope": "Ambito",
+    "selected_book_colon": "Libro selezionato:",
+    "select_books": "Seleziona libri",
+    "selected_books_colon": "Libri selezionati:",
+    "scope_colon": "Ambito:",
+    "questions_count": "Numero di domande",
+    "questions_count_help": "Numero di domande da generare",
+    "with_answers": "Con Risposte",
+    "only_questions": "Solo Domande",
+    "generation_mode": "Modalità di Generazione",
+    "filter_by_mode": "Filtra per modalità",
+    "all": "Tutti",
+    "search": "🔍 Cerca",
+    "search_placeholder_general": "Digita per cercare..."
   },
   "scope_options": {
     "specific_book": "📖 Libro Specifico",
@@ -140,7 +157,14 @@
     "generating_sermon": "🔮 Generating sermon outline...",
     "generating_devotional": "🔮 Generating devotional...",
     "generating_answer": "🔮 Generating theological answer...",
-    "ollama_offline_detail": "Ollama is offline ({detail}). Start the server and try again."
+    "ollama_offline_detail": "Ollama is offline ({detail}). Start the server and try again.",
+    "select_at_least_two_books": "⚠️ Seleziona almeno 2 libri.",
+    "select_books_to_continue": "📚 Seleziona libri",
+    "select_valid_scope": "Si prega di selezionare un ambito valido.",
+    "generating_questions": "❓ Generazione di domande bibliche...",
+    "questions_generated": "✅ Domande generate e salvate!",
+    "check_questions_history": "📚 Vai alla scheda 'Cronologia Domande'.",
+    "no_questions_history": "Nessuna domanda generata ancora."
   },
   "buttons": {
     "clear_cache": "🔄 Svuota Cache",
@@ -165,7 +189,9 @@
     "devotional_scope": "📚 Ambito del Devozionale",
     "sermons_history": "📋 Cronologia dei Sermoni",
     "devotionals_history": "🕊️ Cronologia dei Devozionali",
-    "conversations_history": "💭 Cronologia delle Conversazioni"
+    "conversations_history": "💭 Cronologia delle Conversazioni",
+    "questions_generator": "❓ Generatore di Domande Bibliche",
+    "chat_scope": "📚 Ambito della Query"
   },
   "formatting": {
     "question_label": "💬 Domanda:",
@@ -182,7 +208,8 @@
     "devotional_preview": "👁️ Devotional Preview",
     "biblical_context": "📜 View Biblical Context",
     "full_explanation": "💡 View Full Explanation",
-    "how_to_add_versions": "ℹ️ Come Aggiungere Versioni Bibliche"
+    "how_to_add_versions": "ℹ️ Come Aggiungere Versioni Bibliche",
+    "questions_preview": "👁️ Anteprima Domande"
   },
   "prompts": {
     "explain_context": "Explain the historical and theological context, ponder key words and suggest pastoral applications.",
@@ -208,7 +235,10 @@
     "model": "🤖 Model:",
     "reference": "📝 Reference:",
     "feeling": "❤️ Feeling:",
-    "folder_instruction": "Create the folder manually or the application will create it automatically when importing."
+    "folder_instruction": "Create the folder manually or the application will create it automatically when importing.",
+    "questions_description": "Genera domande sulla conoscenza biblica.",
+    "questions_history_description": "Tutte le domande generate vengono salvate qui automaticamente.",
+    "questions_found": "❓ Trovati {count} set di domande"
   },
   "errors": {
     "load_bible_data": "⚠️ Error loading bible_data.json: {error}. Using empty data.",

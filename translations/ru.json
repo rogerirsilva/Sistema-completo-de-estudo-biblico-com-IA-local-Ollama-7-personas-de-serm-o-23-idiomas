@@ -91,7 +91,24 @@
     "selected_colon": "Selected:",
     "import_folder": "Import folder:",
     "files_found": "file(s) found",
-    "filter_versions": "Filter versions (optional)"
+    "filter_versions": "Filter versions (optional)",
+    "specific_book": "Конкретная книга",
+    "multiple_books": "Несколько книг",
+    "entire_bible": "Вся Библия",
+    "scope": "Область",
+    "selected_book_colon": "Выбранная книга:",
+    "select_books": "Выбрать книги",
+    "selected_books_colon": "Выбранные книги:",
+    "scope_colon": "Область:",
+    "questions_count": "Количество вопросов",
+    "questions_count_help": "Количество вопросов для генерации",
+    "with_answers": "С ответами",
+    "only_questions": "Только вопросы",
+    "generation_mode": "Режим генерации",
+    "filter_by_mode": "Фильтр по режиму",
+    "all": "Все",
+    "search": "🔍 Поиск",
+    "search_placeholder_general": "Введите для поиска..."
   },
   "scope_options": {
     "specific_book": "📖 Конкретная Книга",
@@ -140,7 +157,14 @@
     "generating_sermon": "🔮 Generating sermon outline...",
     "generating_devotional": "🔮 Generating devotional...",
     "generating_answer": "🔮 Generating theological answer...",
-    "ollama_offline_detail": "Ollama is offline ({detail}). Start the server and try again."
+    "ollama_offline_detail": "Ollama is offline ({detail}). Start the server and try again.",
+    "select_at_least_two_books": "⚠️ Выберите не менее 2 книг.",
+    "select_books_to_continue": "📚 Выберите книги",
+    "select_valid_scope": "Пожалуйста, выберите действительную область.",
+    "generating_questions": "❓ Генерация библейских вопросов...",
+    "questions_generated": "✅ Вопросы сгенерированы и сохранены!",
+    "check_questions_history": "📚 Перейдите во вкладку 'История вопросов'.",
+    "no_questions_history": "Вопросы еще не сгенерированы."
   },
   "buttons": {
     "clear_cache": "🔄 Очистить кэш",
@@ -165,7 +189,9 @@
     "devotional_scope": "📚 Область Размышления",
     "sermons_history": "📋 История Проповедей",
     "devotionals_history": "🕊️ История Размышлений",
-    "conversations_history": "💭 История Бесед"
+    "conversations_history": "💭 История Бесед",
+    "questions_generator": "❓ Генератор библейских вопросов",
+    "chat_scope": "📚 Область запроса"
   },
   "formatting": {
     "question_label": "💬 Вопрос:",
@@ -182,7 +208,8 @@
     "devotional_preview": "👁️ Devotional Preview",
     "biblical_context": "📜 View Biblical Context",
     "full_explanation": "💡 View Full Explanation",
-    "how_to_add_versions": "ℹ️ Как добавить версии Библии"
+    "how_to_add_versions": "ℹ️ Как добавить версии Библии",
+    "questions_preview": "👁️ Предварительный просмотр вопросов"
   },
   "prompts": {
     "explain_context": "Explain the historical and theological context, ponder key words and suggest pastoral applications.",
@@ -208,7 +235,10 @@
     "model": "🤖 Model:",
     "reference": "📝 Reference:",
     "feeling": "❤️ Feeling:",
-    "folder_instruction": "Create the folder manually or the application will create it automatically when importing."
+    "folder_instruction": "Create the folder manually or the application will create it automatically when importing.",
+    "questions_description": "Генерируйте вопросы о библейских знаниях.",
+    "questions_history_description": "Все сгенерированные вопросы сохраняются здесь.",
+    "questions_found": "❓ Найдено {count} набор(ов) вопросов"
   },
   "errors": {
     "load_bible_data": "⚠️ Error loading bible_data.json: {error}. Using empty data.",

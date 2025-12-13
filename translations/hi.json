@@ -74,7 +74,24 @@
     "devotional_verse_label": "भक्ति पद",
     "chat_book_label": "चैट",
     "reading_page": "पढ़ने का पृष्ठ",
-    "set_default_version": "प्रारंभ पर डिफ़ॉल्ट संस्करण के रूप में सेट करें"
+    "set_default_version": "प्रारंभ पर डिफ़ॉल्ट संस्करण के रूप में सेट करें",
+    "specific_book": "Specific Book",
+    "multiple_books": "Multiple Books",
+    "entire_bible": "Entire Bible",
+    "scope": "Scope",
+    "selected_book_colon": "Selected book:",
+    "select_books": "Select books",
+    "selected_books_colon": "Selected books:",
+    "scope_colon": "Scope:",
+    "questions_count": "Number of questions",
+    "questions_count_help": "Number of questions to generate",
+    "with_answers": "With Answers",
+    "only_questions": "Questions Only",
+    "generation_mode": "Generation Mode",
+    "filter_by_mode": "Filter by mode",
+    "all": "All",
+    "search": "🔍 Search",
+    "search_placeholder_general": "Type to search..."
   },
   "buttons": {
     "generate_explanation": "✨ बाइबिल व्याख्या उत्पन्न करें",
@@ -141,7 +158,14 @@
     "ollama_offline_detail": "Ollama ऑफ़लाइन है ({detail})। सर्वर प्रारंभ करें और पुनः प्रयास करें।",
     "no_verses_in_chapter": "इस अध्याय में कोई पद नहीं मिला।",
     "no_local_versions": "कोई स्थानीय संस्करण नहीं मिला। सामग्री लोड करने के लिए डेटा आयात का उपयोग करें।",
-    "importing_versions": "⏳ संस्करण आयात किए जा रहे हैं..."
+    "importing_versions": "⏳ संस्करण आयात किए जा रहे हैं...",
+    "select_at_least_two_books": "⚠️ Select at least 2 books.",
+    "select_books_to_continue": "📚 Select books to continue",
+    "select_valid_scope": "Please select a valid scope.",
+    "generating_questions": "❓ Generating Bible questions...",
+    "questions_generated": "✅ Questions generated and saved!",
+    "check_questions_history": "📚 Go to 'Questions History' tab.",
+    "no_questions_history": "No questions generated yet."
   },
   "expanders": {
     "explanation_preview": "👁️ व्याख्या पूर्वावलोकन",
@@ -149,7 +173,8 @@
     "devotional_preview": "👁️ भक्ति पूर्वावलोकन",
     "biblical_context": "📜 बाइबिल संदर्भ देखें",
     "full_explanation": "💡 पूर्ण व्याख्या देखें",
-    "how_to_add_versions": "ℹ️ बाइबिल संस्करण कैसे जोड़ें"
+    "how_to_add_versions": "ℹ️ बाइबिल संस्करण कैसे जोड़ें",
+    "questions_preview": "👁️ Questions Preview"
   },
   "headers": {
     "bible_studies_history": "📚 बाइबिल अध्ययन इतिहास",
@@ -160,7 +185,9 @@
     "theological_chat": "धार्मिक चैट",
     "sermons_history": "📋 उपदेश इतिहास",
     "devotionals_history": "🕊️ भक्ति इतिहास",
-    "conversations_history": "💭 बातचीत इतिहास"
+    "conversations_history": "💭 बातचीत इतिहास",
+    "questions_generator": "❓ Bible Questions Generator",
+    "chat_scope": "📚 Query Scope"
   },
   "prompts": {
     "explain_context": "ऐतिहासिक और धर्मशास्त्रीय संदर्भ की व्याख्या करें, मुख्य शब्दों पर विचार करें और पादरी अनुप्रयोगों का सुझाव दें।",
@@ -186,7 +213,10 @@
     "model": "🤖 मॉडल:",
     "reference": "📝 संदर्भ:",
     "feeling": "❤️ भावना:",
-    "folder_instruction": "फ़ोल्डर मैन्युअल रूप से बनाएं या आयात करते समय एप्लिकेशन स्वचालित रूप से इसे बना देगा।"
+    "folder_instruction": "फ़ोल्डर मैन्युअल रूप से बनाएं या आयात करते समय एप्लिकेशन स्वचालित रूप से इसे बना देगा।",
+    "questions_description": "Generate questions about biblical knowledge.",
+    "questions_history_description": "All generated questions are automatically saved here.",
+    "questions_found": "❓ {count} question set(s) found"
   },
   "errors": {
     "load_bible_data": "⚠️ bible_data.json लोड करने में त्रुटि: {error}. खाली डेटा का उपयोग कर रहे हैं।",

@@ -74,7 +74,24 @@
     "devotional_verse_label": "Στίχος Αφιερώματος",
     "chat_book_label": "Συνομιλία",
     "reading_page": "Σελίδα ανάγνωσης",
-    "set_default_version": "Ορισμός ως προεπιλεγμένη έκδοση"
+    "set_default_version": "Ορισμός ως προεπιλεγμένη έκδοση",
+    "specific_book": "Συγκεκριμένο Βιβλίο",
+    "multiple_books": "Πολλαπλά Βιβλία",
+    "entire_bible": "Ολόκληρη η Βίβλος",
+    "scope": "Πεδίο",
+    "selected_book_colon": "Επιλεγμένο βιβλίο:",
+    "select_books": "Επιλέξτε βιβλία",
+    "selected_books_colon": "Επιλεγμένα βιβλία:",
+    "scope_colon": "Πεδίο:",
+    "questions_count": "Αριθμός ερωτήσεων",
+    "questions_count_help": "Αριθμός ερωτήσεων προς δημιουργία",
+    "with_answers": "Με Απαντήσεις",
+    "only_questions": "Μόνο Ερωτήσεις",
+    "generation_mode": "Λειτουργία Δημιουργίας",
+    "filter_by_mode": "Φιλτράρισμα κατά λειτουργία",
+    "all": "Όλα",
+    "search": "🔍 Αναζήτηση",
+    "search_placeholder_general": "Πληκτρολογήστε για αναζήτηση..."
   },
   "buttons": {
     "generate_explanation": "✨ Δημιουργία Βιβλικής Εξήγησης",
@@ -141,7 +158,14 @@
     "ollama_offline_detail": "Το Ollama είναι εκτός σύνδεσης ({detail}). Ενεργοποιήστε τον διακομιστή και δοκιμάστε ξανά.",
     "no_verses_in_chapter": "Δεν βρέθηκαν στίχοι σε αυτό το κεφάλαιο.",
     "no_local_versions": "Δεν βρέθηκαν τοπικές εκδόσεις. Χρησιμοποιήστε Εισαγωγή Δεδομένων για να φορτώσετε περιεχόμενο.",
-    "importing_versions": "⏳ Εισαγωγή εκδόσεων..."
+    "importing_versions": "⏳ Εισαγωγή εκδόσεων...",
+    "select_at_least_two_books": "⚠️ Επιλέξτε τουλάχιστον 2 βιβλία.",
+    "select_books_to_continue": "📚 Επιλέξτε βιβλία",
+    "select_valid_scope": "Παρακαλώ επιλέξτε έγκυρο πεδίο.",
+    "generating_questions": "❓ Δημιουργία βιβλικών ερωτήσεων...",
+    "questions_generated": "✅ Οι ερωτήσεις δημιουργήθηκαν και αποθηκεύτηκαν!",
+    "check_questions_history": "📚 Μεταβείτε στην καρτέλα 'Ιστορικό Ερωτήσεων'.",
+    "no_questions_history": "Δεν έχουν δημιουργηθεί ερωτήσεις ακόμα."
   },
   "expanders": {
     "explanation_preview": "👁️ Προεπισκόπηση Εξήγησης",
@@ -149,7 +173,8 @@
     "devotional_preview": "👁️ Προεπισκόπηση Αφιερώματος",
     "biblical_context": "📜 Προβολή Βιβλικού Πλαισίου",
     "full_explanation": "💡 Προβολή Πλήρους Εξήγησης",
-    "how_to_add_versions": "ℹ️ Πώς να Προσθέσετε Εκδόσεις της Βίβλου"
+    "how_to_add_versions": "ℹ️ Πώς να Προσθέσετε Εκδόσεις της Βίβλου",
+    "questions_preview": "👁️ Προεπισκόπηση Ερωτήσεων"
   },
   "headers": {
     "bible_studies_history": "📚 Ιστορικό Βιβλικών Μελετών",
@@ -160,7 +185,9 @@
     "theological_chat": "Θεολογική Συνομιλία",
     "sermons_history": "📋 Ιστορικό Κηρυγμάτων",
     "devotionals_history": "🕊️ Ιστορικό Αφιερωμάτων",
-    "conversations_history": "💭 Ιστορικό Συνομιλιών"
+    "conversations_history": "💭 Ιστορικό Συνομιλιών",
+    "questions_generator": "❓ Γεννήτρια Βιβλικών Ερωτήσεων",
+    "chat_scope": "📚 Πεδίο Ερωτήματος"
   },
   "prompts": {
     "explain_context": "Εξηγήστε το ιστορικό και θεολογικό πλαίσιο, σκεφτείτε λέξεις-κλειδιά και προτείνετε ποιμαντικές εφαρμογές.",
@@ -186,7 +213,10 @@
     "model": "🤖 Μοντέλο:",
     "reference": "📝 Αναφορά:",
     "feeling": "❤️ Συναίσθημα:",
-    "folder_instruction": "Δημιουργήστε τον φάκελο χειροκίνητα ή η εφαρμογή θα τον δημιουργήσει αυτόματα κατά την εισαγωγή."
+    "folder_instruction": "Δημιουργήστε τον φάκελο χειροκίνητα ή η εφαρμογή θα τον δημιουργήσει αυτόματα κατά την εισαγωγή.",
+    "questions_description": "Δημιουργήστε ερωτήσεις για βιβλικές γνώσεις.",
+    "questions_history_description": "Όλες οι ερωτήσεις αποθηκεύονται αυτόματα εδώ.",
+    "questions_found": "❓ Βρέθηκαν {count} σύνολα ερωτήσεων"
   },
   "errors": {
     "load_bible_data": "⚠️ Σφάλμα κατά τη φόρτωση του bible_data.json: {error}. Χρήση κενών δεδομένων.",

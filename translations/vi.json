@@ -74,7 +74,24 @@
     "devotional_verse_label": "Devotional Verse",
     "chat_book_label": "Chat",
     "reading_page": "Reading page",
-    "set_default_version": "Set as default version on startup"
+    "set_default_version": "Set as default version on startup",
+    "specific_book": "Specific Book",
+    "multiple_books": "Multiple Books",
+    "entire_bible": "Entire Bible",
+    "scope": "Scope",
+    "selected_book_colon": "Selected book:",
+    "select_books": "Select books",
+    "selected_books_colon": "Selected books:",
+    "scope_colon": "Scope:",
+    "questions_count": "Number of questions",
+    "questions_count_help": "Number of questions to generate",
+    "with_answers": "With Answers",
+    "only_questions": "Questions Only",
+    "generation_mode": "Generation Mode",
+    "filter_by_mode": "Filter by mode",
+    "all": "All",
+    "search": "🔍 Search",
+    "search_placeholder_general": "Type to search..."
   },
   "buttons": {
     "generate_explanation": "✨ Tạo Giải Thích Kinh Thánh",
@@ -141,7 +158,14 @@
     "ollama_offline_detail": "Ollama is offline ({detail}). Start the server and try again.",
     "no_verses_in_chapter": "No verses found in this chapter.",
     "no_local_versions": "No local versions found. Use Import Data to load content.",
-    "importing_versions": "⏳ Importing versions..."
+    "importing_versions": "⏳ Importing versions...",
+    "select_at_least_two_books": "⚠️ Select at least 2 books.",
+    "select_books_to_continue": "📚 Select books to continue",
+    "select_valid_scope": "Please select a valid scope.",
+    "generating_questions": "❓ Generating Bible questions...",
+    "questions_generated": "✅ Questions generated and saved!",
+    "check_questions_history": "📚 Go to 'Questions History' tab.",
+    "no_questions_history": "No questions generated yet."
   },
   "expanders": {
     "explanation_preview": "👁️ Explanation Preview",
@@ -149,7 +173,8 @@
     "devotional_preview": "👁️ Devotional Preview",
     "biblical_context": "📜 View Biblical Context",
     "full_explanation": "💡 View Full Explanation",
-    "how_to_add_versions": "ℹ️ How to Add Bible Versions"
+    "how_to_add_versions": "ℹ️ How to Add Bible Versions",
+    "questions_preview": "👁️ Questions Preview"
   },
   "headers": {
     "bible_studies_history": "📚 Lịch Sử Nghiên Cứu Kinh Thánh",
@@ -160,7 +185,9 @@
     "theological_chat": "Trò Chuyện Thần Học",
     "sermons_history": "📋 Lịch Sử Bài Giảng",
     "devotionals_history": "🕊️ Lịch Sử Suy Gẫm",
-    "conversations_history": "💭 Lịch Sử Trò Chuyện"
+    "conversations_history": "💭 Lịch Sử Trò Chuyện",
+    "questions_generator": "❓ Bible Questions Generator",
+    "chat_scope": "📚 Query Scope"
   },
   "prompts": {
     "explain_context": "Explain the historical and theological context, ponder key words and suggest pastoral applications.",
@@ -186,7 +213,10 @@
     "model": "🤖 Model:",
     "reference": "📝 Reference:",
     "feeling": "❤️ Feeling:",
-    "folder_instruction": "Create the folder manually or the application will create it automatically when importing."
+    "folder_instruction": "Create the folder manually or the application will create it automatically when importing.",
+    "questions_description": "Generate questions about biblical knowledge.",
+    "questions_history_description": "All generated questions are automatically saved here.",
+    "questions_found": "❓ {count} question set(s) found"
   },
   "errors": {
     "load_bible_data": "⚠️ Error loading bible_data.json: {error}. Using empty data.",
