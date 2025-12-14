@@ -4,7 +4,6 @@
 Script COMPLEMENTAR para as strings restantes que faltaram
 """
 
-import json
 import re
 import os
 
@@ -14,17 +13,17 @@ ADDITIONAL_TRANSLATIONS = {
         "Answer with theological clarity and pastoral grace, always grounded in biblical authority.": "أجب بوضوح لاهوتي ولطف رعوي، دائمًا على أساس السلطة الكتابية",
         "Write a complete sermon outline with title, introduction, expository topics, illustrations and conclusion.": "اكتب مخططًا كاملاً للموعظة مع العنوان والمقدمة والموضوعات التفسيرية والتوضيحات والخاتمة",
         "The sermon should cover texts from:": "يجب أن تغطي الموعظة النصوص من:",
-        "Create a calm reading, a brief reflection and a final prayer that connects the selected feeling to the biblical text.": "أنشئ قراءة هادئة وتأملاً موجزًا ​​وصلاة نهائية تربط الشعور المحدد بالنص الكتابي",
+        "Create a calm reading, a brief reflection and a final prayer that connects the selected feeling to the biblical text.": "أنشئ قراءة هادئة وتأملاً موجزًا وصلاة نهائية تربط الشعور المحدد بالنص الكتابي",
         "The devotional should consider texts from:": "يجب أن يأخذ التأمل الروحي في الاعتبار النصوص من:",
         "Create the folder manually or the application will create it automatically when importing.": "أنشئ المجلد يدويًا أو سيقوم التطبيق بإنشائه تلقائيًا عند الاستيراد",
     },
-    
+   
     "de": {
         "Create a calm reading, a brief reflection and a final prayer that connects the selected feeling to the biblical text.": "Erstellen Sie eine ruhige Lesung, eine kurze Reflexion und ein abschließendes Gebet, das das ausgewählte Gefühl mit dem biblischen Text verbindet",
         "The devotional should consider texts from:": "Die Andacht sollte Texte berücksichtigen von:",
         "Create the folder manually or the application will create it automatically when importing.": "Erstellen Sie den Ordner manuell oder die Anwendung erstellt ihn automatisch beim Importieren",
     },
-    
+   
     "eo": {
         "No local versions found. Use Import Data to load content.": "Neniuj lokaj versioj trovitaj. Uzu Importi Datenojn por ŝarĝi enhavon",
         "No questions generated yet.": "Ankoraŭ neniuj demandoj generitaj",
@@ -39,14 +38,14 @@ ADDITIONAL_TRANSLATIONS = {
         "Generate questions about biblical knowledge.": "Generu demandojn pri biblia scio",
         "Selected context:": "Elektita kunteksto:",
     },
-    
+   
     "es": {
         "Write a complete sermon outline with title, introduction, expository topics, illustrations and conclusion.": "Escribe un esquema completo del sermón con título, introducción, temas expositivos, ilustraciones y conclusión",
         "The sermon should cover texts from:": "El sermón debe cubrir textos de:",
         "Create a calm reading, a brief reflection and a final prayer that connects the selected feeling to the biblical text.": "Crea una lectura tranquila, una breve reflexión y una oración final que conecte el sentimiento seleccionado con el texto bíblico",
         "The devotional should consider texts from:": "El devocional debe considerar textos de:",
     },
-    
+   
     "fi": {
         "The sermon should cover texts from:": "Saarnan tulisi käsitellä tekstejä:",
         "Create a calm reading, a brief reflection and a final prayer that connects the selected feeling to the biblical text.": "Luo rauhallinen lukeminen, lyhyt pohdinta ja lopullinen rukous, joka yhdistää valitun tunteen raamatulliseen tekstiin",
@@ -55,7 +54,7 @@ ADDITIONAL_TRANSLATIONS = {
         "Generate questions about biblical knowledge.": "Luo kysymyksiä raamatullisesta tiedosta",
         "Selected context:": "Valittu konteksti:",
     },
-    
+   
     "fr": {
         "Create a calm reading, a brief reflection and a final prayer that connects the selected feeling to the biblical text.": "Créez une lecture calme, une brève réflexion et une prière finale qui relie le sentiment sélectionné au texte biblique",
         "The devotional should consider texts from:": "Le dévotionnel devrait considérer les textes de:",
@@ -63,7 +62,7 @@ ADDITIONAL_TRANSLATIONS = {
         "Generate questions about biblical knowledge.": "Générer des questions sur les connaissances bibliques",
         "Selected context:": "Contexte sélectionné:",
     },
-    
+   
     "hi": {
         "Generate questions about biblical knowledge.": "बाइबिल ज्ञान के बारे में प्रश्न उत्पन्न करें",
         "Selected context:": "चयनित संदर्भ:",
@@ -71,7 +70,7 @@ ADDITIONAL_TRANSLATIONS = {
         "The devotional should consider texts from:": "भक्ति में इनसे ग्रंथों पर विचार करना चाहिए:",
         "The sermon should cover texts from:": "उपदेश में इनसे ग्रंथों को शामिल करना चाहिए:",
     },
-    
+   
     "id": {
         "No local versions found. Use Import Data to load content.": "Tidak ada versi lokal ditemukan. Gunakan Impor Data untuk memuat konten",
         "No questions generated yet.": "Belum ada pertanyaan yang dihasilkan",
@@ -86,7 +85,7 @@ ADDITIONAL_TRANSLATIONS = {
         "Generate questions about biblical knowledge.": "Hasilkan pertanyaan tentang pengetahuan alkitabiah",
         "Selected context:": "Konteks yang dipilih:",
     },
-    
+   
     "it": {
         "Create a calm reading, a brief reflection and a final prayer that connects the selected feeling to the biblical text.": "Crea una lettura calma, una breve riflessione e una preghiera finale che collega il sentimento selezionato al testo biblico",
         "The devotional should consider texts from:": "Il devozionale dovrebbe considerare testi da:",
@@ -94,7 +93,7 @@ ADDITIONAL_TRANSLATIONS = {
         "Generate questions about biblical knowledge.": "Genera domande sulla conoscenza biblica",
         "Selected context:": "Contesto selezionato:",
     },
-    
+   
     "ko": {
         "No local versions found. Use Import Data to load content.": "로컬 버전을 찾을 수 없습니다. 콘텐츠를 로드하려면 데이터 가져오기를 사용하세요",
         "No questions generated yet.": "아직 생성된 질문이 없습니다",
@@ -109,7 +108,7 @@ ADDITIONAL_TRANSLATIONS = {
         "Generate questions about biblical knowledge.": "성경 지식에 대한 질문을 생성하세요",
         "Selected context:": "선택된 컨텍스트:",
     },
-    
+   
     "pl": {
         "No local versions found. Use Import Data to load content.": "Nie znaleziono lokalnych wersji. Użyj Importuj Dane, aby załadować zawartość",
         "No questions generated yet.": "Nie wygenerowano jeszcze żadnych pytań",
@@ -124,7 +123,7 @@ ADDITIONAL_TRANSLATIONS = {
         "Generate questions about biblical knowledge.": "Generuj pytania dotyczące wiedzy biblijnej",
         "Selected context:": "Wybrany kontekst:",
     },
-    
+   
     "ro": {
         "No local versions found. Use Import Data to load content.": "Nu s-au găsit versiuni locale. Utilizați Importați date pentru a încărca conținut",
         "No questions generated yet.": "Nu s-au generat încă întrebări",
@@ -139,7 +138,7 @@ ADDITIONAL_TRANSLATIONS = {
         "Generate questions about biblical knowledge.": "Generați întrebări despre cunoștințele biblice",
         "Selected context:": "Context selectat:",
     },
-    
+   
     "ru": {
         "Create a calm reading, a brief reflection and a final prayer that connects the selected feeling to the biblical text.": "Создайте спокойное чтение, краткое размышление и заключительную молитву, которая связывает выбранное чувство с библейским текстом",
         "The devotional should consider texts from:": "Размышление должно учитывать тексты из:",
@@ -147,7 +146,7 @@ ADDITIONAL_TRANSLATIONS = {
         "Generate questions about biblical knowledge.": "Генерируйте вопросы о библейских знаниях",
         "Selected context:": "Выбранный контекст:",
     },
-    
+   
     "sw": {
         "No local versions found. Use Import Data to load content.": "Hakuna matoleo ya ndani yaliyopatikana. Tumia Agiza Data kupakia maudhui",
         "No questions generated yet.": "Hakuna maswali yaliyozalishwa bado",
@@ -162,7 +161,7 @@ ADDITIONAL_TRANSLATIONS = {
         "Generate questions about biblical knowledge.": "Zalisha maswali kuhusu maarifa ya Biblia",
         "Selected context:": "Muktadha uliochaguliwa:",
     },
-    
+   
     "th": {
         "Generate questions about biblical knowledge.": "สร้างคำถามเกี่ยวกับความรู้ในพระคัมภีร์",
         "Selected context:": "บริบทที่เลือก:",
@@ -170,7 +169,7 @@ ADDITIONAL_TRANSLATIONS = {
         "The devotional should consider texts from:": "การภาวนาควรพิจารณาข้อความจาก:",
         "The sermon should cover texts from:": "การเทศนาควรครอบคลุมข้อความจาก:",
     },
-    
+   
     "tr": {
         "No local versions found. Use Import Data to load content.": "Yerel sürüm bulunamadı. İçerik yüklemek için Veri İçe Aktar'ı kullanın",
         "No questions generated yet.": "Henüz soru oluşturulmadı",
@@ -185,7 +184,7 @@ ADDITIONAL_TRANSLATIONS = {
         "Generate questions about biblical knowledge.": "İncil bilgisi hakkında sorular oluşturun",
         "Selected context:": "Seçili bağlam:",
     },
-    
+   
     "vi": {
         "No local versions found. Use Import Data to load content.": "Không tìm thấy phiên bản cục bộ. Sử dụng Nhập Dữ liệu để tải nội dung",
         "No questions generated yet.": "Chưa tạo câu hỏi nào",
@@ -200,7 +199,7 @@ ADDITIONAL_TRANSLATIONS = {
         "Generate questions about biblical knowledge.": "Tạo câu hỏi về kiến thức Kinh Thánh",
         "Selected context:": "Ngữ cảnh đã chọn:",
     },
-    
+   
     "zh": {
         "Create a calm reading, a brief reflection and a final prayer that connects the selected feeling to the biblical text.": "创建一个平静的阅读、简短的反思和最后的祷告，将选定的感受与圣经文本联系起来",
         "The devotional should consider texts from:": "灵修应考虑来自以下的文本:",
@@ -214,7 +213,7 @@ def replace_translations(filepath, translations_map):
     """Substitui textos em inglês por traduções nativas"""
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
-    
+   
     count = 0
     for english, native in translations_map.items():
         english_escaped = re.escape(english)
@@ -222,33 +221,33 @@ def replace_translations(filepath, translations_map):
         if re.search(pattern, content):
             content = re.sub(pattern, f'"{native}"', content)
             count += 1
-    
+   
     if count > 0:
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(content)
-    
+   
     return count
 
 def main():
     translations_dir = "translations"
     total_replacements = 0
-    
+   
     print("🔧 Aplicando traduções COMPLEMENTARES...")
     print("=" * 70)
-    
+   
     for lang_code, translations in ADDITIONAL_TRANSLATIONS.items():
         filepath = os.path.join(translations_dir, f"{lang_code}.json")
-        
+       
         if not os.path.exists(filepath):
             print(f"⚠️  {lang_code}.json não encontrado")
             continue
-        
+       
         count = replace_translations(filepath, translations)
         total_replacements += count
-        
+       
         if count > 0:
             print(f"✅ {lang_code.upper()}: +{count} strings adicionais")
-    
+   
     print("=" * 70)
     print(f"🎉 +{total_replacements} strings complementares traduzidas!")
 
