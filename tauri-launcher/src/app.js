@@ -562,6 +562,16 @@
         </section>
       </main>
     </div>
+    <div id="splashOverlay" class="splash-overlay">
+      <div class="splash-content">
+        <div class="splash-logo-ring"></div>
+        <div class="splash-logo">B</div>
+        <div class="splash-title">Biblical Study AI</div>
+        <div class="splash-status" id="splashStatus">Conectando...</div>
+        <div class="splash-bar-track"><div class="splash-bar-fill" id="splashBar"></div></div>
+        <div class="splash-verse" id="splashVerse"></div>
+      </div>
+    </div>
   `;
 
   document.head.insertAdjacentHTML(
@@ -986,6 +996,55 @@
         @media (max-width: 600px) {
           .field-grid.three-up { display: grid; grid-template-columns: 1fr; }
           .field-grid.four-up { display: grid; grid-template-columns: 1fr; }
+        }
+        .splash-overlay {
+          position: fixed; inset: 0; z-index: 9999;
+          background: radial-gradient(ellipse at center, #0f1729 0%, #070b15 100%);
+          display: flex; align-items: center; justify-content: center;
+          transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .splash-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .splash-content {
+          text-align: center; position: relative;
+          animation: splash-fade-in 1s ease-out;
+        }
+        @keyframes splash-fade-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .splash-logo {
+          width: 80px; height: 80px; margin: 0 auto 20px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          border-radius: 24px; display: flex; align-items: center; justify-content: center;
+          font-size: 36px; font-weight: 800; color: #fff; position: relative;
+          box-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
+          animation: splash-logo-glow 2s ease-in-out infinite;
+        }
+        @keyframes splash-logo-glow { 0%, 100% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.3); } 50% { box-shadow: 0 0 80px rgba(102, 126, 234, 0.6); } }
+        .splash-logo-ring {
+          position: absolute; width: 110px; height: 110px; top: 50%; left: 50%; margin: -55px 0 0 -55px;
+          border: 2px solid transparent; border-top-color: #667eea; border-right-color: #764ba2;
+          border-radius: 50%; animation: splash-spin 1.2s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+        }
+        @keyframes splash-spin { to { transform: rotate(360deg); } }
+        .splash-title {
+          font-size: 22px; font-weight: 700; color: #f1f5f9; margin-bottom: 4px;
+          letter-spacing: -0.3px;
+        }
+        .splash-status {
+          font-size: 14px; color: #94a3b8; margin: 12px 0;
+          transition: opacity 0.3s ease;
+        }
+        .splash-bar-track {
+          width: 220px; height: 3px; margin: 0 auto; border-radius: 4px;
+          background: rgba(148, 163, 184, 0.15); overflow: hidden;
+        }
+        .splash-bar-fill {
+          height: 100%; width: 0%; border-radius: 4px;
+          background: linear-gradient(90deg, #667eea, #764ba2);
+          transition: width 0.6s ease;
+        }
+        .splash-verse {
+          margin-top: 20px; font-size: 12px; color: #64748b; font-style: italic;
+          max-width: 300px; line-height: 1.5; min-height: 36px;
+          transition: opacity 0.8s ease;
         }
       </style>
 
@@ -1460,6 +1519,47 @@
     return new Intl.DateTimeFormat(locale, { dateStyle: "short", timeStyle: "short" }).format(new Date(timestamp));
   }
 
+  const SPLASH_VERSES = [
+    { pt: '"Lâmpada para os meus pés é a tua palavra e luz para o meu caminho." — Salmo 119:105', en: '"Your word is a lamp to my feet and a light to my path." — Psalm 119:105' },
+    { pt: '"Não temas, porque eu sou contigo." — Isaías 41:10', en: '"Fear not, for I am with you." — Isaiah 41:10' },
+    { pt: '"Tudo posso naquele que me fortalece." — Filipenses 4:13', en: '"I can do all things through him who strengthens me." — Philippians 4:13' },
+    { pt: '"O Senhor é o meu pastor; nada me faltará." — Salmo 23:1', en: '"The Lord is my shepherd; I shall not want." — Psalm 23:1' },
+    { pt: '"Espera no Senhor, anima-te, e ele fortalecerá o teu coração." — Salmo 27:14', en: '"Wait for the Lord; be strong, and let your heart take courage." — Psalm 27:14' },
+    { pt: '"Portanto, vede prudentemente como andais, não como néscios, mas como sábios." — Efésios 5:15', en: '"Look carefully then how you walk, not as unwise but as wise." — Ephesians 5:15' },
+    { pt: '"Examinais as Escrituras, porque julgais ter nelas a vida eterna." — João 5:39', en: '"You search the Scriptures because you think that in them you have eternal life." — John 5:39' },
+    { pt: '"A minha graça te basta, porque o meu poder se aperfeiçoa na fraqueza." — 2 Coríntios 12:9', en: '"My grace is sufficient for you, for my power is made perfect in weakness." — 2 Corinthians 12:9' },
+    { pt: '"Bem-aventurado aquele que lê e os que ouvem as palavras desta profecia." — Apocalipse 1:3', en: '"Blessed is the one who reads aloud the words of this prophecy." — Revelation 1:3' },
+    { pt: '"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito." — João 3:16', en: '"For God so loved the world, that he gave his only Son." — John 3:16' },
+  ];
+
+  function updateSplash(message, progress) {
+    const el = byId("splashStatus");
+    const bar = byId("splashBar");
+    const verse = byId("splashVerse");
+    if (el) el.textContent = message;
+    if (bar && progress != null) bar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+    if (verse && !verse.dataset.active) {
+      verse.dataset.active = "1";
+      const lang = (getValue(refs.langSelect, "pt") || "pt").toLowerCase();
+      const isEn = lang === "en";
+      let idx = 0;
+      verse.textContent = SPLASH_VERSES[idx][isEn ? "en" : "pt"];
+      setInterval(() => {
+        idx = (idx + 1) % SPLASH_VERSES.length;
+        verse.style.opacity = "0";
+        setTimeout(() => {
+          verse.textContent = SPLASH_VERSES[idx][isEn ? "en" : "pt"];
+          verse.style.opacity = "1";
+        }, 400);
+      }, 6000);
+    }
+  }
+
+  function hideSplash() {
+    const el = byId("splashOverlay");
+    if (el) el.classList.add("hidden");
+  }
+
   function setStatus(message, ok) {
     refs.apiStatus.textContent = message;
     refs.apiStatus.className = ok ? "status ok" : "status warn";
@@ -1608,12 +1708,12 @@
   }
 
   async function loadOllamaModels() {
-    if (!refs.modelSelect || !refs.modelInfo) {
-      return;
-    }
+    if (!refs.modelSelect || !refs.modelInfo) return;
 
-    const previousModel = String(getValue(refs.modelSelect) || "").trim() || localStorage.getItem(PREF_KEYS.model) || "";
-    setStatus(getTranslation("messages.loading_models", "Loading Ollama models..."), false);
+    const previousModel = (String(getValue(refs.modelSelect) || "").trim()) || localStorage.getItem(PREF_KEYS.model) || "";
+    const modelMsg = getTranslation("messages.loading_models", "Loading Ollama models...");
+    setStatus(modelMsg, false);
+    updateSplash("Carregando modelos de IA...", 40);
     let ollamaOk = false;
     try {
       const data = await apiGet("/api/ai/models");
@@ -2938,14 +3038,17 @@ return `
   async function bootstrap() {
     try {
       let attempt = 0;
-      setStatus("Conectando...", false);
+      updateSplash("Iniciando servidor...", 5);
       while (true) {
         try {
           await apiGet("/health");
           state.online = true;
+          updateSplash("Servidor conectado!", 25);
           break;
         } catch (_) {
           attempt++;
+          const progress = Math.min(22, 5 + attempt * 0.6);
+          updateSplash("Conectando ao servidor...", progress);
           if (window.__TAURI__ && attempt % 5 === 0) {
             try {
               const log = await window.__TAURI__.invoke("read_log");
@@ -2953,7 +3056,7 @@ return `
               if (lines.length > 0) {
                 const last = lines[lines.length - 1];
                 const clean = last.replace(/\[[^\]]*\]\s*/g, "").replace(/\x1B\[[0-9;]*[a-zA-Z]/g, "").trim();
-                setStatus(clean, false);
+                updateSplash(clean, progress);
               }
             } catch (_) {}
           }
@@ -2961,8 +3064,9 @@ return `
         }
       }
 
-      setStatus(getTranslation("messages.api_online", "API online at http://localhost:8000"), true);
+      updateSplash("Carregando recursos...", 30);
       await loadImportSourcesAndMeta();
+      updateSplash("Preparando interface...", 75);
       loadReadProgress();
       renderAllHistories();
       updateStudyReference();
@@ -2986,6 +3090,9 @@ return `
       bindEvents();
       updateBadges();
       updateDirection();
+      setStatus(getTranslation("messages.api_online", "API online at http://localhost:8000"), true);
+      updateSplash("Pronto!", 100);
+      setTimeout(hideSplash, 600);
       if (!localStorage.getItem("bible_study_visited")) {
         localStorage.setItem("bible_study_visited", "1");
         setActiveTab("about");
@@ -2994,6 +3101,8 @@ return `
       }
     } catch (error) {
       setStatus(`${getTranslation("messages.bootstrap_error", "Error starting up")}: ${error.message}`, false);
+      updateSplash(`Erro: ${error.message}`, 0);
+      setTimeout(hideSplash, 2000);
     }
   }
 

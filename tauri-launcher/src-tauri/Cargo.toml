@@ -1,6 +1,6 @@
 [package]
 name = "biblia_estudo_launcher"
-version = "1.0.0"
+version = "1.0.1"
 description = "Desktop launcher for Biblical Study with local AI"
 authors = ["Rogerio"]
 edition = "2021"
