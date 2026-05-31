@@ -1,0 +1,29 @@
+# Ambiente Virtual Python
+.venv/
+venv/
+env/
+
+# Banco de Dados ChromaDB
+chroma_db/
+
+# Cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node/Tauri
+tauri-launcher/node_modules/
+tauri-launcher/src-tauri/target/
+tauri-launcher/src-tauri/gen/
+tauri-launcher/python_app/.venv/

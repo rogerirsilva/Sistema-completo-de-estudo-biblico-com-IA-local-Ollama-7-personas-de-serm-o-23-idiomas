@@ -4,10 +4,10 @@
 
 ### *Sua Ferramenta Completa para Estudo Bíblico Assistido por Inteligência Artificial*
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![Tauri](https://img.shields.io/badge/Tauri-Desktop-24C8DB?logo=tauri&logoColor=white)](https://tauri.app/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-000000?logo=ai&logoColor=white)](https://ollama.ai/)
+[![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-000000?logo=ollama&logoColor=white)](https://ollama.ai/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 **🌍 Idiomas / Languages / Idiomas:** [🇧🇷 Português](README.md) • [🇺🇸 English](README.en.md) • [🇪🇸 Español](README.es.md)
@@ -16,8 +16,8 @@
 
 **Clone o projeto:**
 ```bash
-git clone https://github.com/rogerirsilva/Biblia-em-23-Idiomas-Local-Com-IA-Ollama.git
-cd Biblia-em-23-Idiomas-Local-Com-IA-Ollama
+git clone https://github.com/rogerirsilva/Sistema-completo-de-estudo-biblico-com-IA-local-Ollama-7-personas-de-serm-o-23-idiomas.git
+cd Sistema-completo-de-estudo-biblico-com-IA-local-Ollama-7-personas-de-serm-o-23-idiomas
 ```
 
 ---
@@ -111,112 +111,49 @@ Crie sermões em **7 estilos diferentes** de pregação:
 
 ## 🚀 Instalação
 
-### Pré-requisitos
+### Para Usuários Finais (Recomendado)
 
-1. **Python 3.8 ou superior** instalado
-2. **Ollama** instalado e rodando localmente
-   - Download: [https://ollama.ai/](https://ollama.ai/)
-   - Baixe ao menos um modelo: `ollama pull llama3.2` ou `ollama pull mistral`
-3. **Windows 10/11** para uso do instalador desktop atual
+👉 **[Baixar Última Versão](https://github.com/rogerirsilva/Sistema-completo-de-estudo-biblico-com-IA-local-Ollama-7-personas-de-serm-o-23-idiomas/releases/latest)** 
 
-### Windows - Instalação Desktop (Recomendado)
+1. **Baixe o Instalador** e execute o `.exe` baixado.
+2. **Instale o Ollama** de [ollama.com](https://ollama.com/) e inicie-o.
+3. **Baixe o modelo de IA** no terminal: `ollama pull llama3.2:1b`
+4. **Abra o aplicativo** pelo atalho da Área de Trabalho!
 
-```bash
-# Gerar instalador localmente (mantenedor)
-tauri_build_installers.bat
+### Para Desenvolvedores
 
-# Executar app já instalado (usuário final)
-start_app.bat
-```
+1. Instale: **Python 3.11+**, **Node.js LTS**, **Rust & Cargo**, **Ollama**
+2. `git clone` o repositório e entre na pasta
+3. `python -m venv .venv && .venv\Scripts\activate && pip install -r requirements.txt`
+4. `cd tauri-launcher && npm install && npm run tauri:dev`
+5. Para gerar instalador: `tauri_build_installers.bat` (na pasta raiz)
 
-No fluxo desktop:
-- ✅ A interface Tauri inicia o backend FastAPI embutido automaticamente
-- ✅ A comunicação com IA local ocorre via Ollama em localhost
-- ✅ Não depende mais de abrir Streamlit no navegador como fluxo principal
-
-### API local para diagnóstico
-
-```bash
-http://localhost:8000/health
-```
-
-> Observação: o launcher desktop é a interface principal. A API FastAPI permanece disponível para integração/diagnóstico.
-
-👉 **[Guia Completo de Instalação](INSTALL.md)**
+👉 **[Guia Detalhado de Instalação](INSTALL.md)**
 
 ---
 
-## 📦 Publicação do instalador no GitHub
-
-Sim, você pode disponibilizar o instalador no GitHub sem problema, desde que publique como asset de Release (não dentro do histórico Git).
-
-Boas práticas:
-
-- Publique instaladores em GitHub Releases.
-- Não versione binários grandes no repositório (evite commits de arquivos .exe/.msi).
-- Limite de arquivo em Release é alto (até 2 GiB por asset), então instaladores desktop comuns funcionam bem.
-- Se o instalador crescer demais, use compactação e divida por plataforma/arquitetura.
-
-Fluxo sugerido:
-
-1. Gere o instalador com `tauri_build_installers.bat`.
-2. Abra uma nova Release no GitHub.
-3. Anexe os arquivos de `tauri-launcher/src-tauri/target/release/bundle/`.
-4. Informe requisitos: Ollama instalado e modelo recomendado.
-5. Mantenha changelog por versão.
-
-## 🛠️ Tecnologias
-
-- **Python 3.11+**
-- **Tauri + HTML/CSS/JS** - Interface desktop
-- **FastAPI** - Backend local HTTP
-- **Ollama** - LLM local para IA offline
-- **ChromaDB** - Banco de dados vetorial para persistência
-- **Modelo padrão**: `llama3.2:1b`
-
 ## 💾 Persistência de Dados
 
-**NOVIDADE!** Todos os seus estudos, sermões, devocionais e conversas são automaticamente salvos em um banco de dados local.
-
-- ✅ **Salvamento automático** - Não perca mais seus estudos ao fechar a aplicação
-- 🔄 **Carregamento instantâneo** - Todos os dados são restaurados ao iniciar
-- 🔍 **Busca eficiente** - Históricos organizados e pesquisáveis
-- 💾 **Backup simples** - Copie a pasta `chroma_db/` para fazer backup
-
-### Instalar ChromaDB
-
-```bash
-# Opção 1: Script automático (Windows)
-
-### Instalar ChromaDB
-
-```bash
-# Opção 1: Script automático (Windows)
-install_chromadb.bat
-
-# Opção 2: Manual
-pip install chromadb
-```
+Todos os seus estudos, sermões, devocionais e conversas são automaticamente salvos de forma offline e local:
+- ✅ **Salvamento automático** - Sem perda de dados ao fechar
+- 🔄 **Carregamento instantâneo** - Dados restaurados na inicialização
+- 🔍 **Busca eficiente** - Históricos integrados pesquisáveis
+- 💾 **Backup simples** - Basta copiar a pasta `chroma_db/`
 
 ---
 
 ## 📚 Como Usar
 
-### 1️⃣ Primeira Execução
-
-1. Execute `setup.bat` como administrador
-2. Aguarde a instalação de todas as dependências
-3. O Ollama iniciará automaticamente (se instalado)
-4. Execute `start_app.bat` para abrir a aplicação
+### 1️⃣ Inicialização do Sistema
+1. Certifique-se de que o **Ollama** está rodando no seu computador.
+2. Abra o aplicativo **Biblical Study AI** a partir do atalho de sua área de trabalho.
 
 ### 2️⃣ Importar Versões Bíblicas
+1. Acesse a aba **"📥 Importar Dados"**.
+2. Coloque arquivos `.json` das bíblias de sua preferência na pasta organizada por idioma: `Dados_Json/{idioma}/` (exemplo: `Dados_Json/pt/nvi.json`).
+3. Clique em **"🔄 Importar Versões da Pasta"** dentro do aplicativo para que o importador integre os dados localmente.
 
-1. Acesse a aba **"📥 Importar Dados"**
-2. Coloque arquivos `.json` em `Dados_Json/{idioma}/`
-   - Exemplo: `Dados_Json/pt/nvi.json`
-3. Clique em **"🔄 Importar Versões da Pasta"**
-
-**Fontes de Bíblias JSON:**
+*Fontes recomendadas de Bíblias JSON:*
 - **Português**: [github.com/thiagobodruk/bible](https://github.com/thiagobodruk/bible)
 - **English**: [github.com/scrollmapper/bible_databases](https://github.com/scrollmapper/bible_databases)
 - **Español**: [github.com/thiagobodruk/bible (branch es)](https://github.com/thiagobodruk/bible)
@@ -224,29 +161,19 @@ pip install chromadb
 ### 3️⃣ Começar a Estudar
 
 **📖 Leitura & Exegese:**
-```
-1. Selecione livro, capítulo e versículos (ex: "1-5, 10, 15-20")
-2. Clique em "✨ Gerar Explicação"
-3. Veja análise contextual, histórica e teológica
-4. Acesse "📚 Histórico" para revisar estudos anteriores
-```
+1. Selecione livro, capítulo e versículos (ex: "1-5, 10, 15-20").
+2. Clique em **"✨ Gerar Explicação"** para criar explicações teológicas profundas de forma offline.
+3. Consulte a aba de históricos para visualizar exegeses anteriores.
 
 **🗣️ Gerador de Sermões:**
-```
-1. Escolha escopo (livro, múltiplos livros, testamento ou bíblia)
-2. Selecione versículos específicos
-3. Escolha uma das 7 PERSONAS de pregação
-4. Tema: "Bem-aventuranças" | Público: "Jovens adultos"
-5. Gere e exporte para PDF
-```
+1. Escolha o escopo de livros e os versículos específicos.
+2. Escolha um dos **7 estilos de pregação (Personas)**.
+3. Personalize por tema, público e notas e clique em **"✨ Gerar Sermão"**.
 
 **❓ Gerador de Perguntas:**
-```
-1. Selecione escopo (livro, múltiplos ou bíblia toda)
-2. Quantidade: 1-50 perguntas
-3. Modo: Com Respostas ou Só Perguntas
-4. Perfeito para escolas bíblicas e grupos de estudo!
-```
+1. Selecione o livro ou escopo desejado.
+2. Defina a quantidade de questões (de 1 a 50) e o modo de exibição (com ou sem respostas).
+3. Gere um PDF de alta qualidade ideal para escolas bíblicas ou pequenos grupos.
 
 ---
 
@@ -270,9 +197,10 @@ Cada persona tem **tom, método e estrutura únicos**:
 
 | Tecnologia | Versão | Função |
 |------------|--------|--------|
-| ![Python](https://img.shields.io/badge/Python-3.8+-3776AB?logo=python&logoColor=white) | 3.8+ | Linguagem principal |
-| ![Streamlit](https://img.shields.io/badge/Streamlit-1.32-FF4B4B?logo=streamlit&logoColor=white) | 1.32+ | Interface web interativa |
-| ![Ollama](https://img.shields.io/badge/Ollama-Latest-000000?logo=ai&logoColor=white) | Latest | LLM local (offline) |
+| ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white) | 3.11+ | Linguagem principal |
+| ![Tauri](https://img.shields.io/badge/Tauri-Desktop-24C8DB?logo=tauri&logoColor=white) | 1.x | Interface desktop nativa |
+| ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?logo=fastapi&logoColor=white) | 0.100+ | Backend local |
+| ![Ollama](https://img.shields.io/badge/Ollama-Latest-000000?logo=ollama&logoColor=white) | Latest | LLM local (offline) |
 | ![ChromaDB](https://img.shields.io/badge/ChromaDB-0.4+-FF6B6B?logo=database&logoColor=white) | 0.4+ | Banco vetorial para históricos |
 | ![ReportLab](https://img.shields.io/badge/ReportLab-4.0+-green?logo=adobe-acrobat-reader&logoColor=white) | 4.0+ | Geração de PDFs |
 
@@ -284,26 +212,23 @@ Cada persona tem **tom, método e estrutura únicos**:
 
 ```
 Biblia/
-├── 📄 app.py                          # Aplicação principal Streamlit
 ├── 📄 bible_data_importer.py          # Importador de dados bíblicos
 ├── 📄 requirements.txt                # Dependências Python
-├── 📄 .env                            # Configurações (Ollama, Streamlit)
-├── 🚀 setup.bat                       # Instalação automática (Windows)
-├── 🚀 start_app.bat                   # Iniciar aplicação
+├── 📄 bible_data.json                 # Dados bíblicos consolidados
+├── 📂 backend/                        # Backend FastAPI
+│   ├── main.py                        # Rotas da API
+│   └── services/                      # Serviços (bible, ollama, etc.)
+├── 📂 tauri-launcher/                 # Frontend Desktop Tauri
+│   ├── src/                           # Código fonte do frontend
+│   ├── src-tauri/                     # Configuração Rust/Tauri
+│   └── python_app/                    # Backend embutido no instalador
 ├── 📂 Dados_Json/                     # Versões bíblicas por idioma
 │   ├── pt/                            # Português (NVI, ACF, AA)
 │   ├── en/                            # English (KJV, NIV, ESV)
 │   └── es/                            # Español (RV1960, RV1995)
 ├── 📂 chroma_db/                      # Banco de dados (históricos)
-│   ├── study_history/                 # Histórico de estudos
-│   ├── sermon_history/                # Histórico de sermões
-│   ├── devotional_history/            # Histórico de devocionais
-│   ├── chat_history/                  # Histórico de conversas
-│   └── questions_history/             # Histórico de perguntas
-├── 📂 locales/                        # Traduções (pt, en, es)
-│   ├── pt.json                        # Português
-│   ├── en.json                        # English
-│   └── es.json                        # Español
+├── 📂 translations/                   # Traduções da interface
+├── 📂 tools/                          # Scripts utilitários
 └── 📂 .venv/                          # Ambiente virtual Python
 ```
 
@@ -397,7 +322,7 @@ Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](L
 
 ## 🐛 Reportar Bugs
 
-Encontrou um bug? Abra uma [Issue](https://github.com/rogerirsilva/Biblia-em-23-Idiomas-Local-Com-IA-Ollama/issues) com:
+Encontrou um bug? Abra uma [Issue](https://github.com/rogerirsilva/Sistema-completo-de-estudo-biblico-com-IA-local-Ollama-7-personas-de-serm-o-23-idiomas/issues) com:
 
 - ✅ Descrição clara do problema
 - ✅ Passos para reproduzir
@@ -469,8 +394,8 @@ Se este sistema tem sido útil para você, considere apoiar o desenvolvimento co
 
 Dúvidas ou sugestões? Entre em contato:
 
-- � Issues: [GitHub Issues](https://github.com/rogerirsilva/Biblia-em-23-Idiomas-Local-Com-IA-Ollama/issues)
-- 🌐 Repositório: [GitHub](https://github.com/rogerirsilva/Biblia-em-23-Idiomas-Local-Com-IA-Ollama)
+- 🐛 Issues: [GitHub Issues](https://github.com/rogerirsilva/Sistema-completo-de-estudo-biblico-com-IA-local-Ollama-7-personas-de-serm-o-23-idiomas/issues)
+- 🌐 Repositório: [GitHub](https://github.com/rogerirsilva/Sistema-completo-de-estudo-biblico-com-IA-local-Ollama-7-personas-de-serm-o-23-idiomas)
 
 ---
 
@@ -490,83 +415,8 @@ Se este sistema foi útil para você:
 
 ---
 
-[![GitHub Stars](https://img.shields.io/github/stars/rogerirsilva/Biblia-em-23-Idiomas-Local-Com-IA-Ollama?style=social)](https://github.com/rogerirsilva/Biblia-em-23-Idiomas-Local-Com-IA-Ollama/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/rogerirsilva/Biblia-em-23-Idiomas-Local-Com-IA-Ollama?style=social)](https://github.com/rogerirsilva/Biblia-em-23-Idiomas-Local-Com-IA-Ollama/network/members)
-[![GitHub Issues](https://img.shields.io/github/issues/rogerirsilva/Biblia-em-23-Idiomas-Local-Com-IA-Ollama)](https://github.com/rogerirsilva/Biblia-em-23-Idiomas-Local-Com-IA-Ollama/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/rogerirsilva/Sistema-completo-de-estudo-biblico-com-IA-local-Ollama-7-personas-de-serm-o-23-idiomas?style=social)](https://github.com/rogerirsilva/Sistema-completo-de-estudo-biblico-com-IA-local-Ollama-7-personas-de-serm-o-23-idiomas/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/rogerirsilva/Sistema-completo-de-estudo-biblico-com-IA-local-Ollama-7-personas-de-serm-o-23-idiomas?style=social)](https://github.com/rogerirsilva/Sistema-completo-de-estudo-biblico-com-IA-local-Ollama-7-personas-de-serm-o-23-idiomas/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/rogerirsilva/Sistema-completo-de-estudo-biblico-com-IA-local-Ollama-7-personas-de-serm-o-23-idiomas)](https://github.com/rogerirsilva/Sistema-completo-de-estudo-biblico-com-IA-local-Ollama-7-personas-de-serm-o-23-idiomas/issues)
 
 </div>
-Biblia/
-├── app.py                    # Aplicação principal Streamlit
-├── bible_data_importer.py    # Importador de versões bíblicas
-├── requirements.txt          # Dependências Python
-├── .env                      # Configurações (criar após setup)
-├── setup.bat                 # Instalador automático Windows
-├── start_app.bat             # Inicializador da aplicação
-├── INSTALL.md               # Guia detalhado de instalação
-├── README.md                # Este arquivo
-├── bible_data.json          # Dados bíblicos (gerado após importar)
-└── .venv/                   # Ambiente virtual Python
-```
-
-## 🌟 Destaques
-
-### 🔒 Totalmente Offline
-- Todos os dados bíblicos armazenados localmente
-- IA roda completamente no seu computador
-- Nenhum dado enviado para servidores externos
-
-### ⚡ Rápido e Leve
-- Modelo `llama3.2:1b` otimizado para velocidade
-- Interface responsiva e moderna
-- Baixo consumo de recursos
-
-### 📚 Completo
-- 6 abas funcionais
-- 4 históricos independentes
-- Suporte a múltiplas versões bíblicas
-- Interface em português
-
-## 🎨 Interface
-
-A aplicação possui modo escuro automático que se adapta ao tema do sistema, com:
-
-- 🎯 Design limpo e intuitivo
-- 📱 Layout responsivo
-- 🔍 Busca integrada em todos os históricos
-- 🎭 Ícones descritivos para fácil navegação
-
-## 📈 Roadmap
-
-- [ ] Persistência de históricos em banco de dados
-- [ ] Exportação de estudos em PDF/Word
-- [ ] Comparação lado a lado de versões
-- [ ] Mapas e cronologias interativas
-- [ ] Sistema de favoritos e tags
-- [ ] Planos de leitura personalizados
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Sinta-se à vontade para:
-
-1. Reportar bugs
-2. Sugerir novas funcionalidades
-3. Enviar pull requests
-4. Melhorar a documentação
-
-## 📄 Licença
-
-Este projeto é de código aberto para fins educacionais e de estudo bíblico.
-
-## 🙏 Agradecimentos
-
-- Comunidade **Ollama** pelo framework de IA local
-- Projeto **Streamlit** pela interface web
-- Repositórios de dados bíblicos em português(thiagobodruk)
-com o projeto: https://github.com/thiagobodruk/biblia/commits?author=thiagobodruk(Foi usado o arquivo Json com a biblia nas 3 traduções.)
-- Todos que contribuem para ferramentas de estudo bíblico
-
----
-
-**Desenvolvido com ❤️ para o estudo da Palavra de Deus**
-
-*"Lâmpada para os meus pés é a tua palavra e luz, para o meu caminho." - Salmos 119:105*

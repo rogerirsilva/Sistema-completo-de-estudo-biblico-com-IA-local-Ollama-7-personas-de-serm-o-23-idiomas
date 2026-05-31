@@ -1,0 +1,13 @@
+{
+  "name": "biblia-estudo-tauri-launcher",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.6.3"
+  }
+}

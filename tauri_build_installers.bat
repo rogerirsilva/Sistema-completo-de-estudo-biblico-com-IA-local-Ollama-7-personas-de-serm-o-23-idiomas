@@ -1,0 +1,75 @@
+@echo off
+setlocal
+
+set "ROOT=%~dp0"
+
+echo.
+echo ================================================
+echo Build installers with Tauri
+echo ================================================
+
+call "%ROOT%prepare_tauri_resources.bat"
+if errorlevel 1 goto :prep_error
+
+cd /d "%ROOT%tauri-launcher"
+
+where npm >nul 2>&1
+if errorlevel 1 goto :npm_missing
+
+where cargo >nul 2>&1
+if errorlevel 1 goto :cargo_missing
+
+echo [INFO] Installing Node dependencies...
+call npm install
+if errorlevel 1 goto :npm_install_error
+
+if not exist "src-tauri\icons\icon.ico" (
+  echo [INFO] Generating Tauri icons...
+  call npx tauri icon icon.png
+  if errorlevel 1 goto :icon_error
+)
+
+echo [INFO] Building installers for current OS...
+call npm run tauri:build
+if errorlevel 1 goto :build_error
+
+set "BUNDLE_DIR=%ROOT%tauri-launcher\src-tauri\target\release\bundle"
+if not exist "%BUNDLE_DIR%" goto :artifact_error
+
+dir /b "%BUNDLE_DIR%\msi\*.msi" >nul 2>&1
+if errorlevel 1 (
+  dir /b "%BUNDLE_DIR%\nsis\*.exe" >nul 2>&1
+  if errorlevel 1 goto :artifact_error
+)
+
+echo [OK] Build finished. Check output in tauri-launcher\src-tauri\target\release\bundle
+exit /b 0
+
+:prep_error
+echo [ERROR] Failed to prepare resources.
+exit /b 1
+
+:npm_missing
+echo [ERROR] npm not found. Install Node.js LTS: https://nodejs.org/
+exit /b 1
+
+:cargo_missing
+echo [ERROR] cargo not found. Install Rust: https://rustup.rs/
+exit /b 1
+
+:npm_install_error
+echo [ERROR] npm install failed.
+exit /b 1
+
+:icon_error
+echo [ERROR] Failed to generate Tauri icons.
+exit /b 1
+
+:build_error
+echo [ERROR] Build failed.
+exit /b 1
+
+:artifact_error
+echo [ERROR] Build command finished but installer artifact was not found.
+echo [ERROR] Expected .msi in bundle\msi or .exe in bundle\nsis.
+exit /b 1

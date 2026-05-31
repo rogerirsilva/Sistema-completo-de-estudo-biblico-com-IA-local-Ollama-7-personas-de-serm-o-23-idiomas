@@ -1,0 +1,16 @@
+[package]
+name = "biblia_estudo_launcher"
+version = "1.0.0"
+description = "Desktop launcher for Biblical Study with local AI"
+authors = ["Rogerio"]
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+tauri = { version = "1.6", features = ["shell-open", "path-all"] }
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
