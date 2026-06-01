@@ -1,66 +1,66 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use std::fs;
 use std::io;
 use std::net::TcpStream;
+use std::os::windows::process::CommandExt;
 use std::path::{Path, PathBuf};
-use std::process::Command;
+use std::process::{Command, Stdio};
 
-fn copy_dir_all(src: impl AsRef<Path>, dst: impl AsRef<Path>) -> io::Result<()> {
-    fs::create_dir_all(dst.as_ref())?;
-    for entry in fs::read_dir(src)? {
-        let entry = entry?;
-        let file_type = entry.file_type()?;
-        let src_path = entry.path();
-        let dst_path = dst.as_ref().join(entry.file_name());
+const CREATE_NO_WINDOW: u32 = 0x08000000;
 
-        if file_type.is_dir() {
-            copy_dir_all(src_path, dst_path)?;
-        } else {
-            fs::copy(src_path, dst_path)?;
+fn kill_process_on_port(port: u16) {
+    let output = Command::new("netstat")
+        .args(["-ano"])
+        .stdout(Stdio::piped())
+        .stderr(Stdio::null())
+        .output();
+    if let Ok(output) = output {
+        let stdout = String::from_utf8_lossy(&output.stdout);
+        for line in stdout.lines() {
+            let line = line.trim();
+            if line.contains(&format!(":{}", port)) {
+                let parts: Vec<&str> = line.split_whitespace().collect();
+                if let Some(pid_str) = parts.last() {
+                    if let Ok(pid) = pid_str.parse::<u32>() {
+                        if pid > 0 {
+                            let _ = Command::new("taskkill")
+                                .args(["/F", "/PID", &pid.to_string()])
+                                .stdout(Stdio::null())
+                                .stderr(Stdio::null())
+                                .spawn();
+                        }
+                    }
+                }
+            }
         }
     }
-    Ok(())
 }
 
 fn is_backend_running() -> bool {
     TcpStream::connect("127.0.0.1:8000").is_ok()
 }
 
-fn bootstrap_python_app(app: &tauri::App) -> io::Result<PathBuf> {
-    let app_data = app
-        .path_resolver()
-        .app_data_dir()
-        .ok_or_else(|| io::Error::new(io::ErrorKind::NotFound, "Could not resolve app data dir"))?;
-
-    let target_dir = app_data.join("python_app");
-
-    fs::create_dir_all(&target_dir)?;
-
-    let resource_dir = app
-        .path_resolver()
-        .resource_dir()
-        .ok_or_else(|| io::Error::new(io::ErrorKind::NotFound, "Could not resolve resource dir"))?;
-
-    let mut source_dir = resource_dir.join("python_app");
-    if !source_dir.exists() {
-        let dev_fallback = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-            .join("..")
-            .join("python_app");
-        if dev_fallback.exists() {
-            source_dir = dev_fallback;
-        } else {
-            return Err(io::Error::new(
-                io::ErrorKind::NotFound,
-                format!("Embedded python_app resources not found at {}", source_dir.display()),
-            ));
+fn resolve_python_app(app: &tauri::App) -> io::Result<PathBuf> {
+    // 1. Resource dir (production: installed app resources)
+    if let Some(resource_dir) = app.path_resolver().resource_dir() {
+        let candidate = resource_dir.join("python_app");
+        if candidate.exists() {
+            return Ok(candidate);
         }
     }
 
-    // Always sync bundled resources so fixes in start scripts are applied on next launch.
-    copy_dir_all(&source_dir, &target_dir)?;
+    // 2. Dev fallback (source tree)
+    let dev_path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("..")
+        .join("python_app");
+    if dev_path.exists() {
+        return Ok(dev_path);
+    }
 
-    Ok(target_dir)
+    Err(io::Error::new(
+        io::ErrorKind::NotFound,
+        "python_app directory not found in resources or dev path",
+    ))
 }
 
 #[cfg(target_os = "windows")]
@@ -68,6 +68,10 @@ fn start_backend(workdir: &Path) -> io::Result<()> {
     Command::new("cmd")
         .args(["/C", "call", "start_api.bat"])
         .current_dir(workdir)
+        .creation_flags(CREATE_NO_WINDOW)
+        .stdin(Stdio::null())
+        .stdout(Stdio::null())
+        .stderr(Stdio::null())
         .spawn()?;
     Ok(())
 }
@@ -84,10 +88,12 @@ fn start_backend(workdir: &Path) -> io::Result<()> {
 fn main() {
     tauri::Builder::default()
         .setup(|app| {
-            if !is_backend_running() {
-                let workdir = bootstrap_python_app(app)?;
-                start_backend(&workdir)?;
-            }
+            // Kill any stale backend process to ensure a fresh start
+            kill_process_on_port(8000);
+            std::thread::sleep(std::time::Duration::from_secs(1));
+            // Start fresh backend
+            let workdir = resolve_python_app(app)?;
+            start_backend(&workdir)?;
             Ok(())
         })
         .run(tauri::generate_context!())

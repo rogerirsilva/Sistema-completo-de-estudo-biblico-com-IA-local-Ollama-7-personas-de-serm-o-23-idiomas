@@ -2,42 +2,71 @@
 setlocal
 
 cd /d "%~dp0"
-set "VENV_PY=.venv\Scripts\python.exe"
 
-echo.
-echo ================================================
-echo Starting Biblical Study API (FastAPI)
-echo ================================================
+set "LOG=%TEMP%\biblical_study_api.log"
 
-python --version >nul 2>&1
-if errorlevel 1 (
-  echo [ERROR] Python not found.
+echo ================================================ >> "%LOG%"
+echo Starting Biblical Study API (FastAPI) >> "%LOG%"
+echo WorkingDir: %CD% >> "%LOG%"
+echo Time: %DATE% %TIME% >> "%LOG%"
+echo ================================================ >> "%LOG%"
+
+set "PY="
+
+REM --- 1. Check bundled packages (production: python_app/bundled_packages/) ---
+set "BUNDLED=%~dp0bundled_packages"
+if exist "%BUNDLED%" (
+  echo [INFO] Bundled packages found at %BUNDLED% >> "%LOG%"
+  set "PYTHONPATH=%BUNDLED%;%PYTHONPATH%"
+)
+
+REM --- 2. Find a Python interpreter ---
+
+REM Check local .venv (dev: .venv at project root)
+if exist "%~dp0.venv\Scripts\python.exe" set "PY=%~dp0.venv\Scripts\python.exe"
+
+REM Fallback: tauri bundle venv
+if not defined PY if exist "%~dp0tauri-launcher\python_app\.venv\Scripts\python.exe" set "PY=%~dp0tauri-launcher\python_app\.venv\Scripts\python.exe"
+
+REM System Python
+if not defined PY (
+  where python >nul 2>&1
+  if not errorlevel 1 set "PY=python"
+)
+
+if not defined PY (
+  echo [ERROR] Python not found. Install Python 3.10+ from https://python.org >> "%LOG%"
+  pause
   exit /b 1
 )
 
-if not exist ".venv\Scripts\activate.bat" (
-  echo [INFO] Creating virtual environment...
-  python -m venv .venv
+echo [INFO] Using Python: %PY% >> "%LOG%"
+echo [INFO] PYTHONPATH: %PYTHONPATH% >> "%LOG%"
+
+REM --- 3. Ensure dependencies are available ---
+if not exist "%BUNDLED%" (
+  "%PY%" -c "import fastapi, uvicorn, dotenv, fpdf, cryptography" >nul 2>&1
   if errorlevel 1 (
-    echo [ERROR] Failed to create .venv
-    exit /b 1
+    echo [INFO] Installing dependencies into %BUNDLED%... >> "%LOG%"
+    "%PY%" -m pip install --upgrade pip >nul 2>&1
+    "%PY%" -m pip install -r "%~dp0requirements.txt" --target "%BUNDLED%" >> "%LOG%" 2>&1
+    if errorlevel 1 (
+      echo [ERROR] pip install failed. Check %LOG% >> "%LOG%"
+      pause
+      exit /b 1
+    )
+    set "PYTHONPATH=%BUNDLED%;%PYTHONPATH%"
   )
 )
 
-if not exist "%VENV_PY%" (
-  echo [ERROR] Venv python not found: %VENV_PY%
-  exit /b 1
-)
+echo [INFO] Starting API at http://localhost:8000 >> "%LOG%"
+echo [INFO] Docs at http://localhost:8000/docs >> "%LOG%"
+echo [INFO] Log file: %LOG%
 
-echo [INFO] Installing dependencies...
-"%VENV_PY%" -m pip install --upgrade pip
-"%VENV_PY%" -m pip install -r requirements.txt
-if errorlevel 1 (
-  echo [ERROR] Dependency install failed.
-  exit /b 1
+REM Use --reload only if TURBO_DEV is set (dev mode)
+if defined TURBO_DEV (
+  "%PY%" -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+) else (
+  "%PY%" -m uvicorn backend.main:app --host 0.0.0.0 --port 8000
 )
-
-echo [INFO] Starting API at http://localhost:8000
-echo [INFO] Docs: http://localhost:8000/docs
-"%VENV_PY%" -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
 exit /b %errorlevel%
