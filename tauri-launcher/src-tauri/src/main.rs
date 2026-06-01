@@ -44,7 +44,9 @@ fn install_python_app_candidates() -> Vec<PathBuf> {
     let mut candidates = Vec::new();
     if let Ok(exe) = std::env::current_exe() {
         if let Some(exe_dir) = exe.parent() {
-            candidates.push(exe_dir.join("_up").join("python_app"));
+            // MSI/NSIS installation structure
+            candidates.push(exe_dir.join("_up_").join("python_app"));
+            candidates.push(exe_dir.join("resources").join("python_app"));
             candidates.push(exe_dir.join("python_app"));
         }
     }
@@ -52,9 +54,15 @@ fn install_python_app_candidates() -> Vec<PathBuf> {
 }
 
 fn resolve_python_app(path_resolver: tauri::PathResolver) -> io::Result<PathBuf> {
+    let log_path = std::env::temp_dir().join("biblical_study_launcher_rust.log");
+    let mut log_content = String::new();
+
     // 1. Installed executable dir candidates
     for candidate in install_python_app_candidates() {
+        log_content.push_str(&format!("Checking candidate: {:?}\n", candidate));
         if candidate.exists() {
+            log_content.push_str(&format!("Found: {:?}\n", candidate));
+            let _ = std::fs::write(&log_path, log_content);
             return Ok(candidate);
         }
     }
@@ -62,7 +70,10 @@ fn resolve_python_app(path_resolver: tauri::PathResolver) -> io::Result<PathBuf>
     // 2. Resource dir (production resources)
     if let Some(resource_dir) = path_resolver.resource_dir() {
         let candidate = resource_dir.join("python_app");
+        log_content.push_str(&format!("Checking resource_dir: {:?}\n", candidate));
         if candidate.exists() {
+            log_content.push_str(&format!("Found: {:?}\n", candidate));
+            let _ = std::fs::write(&log_path, log_content);
             return Ok(candidate);
         }
     }
@@ -70,7 +81,10 @@ fn resolve_python_app(path_resolver: tauri::PathResolver) -> io::Result<PathBuf>
     // 3. App data fallback (updater/runtime extracted location)
     if let Some(app_data) = path_resolver.app_data_dir() {
         let candidate = app_data.join("python_app");
+        log_content.push_str(&format!("Checking app_data: {:?}\n", candidate));
         if candidate.exists() {
+            log_content.push_str(&format!("Found: {:?}\n", candidate));
+            let _ = std::fs::write(&log_path, log_content);
             return Ok(candidate);
         }
     }
@@ -79,14 +93,16 @@ fn resolve_python_app(path_resolver: tauri::PathResolver) -> io::Result<PathBuf>
     let dev_path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .join("..")
         .join("python_app");
+    log_content.push_str(&format!("Checking dev_path: {:?}\n", dev_path));
     if dev_path.exists() {
+        log_content.push_str(&format!("Found: {:?}\n", dev_path));
+        let _ = std::fs::write(&log_path, log_content);
         return Ok(dev_path);
     }
 
-    Err(io::Error::new(
-        io::ErrorKind::NotFound,
-        "python_app directory not found in resources or dev path",
-    ))
+    let err = format!("python_app directory not found. Log: {}", log_content);
+    let _ = std::fs::write(&log_path, &err);
+    Err(io::Error::new(io::ErrorKind::NotFound, err))
 }
 
 #[cfg(target_os = "windows")]

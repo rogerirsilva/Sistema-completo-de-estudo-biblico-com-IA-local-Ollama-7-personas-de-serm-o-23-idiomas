@@ -65,8 +65,8 @@ echo [INFO] Log file: %LOG%
 
 REM Use --reload only if TURBO_DEV is set (dev mode)
 if defined TURBO_DEV (
-  "%PY%" -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+  "%PY%" -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
 ) else (
-  "%PY%" -m uvicorn backend.main:app --host 0.0.0.0 --port 8000
+  "%PY%" -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
 )
 exit /b %errorlevel%

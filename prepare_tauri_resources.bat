@@ -8,6 +8,10 @@ set "BUNDLED_CACHE=%TEMP%\biblical_study_bundled_cache"
 echo.
 echo [INFO] Preparing python_app resources for Tauri...
 
+REM Kill any process that might be locking the folder
+taskkill /F /IM "Biblical Study AI.exe" /T >nul 2>&1
+taskkill /F /IM "python.exe" /T >nul 2>&1
+
 REM Preserve existing bundled_packages and start scripts to avoid re-download / overwrite
 if exist "%TARGET%\bundled_packages" (
   echo [INFO] Preserving bundled_packages cache...
