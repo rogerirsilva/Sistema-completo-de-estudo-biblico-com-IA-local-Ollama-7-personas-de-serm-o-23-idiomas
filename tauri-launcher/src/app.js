@@ -75,6 +75,7 @@
     online: false,
     reconnectTimer: null,
     reconnectInProgress: false,
+    reconnectAttempts: 0,
     providers: {},
     activeProvider: "ollama",
     languages: [],
@@ -3315,8 +3316,18 @@ return `
     if (state.online || state.reconnectInProgress) return;
     state.reconnectInProgress = true;
     try {
+      state.reconnectAttempts += 1;
+      if (window.__TAURI__ && (state.reconnectAttempts === 1 || state.reconnectAttempts % 3 === 0)) {
+        try {
+          await window.__TAURI__.invoke("ensure_backend_started");
+        } catch (_) {
+          // Command may be unavailable on older builds.
+        }
+      }
+
       await apiGet("/health");
       state.online = true;
+      state.reconnectAttempts = 0;
       setStatus(getTranslation("messages.api_online", "API online at http://localhost:8000"), true);
       await refreshEverything();
       if (state.reconnectTimer) {
@@ -3334,7 +3345,7 @@ return `
     if (state.reconnectTimer) return;
     state.reconnectTimer = setInterval(() => {
       tryReconnectBackend();
-    }, 5000);
+    }, 3000);
   }
 
   async function bootstrap() {
