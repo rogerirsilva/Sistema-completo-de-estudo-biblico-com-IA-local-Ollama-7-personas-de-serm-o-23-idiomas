@@ -73,6 +73,8 @@
 
   const state = {
     online: false,
+    reconnectTimer: null,
+    reconnectInProgress: false,
     providers: {},
     activeProvider: "ollama",
     languages: [],
@@ -3309,9 +3311,35 @@ return `
     });
   }
 
+  async function tryReconnectBackend() {
+    if (state.online || state.reconnectInProgress) return;
+    state.reconnectInProgress = true;
+    try {
+      await apiGet("/health");
+      state.online = true;
+      setStatus(getTranslation("messages.api_online", "API online at http://localhost:8000"), true);
+      await refreshEverything();
+      if (state.reconnectTimer) {
+        clearInterval(state.reconnectTimer);
+        state.reconnectTimer = null;
+      }
+    } catch (_) {
+      // Keep retrying in background.
+    } finally {
+      state.reconnectInProgress = false;
+    }
+  }
+
+  function scheduleBackendReconnect() {
+    if (state.reconnectTimer) return;
+    state.reconnectTimer = setInterval(() => {
+      tryReconnectBackend();
+    }, 5000);
+  }
+
   async function bootstrap() {
     try {
-      const MAX_HEALTH_ATTEMPTS = 45;
+      const MAX_HEALTH_ATTEMPTS = 12;
       let attempt = 0;
       updateSplash("Iniciando servidor...", 5);
       while (attempt < MAX_HEALTH_ATTEMPTS) {
@@ -3355,9 +3383,10 @@ return `
         updateBadges();
         updateDirection();
 
-        setStatus(getTranslation("messages.api_offline_boot", "Backend offline. Interface aberta em modo local."), false);
+        setStatus(getTranslation("messages.api_offline_boot", "Servidor offline. Interface aberta em modo local."), false);
         updateSplash("Interface pronta (modo offline)", 100);
         setTimeout(hideSplash, 700);
+        scheduleBackendReconnect();
         setActiveTab("about");
         return;
       }
