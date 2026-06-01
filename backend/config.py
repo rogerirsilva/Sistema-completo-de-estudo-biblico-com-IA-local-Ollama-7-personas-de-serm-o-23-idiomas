@@ -29,6 +29,15 @@ PROVIDERS_CONFIG_PATH = WRITABLE_DIR / "providers_config.json"
 CHROMA_DB_DIR = WRITABLE_DIR / "chroma_db"
 
 OLLAMA_BASE = os.getenv("OLLAMA_BASE", "http://127.0.0.1:11434")
+OLLAMA_MODEL_DEFAULT = os.getenv("OLLAMA_MODEL_DEFAULT", "llama3.2:1b")
+OLLAMA_GENERATE_PATHS = tuple(
+    path.strip()
+    for path in os.getenv(
+        "OLLAMA_GENERATE_PATHS",
+        "api/generate,api/v1/generate,v1/generate",
+    ).split(",")
+    if path.strip()
+)
 
 
 def _default_providers_config() -> dict:

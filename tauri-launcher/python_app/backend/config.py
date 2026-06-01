@@ -8,6 +8,26 @@ DATA_PATH = ROOT_DIR / "bible_data.json"
 LOCAL_JSON_DIR = ROOT_DIR / "Dados_Json"
 TRANSLATIONS_DIR = ROOT_DIR / "translations"
 
+# For production/installation, use a writable directory for config and DB
+def get_writable_dir() -> Path:
+    if os.name == "nt":
+        app_data = os.getenv("APPDATA")
+        if app_data:
+            path = Path(app_data) / "BiblicalStudyAI"
+            path.mkdir(parents=True, exist_ok=True)
+            return path
+    # Fallback to HOME or current dir if not on Windows or APPDATA missing
+    path = Path.home() / ".biblical_study_ai"
+    try:
+        path.mkdir(parents=True, exist_ok=True)
+        return path
+    except Exception:
+        return ROOT_DIR
+
+WRITABLE_DIR = get_writable_dir()
+PROVIDERS_CONFIG_PATH = WRITABLE_DIR / "providers_config.json"
+CHROMA_DB_DIR = WRITABLE_DIR / "chroma_db"
+
 OLLAMA_BASE = os.getenv("OLLAMA_BASE", "http://127.0.0.1:11434")
 OLLAMA_MODEL_DEFAULT = os.getenv("OLLAMA_MODEL_DEFAULT", "llama3.2:1b")
 OLLAMA_GENERATE_PATHS = tuple(
@@ -18,8 +38,6 @@ OLLAMA_GENERATE_PATHS = tuple(
     ).split(",")
     if path.strip()
 )
-
-PROVIDERS_CONFIG_PATH = ROOT_DIR / "providers_config.json"
 
 
 def _default_providers_config() -> dict:
