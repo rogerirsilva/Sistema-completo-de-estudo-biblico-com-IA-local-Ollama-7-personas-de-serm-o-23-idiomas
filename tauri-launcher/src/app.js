@@ -73,6 +73,8 @@
 
   const state = {
     online: false,
+    providers: {},
+    activeProvider: "ollama",
     languages: [],
     uiTranslations: {},
     models: [],
@@ -166,6 +168,7 @@
           <div class="topbar-meta">
             <span id="versionBadge" class="badge">Versao: -</span>
             <span id="bookBadge" class="badge">Livro: -</span>
+            <button id="providerSettingsBtn" class="ghost-button btn-icon" title="Provedores de IA">⚙️</button>
           </div>
         </header>
 
@@ -191,8 +194,7 @@
                 </div>
                 <div>
                   <label class="field-label" for="readingChapterSelect">Cap.</label>
-                  <input id="readingChapterSelect" class="field" type="text" list="readingChapterList" placeholder="1" />
-                  <datalist id="readingChapterList"></datalist>
+                  <select id="readingChapterSelect" class="field"></select>
                 </div>
                 <div>
                   <label class="field-label" for="readingVerseRange">Vers.</label>
@@ -274,8 +276,7 @@
                 </div>
                 <div>
                   <label class="field-label" for="sermonChapter">Cap.</label>
-                  <input id="sermonChapter" class="field" type="text" list="sermonChapterList" placeholder="1" />
-                  <datalist id="sermonChapterList"></datalist>
+                  <select id="sermonChapter" class="field"></select>
                 </div>
               </div>
 
@@ -342,8 +343,7 @@
                 </div>
                 <div>
                   <label class="field-label" for="devChapter">Cap.</label>
-                  <input id="devChapter" class="field" type="text" list="devChapterList" placeholder="1" />
-                  <datalist id="devChapterList"></datalist>
+                  <select id="devChapter" class="field"></select>
                 </div>
               </div>
 
@@ -389,8 +389,7 @@
                 </div>
                 <div>
                   <label class="field-label" for="chatChapter">Cap.</label>
-                  <input id="chatChapter" class="field" type="text" list="chatChapterList" placeholder="1" />
-                  <datalist id="chatChapterList"></datalist>
+                  <select id="chatChapter" class="field"></select>
                 </div>
               </div>
 
@@ -446,8 +445,7 @@
                 </div>
                 <div>
                   <label class="field-label" for="questionsChapter">Cap.</label>
-                  <input id="questionsChapter" class="field" type="text" list="questionsChapterList" placeholder="1" />
-                  <datalist id="questionsChapterList"></datalist>
+                  <select id="questionsChapter" class="field"></select>
                 </div>
               </div>
 
@@ -561,6 +559,21 @@
           </div>
         </section>
       </main>
+    </div>
+    <div id="providerModal" class="modal-overlay" style="display:none">
+      <div class="modal-content modal-lg">
+        <div class="modal-header">
+          <h3 data-i18n="providers.providers_title">Provedores de IA</h3>
+          <button id="providerModalClose" class="ghost-button btn-icon">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="field-group">
+            <label data-i18n="providers.active_provider">Provedor Ativo</label>
+            <select id="activeProviderSelect" class="field"></select>
+          </div>
+          <div id="providersList" class="providers-list"></div>
+        </div>
+      </div>
     </div>
     <div id="splashOverlay" class="splash-overlay">
       <div class="splash-content">
@@ -1046,6 +1059,51 @@
           max-width: 300px; line-height: 1.5; min-height: 36px;
           transition: opacity 0.8s ease;
         }
+        .btn-icon {
+          width: 36px; height: 36px; padding: 0;
+          display: inline-flex; align-items: center; justify-content: center;
+          font-size: 18px; border-radius: 10px;
+          background: rgba(148, 163, 184, 0.1);
+          transition: background 0.2s, transform 0.2s;
+          vertical-align: middle;
+        }
+        .btn-icon:hover { background: rgba(148, 163, 184, 0.2); transform: scale(1.05); }
+        .modal-overlay {
+          position: fixed; inset: 0; z-index: 9998;
+          background: rgba(0,0,0,0.6);
+          display: flex; align-items: center; justify-content: center;
+        }
+        .modal-content {
+          background: var(--bg2, #1e293b); border-radius: 20px; max-height: 85vh;
+          overflow-y: auto; min-width: 320px; max-width: 560px;
+          border: 1px solid var(--line, #334155); padding: 24px;
+          animation: modal-in 0.25s ease-out;
+        }
+        .modal-lg { max-width: 600px; }
+        @keyframes modal-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .modal-header {
+          display: flex; justify-content: space-between; align-items: center;
+          margin-bottom: 20px;
+        }
+        .modal-header h3 { margin: 0; font-size: 18px; }
+        .modal-body .field-group { margin-bottom: 20px; }
+        .modal-body .field-group label { display: block; margin-bottom: 6px; font-size: 13px; color: #94a3b8; }
+        .providers-list { display: flex; flex-direction: column; gap: 12px; }
+        .provider-card {
+          border: 1px solid var(--line, #334155); border-radius: 12px; padding: 16px;
+          background: rgba(148, 163, 184, 0.03);
+        }
+        .provider-card-header {
+          display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;
+        }
+        .provider-name { font-weight: 600; font-size: 14px; }
+        .provider-status { font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+        .provider-status.ok { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+        .provider-status.warn { background: rgba(234, 179, 8, 0.15); color: #eab308; }
+        .provider-card-body label { display: block; font-size: 12px; color: #94a3b8; margin-bottom: 4px; margin-top: 8px; }
+        .provider-card-body .field-row { display: flex; gap: 8px; }
+        .provider-card-body .field-row .field { flex: 1; }
+        .provider-card-actions { display: flex; gap: 8px; margin-top: 12px; justify-content: flex-end; }
       </style>
 
     `
@@ -1069,7 +1127,6 @@
     savePrefsLabel: byId("savePrefsLabel"),
     readingBookSelect: byId("readingBookSelect"),
     readingChapterSelect: byId("readingChapterSelect"),
-    readingChapterList: byId("readingChapterList"),
     readingVerseRange: byId("readingVerseRange"),
     colorPalette: byId("colorPalette"),
     markChapterReadBtn: byId("markChapterReadBtn"),
@@ -1096,7 +1153,7 @@
     sermonStyle: byId("sermonStyle"),
     sermonBook: byId("sermonBook"),
     sermonChapter: byId("sermonChapter"),
-    sermonChapterList: byId("sermonChapterList"),
+
     sermonTheme: byId("sermonTheme"),
     sermonAudience: byId("sermonAudience"),
     sermonNotes: byId("sermonNotes"),
@@ -1110,7 +1167,7 @@
     devScope: byId("devScope"),
     devBook: byId("devBook"),
     devChapter: byId("devChapter"),
-    devChapterList: byId("devChapterList"),
+
     devFeeling: byId("devFeeling"),
     devButton: byId("devButton"),
     devCopyButton: byId("devCopyButton"),
@@ -1122,7 +1179,7 @@
     chatScope: byId("chatScope"),
     chatBook: byId("chatBook"),
     chatChapter: byId("chatChapter"),
-    chatChapterList: byId("chatChapterList"),
+
     chatQuestion: byId("chatQuestion"),
     chatButton: byId("chatButton"),
     chatCopyButton: byId("chatCopyButton"),
@@ -1134,7 +1191,7 @@
     questionsScope: byId("questionsScope"),
     questionsBook: byId("questionsBook"),
     questionsChapter: byId("questionsChapter"),
-    questionsChapterList: byId("questionsChapterList"),
+
     questionsCount: byId("questionsCount"),
     questionsMode: byId("questionsMode"),
     questionsButton: byId("questionsButton"),
@@ -1285,7 +1342,9 @@
 
     setLabelText("langSelect", getTranslation("labels.language_selector", "Language"));
     setLabelText("versionSelect", getTranslation("labels.bible_version", "Version"));
-    setLabelText("modelSelect", getTranslation("labels.ollama_model", "Ollama Model"));
+    setLabelText("modelSelect", state.activeProvider === "ollama"
+      ? getTranslation("labels.ollama_model", "Modelo Ollama")
+      : getTranslation("providers.model", "Modelo"));
     setLabelText("readingBookSelect", getTranslation("labels.book_selector", "Book"));
     setLabelText("sermonBook", getTranslation("labels.book_selector", "Book for context"));
     setLabelText("devBook", getTranslation("labels.book_selector", "Book for context"));
@@ -1316,7 +1375,9 @@
     refs.questionsCopyButton.textContent = getTranslation("buttons.copy", "Copy result").replace("📋 ", "");
     refs.importRefresh.textContent = getTranslation("buttons.reload_catalog", "Reload Catalog").replace("🔄 ", "");
 
-    refs.modelInfo.textContent = `${getTranslation("labels.ollama_model", "Ollama Model")}: ${state.models.length}`;
+    if (state.activeProvider === "ollama") {
+      refs.modelInfo.textContent = `${getTranslation("labels.ollama_model", "Ollama Model")}: ${state.models.length}`;
+    }
     refs.studySearch.placeholder = getTranslation("labels.search_history", getTranslation("labels.search_placeholder", "Search history")).replace("🔍 ", "");
     refs.sermonSearch.placeholder = getTranslation("labels.search_sermons_placeholder", "Search sermons");
     refs.devSearch.placeholder = getTranslation("labels.search_devotionals_placeholder", "Search devotionals");
@@ -1381,15 +1442,10 @@
 
     // === Missing placeholder translations ===
     const placeholderPairs = [
-      { ref: refs.readingChapterSelect, key: "labels.chapter_number", fallback: "1" },
       { ref: refs.readingVerseRange, key: "labels.verse_example", fallback: "e.g. 1-15,19" },
-      { ref: refs.sermonChapter, key: "labels.chapter_number", fallback: "1" },
       { ref: refs.sermonTheme, key: "labels.theme_placeholder", fallback: "Faith, hope, holiness..." },
       { ref: refs.sermonAudience, key: "labels.audience_placeholder", fallback: "Youth, local church, leaders..." },
       { ref: refs.sermonNotes, key: "labels.extra_notes_placeholder", fallback: "Preacher context, focus, goal..." },
-      { ref: refs.devChapter, key: "labels.chapter_number", fallback: "1" },
-      { ref: refs.chatChapter, key: "labels.chapter_number", fallback: "1" },
-      { ref: refs.questionsChapter, key: "labels.chapter_number", fallback: "1" },
     ];
     placeholderPairs.forEach(({ ref, key, fallback }) => {
       if (ref) ref.placeholder = getTranslation(key, fallback);
@@ -1415,7 +1471,9 @@
     }
 
     // Model info: override the previous line to use "Models detected" prefix
-    refs.modelInfo.textContent = `${getTranslation("labels.models_detected", "Models detected in Ollama:")} ${state.models.length}`;
+    if (state.activeProvider === "ollama") {
+      refs.modelInfo.textContent = `${getTranslation("labels.models_detected", "Models detected in Ollama:")} ${state.models.length}`;
+    }
     if (refs.modelHelpBtn) refs.modelHelpBtn.title = getTranslation("messages.model_help_title", "Recommended models");
 
     // === Import tab translations ===
@@ -1638,6 +1696,201 @@
     });
   }
 
+  function providerLabel(pid) {
+    const labels = {
+      ollama: "\u{1F42A} " + getTranslation("providers.ollama_label", "Ollama (Local)"),
+      chatgpt: "ChatGPT",
+      deepseek: "DeepSeek",
+      grok: "Grok (xAI)",
+      openrouter: "OpenRouter",
+      target_ai: "Target.AI",
+      nvidia: "NVIDIA NIM",
+      gemini: "Google Gemini",
+    };
+    return labels[pid] || pid;
+  }
+
+  async function loadProviderConfigs() {
+    try {
+      const data = await apiGet("/api/providers");
+      state.providers = data;
+      const ap = data?.active_provider || "ollama";
+      if (ap !== state.activeProvider) {
+        state.activeProvider = ap;
+        renderProviderSelect();
+        renderProvidersList();
+        await loadModelsForProvider(ap);
+      } else {
+        renderProviderSelect();
+        renderProvidersList();
+      }
+    } catch (_) {}
+  }
+
+  async function saveProviderConfig(providerId, config) {
+    await apiPost("/api/providers/config", { provider_id: providerId, ...config });
+    await loadProviderConfigs();
+  }
+
+  async function setActiveProvider(providerId) {
+    await apiPost("/api/providers/active", { provider: providerId });
+    state.activeProvider = providerId;
+    renderProviderSelect();
+    await loadModelsForProvider(providerId);
+  }
+
+  async function loadModelsForProvider(providerId) {
+    if (providerId === "ollama") {
+      setLabelText("modelSelect", getTranslation("labels.ollama_model", "Modelo Ollama"));
+      refs.modelInfo.textContent = getTranslation("messages.loading_models", "Loading Ollama models...");
+      if (refs.modelHelpBtn) refs.modelHelpBtn.style.display = "";
+      if (refs.modelHelpContent) refs.modelHelpContent.style.display = "none";
+      await loadOllamaModels();
+      return;
+    }
+    const cfg = state.providers?.[providerId];
+    const modelSelect = refs.modelSelect;
+    if (!modelSelect) return;
+    setLabelText("modelSelect", getTranslation("providers.model", "Modelo"));
+    if (refs.modelHelpBtn) refs.modelHelpBtn.style.display = "none";
+    if (refs.modelHelpContent) refs.modelHelpContent.style.display = "none";
+    if (cfg?.model) {
+      modelSelect.innerHTML = `<option value="${cfg.model}" selected>${cfg.model}</option>`;
+      refs.modelInfo.textContent = `${providerLabel(providerId)}: ${cfg.model}`;
+    } else {
+      modelSelect.innerHTML = `<option value="">${getTranslation("messages.no_connector", "Sem modelo configurado")}</option>`;
+      refs.modelInfo.textContent = providerLabel(providerId);
+    }
+  }
+
+  function renderProviderSelect() {
+    const select = byId("activeProviderSelect");
+    if (!select) return;
+    select.innerHTML = "";
+    const optOllama = document.createElement("option");
+    optOllama.value = "ollama";
+    optOllama.textContent = "\u{1F42A} " + getTranslation("providers.ollama_label", "Ollama (Local)");
+    select.appendChild(optOllama);
+    for (const [pid, _cfg] of Object.entries(state.providers || {})) {
+      if (pid === "active_provider") continue;
+      const opt = document.createElement("option");
+      opt.value = pid;
+      const cfg = state.providers[pid];
+      opt.textContent = `${cfg?.has_key ? "\u{1F511}" : "\u{1F512}"} ${providerLabel(pid)}`;
+      opt.title = cfg?.has_key
+        ? getTranslation("providers.configured", "Configurado")
+        : getTranslation("providers.no_key", "Sem chave");
+      select.appendChild(opt);
+    }
+    select.value = state.activeProvider || "ollama";
+  }
+
+  function renderProvidersList() {
+    const container = byId("providersList");
+    if (!container) return;
+    container.innerHTML = "";
+    for (const [pid, cfg] of Object.entries(state.providers || {})) {
+      if (pid === "active_provider") continue;
+      const card = document.createElement("div");
+      card.className = "provider-card";
+      card.innerHTML = `
+        <div class="provider-card-header">
+          <span class="provider-name">${providerLabel(pid)}</span>
+          <span class="provider-status ${cfg?.has_key ? "ok" : "warn"}">
+            ${cfg?.has_key ? "\u2713 " + getTranslation("providers.configured", "Configurado") : "\u2717 " + getTranslation("providers.no_key", "Sem chave")}
+          </span>
+        </div>
+        <div class="provider-card-body">
+          <label>${getTranslation("providers.api_key", "Chave de API")}</label>
+          <div class="field-row">
+            <input type="password" class="field" id="key_${pid}"
+                   placeholder="${getTranslation("providers.api_key", "Insira sua chave de API")}" value="">
+            <button class="ghost-button" onclick="toggleKeyVisibility('${pid}')"
+                    style="width:36px;height:36px;padding:0;display:flex;align-items:center;justify-content:center">\u{1F441}\uFE0F</button>
+          </div>
+          <label>${getTranslation("providers.model", "Modelo")}</label>
+          <input type="text" class="field" id="model_${pid}"
+                 value="${cfg?.model || ""}" placeholder="ex: gpt-4o-mini">
+          <div class="provider-card-actions">
+            <button class="ghost-button" onclick="testProvider('${pid}')">\u{1F50C} ${getTranslation("providers.test", "Testar")}</button>
+            <button class="primary-button" onclick="saveProvider('${pid}')">\u{1F4BE} ${getTranslation("providers.save", "Salvar")}</button>
+          </div>
+        </div>
+      `;
+      container.appendChild(card);
+    }
+  }
+
+  function openProviderModal() {
+    byId("providerModal").style.display = "flex";
+    loadProviderConfigs();
+  }
+
+  function closeProviderModal() {
+    byId("providerModal").style.display = "none";
+  }
+
+  function toggleKeyVisibility(pid) {
+    const input = byId(`key_${pid}`);
+    if (!input) return;
+    input.type = input.type === "password" ? "text" : "password";
+  }
+
+  async function saveProvider(pid) {
+    const keyInput = byId(`key_${pid}`);
+    const modelInput = byId(`model_${pid}`);
+    const config = {};
+    if (keyInput && keyInput.value.trim()) config.api_key = keyInput.value.trim();
+    if (modelInput && modelInput.value.trim()) config.model = modelInput.value.trim();
+    if (!config.api_key && !config.model) return;
+    await saveProviderConfig(pid, config);
+    showToast(getTranslation("messages.saved", "Configuracao salva para ") + providerLabel(pid), "success");
+  }
+
+  async function testProvider(pid) {
+    const keyInput = byId(`key_${pid}`);
+    const modelInput = byId(`model_${pid}`);
+    const apiKey = keyInput ? keyInput.value.trim() : "";
+    const model = modelInput ? modelInput.value.trim() : "";
+    if (!apiKey) {
+      showToast(getTranslation("messages.enter_key_first", "Insira a chave de API primeiro"), "warning");
+      return;
+    }
+    try {
+      const result = await apiPost("/api/providers/test", {
+        provider_id: pid,
+        api_key: apiKey,
+        model: model || undefined,
+      });
+      if (result.ok) {
+        const modelCount = result.models?.length || 0;
+        showToast(`\u{2705} ${getTranslation("messages.connection_ok", "Conexao OK")}! ${modelCount} ${getTranslation("messages.models_available", "modelos disponiveis")}`, "success");
+      } else {
+        showToast(`\u{274C} ${getTranslation("messages.test_failed", "Falha")}: ${result.error || getTranslation("messages.unknown_error", "Erro desconhecido")}`, "error");
+      }
+    } catch (e) {
+      showToast(`\u{274C} ${getTranslation("messages.error", "Erro")}: ${e.message}`, "error");
+    }
+  }
+
+  function showToast(message, type) {
+    const toast = document.createElement("div");
+    toast.className = `toast toast-${type || "info"}`;
+    toast.textContent = message;
+    Object.assign(toast.style, {
+      position: "fixed", bottom: "20px", right: "20px", zIndex: "9999",
+      padding: "12px 20px", borderRadius: "10px", fontSize: "13px",
+      background: type === "success" ? "rgba(34,197,94,0.9)" :
+                  type === "error" ? "rgba(239,68,68,0.9)" :
+                  type === "warning" ? "rgba(234,179,8,0.9)" : "rgba(100,116,139,0.9)",
+      color: "#fff", boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+      animation: "modal-in 0.2s ease-out",
+    });
+    document.body.appendChild(toast);
+    setTimeout(() => { toast.style.opacity = "0"; toast.style.transition = "opacity 0.3s"; }, 3000);
+    setTimeout(() => toast.remove(), 3500);
+  }
+
   function multiSelectValues(selectElement) {
     if (!selectElement) {
       return [];
@@ -1707,18 +1960,17 @@
     }
   }
 
-  async function loadOllamaModels() {
+  async function loadOllamaModels(skipSplash) {
     if (!refs.modelSelect || !refs.modelInfo) return;
 
     const previousModel = (String(getValue(refs.modelSelect) || "").trim()) || localStorage.getItem(PREF_KEYS.model) || "";
     const modelMsg = getTranslation("messages.loading_models", "Loading Ollama models...");
     setStatus(modelMsg, false);
-    updateSplash("Carregando modelos de IA...", 40);
     let ollamaOk = false;
     try {
       const data = await apiGet("/api/ai/models");
-      state.models = Array.isArray(data?.ollama?.items) ? data.ollama.items : [];
-      ollamaOk = data?.ollama?.online === true;
+      state.models = Array.isArray(data?.items) ? data.items : [];
+      ollamaOk = data?.online === true;
     } catch (_) {
       state.models = [];
     }
@@ -1739,7 +1991,7 @@
       return;
     }
 
-    const preferredModel = pickPreferredModel(state.models.length ? state.models : state.models);
+    const preferredModel = pickPreferredModel(state.models);
     if (preferredModel) {
       refs.modelSelect.value = preferredModel;
     }
@@ -1973,19 +2225,12 @@
       return;
     }
     try {
-      const data = await apiGet("/api/preferences");
-      if (data.language) {
-        refs.langSelect.value = data.language;
-        localStorage.setItem(PREF_KEYS.language, data.language);
-      }
-      if (data.version) {
-        refs.versionSelect.value = data.version;
-        localStorage.setItem(PREF_KEYS.version, data.version);
-      }
-      if (data.model) {
-        refs.modelSelect.value = data.model;
-        localStorage.setItem(PREF_KEYS.model, data.model);
-      }
+      const lang = localStorage.getItem(PREF_KEYS.language);
+      if (lang) refs.langSelect.value = lang;
+      const ver = localStorage.getItem(PREF_KEYS.version);
+      if (ver) refs.versionSelect.value = ver;
+      const model = localStorage.getItem(PREF_KEYS.model);
+      if (model) refs.modelSelect.value = model;
     } catch (_) {}
   }
 
@@ -1993,42 +2238,10 @@
     if (!refs.savePrefsCheck || !refs.savePrefsCheck.checked) {
       return;
     }
-    const prefs = {
-      language: refs.langSelect.value || "pt",
-      version: refs.versionSelect.value || "",
-      model: refs.modelSelect.value || "",
-    };
     try {
-      await apiPost("/api/preferences", prefs);
-    } catch (_) {}
-  }
-
-  async function loadBackendPrefs() {
-    try {
-      const data = await apiGet("/api/preferences");
-      if (data.language) {
-        refs.langSelect.value = data.language;
-        localStorage.setItem(PREF_KEYS.language, data.language);
-      }
-      if (data.version) {
-        refs.versionSelect.value = data.version;
-        localStorage.setItem(PREF_KEYS.version, data.version);
-      }
-      if (data.model) {
-        refs.modelSelect.value = data.model;
-        localStorage.setItem(PREF_KEYS.model, data.model);
-      }
-    } catch (_) {}
-  }
-
-  async function saveBackendPrefs() {
-    const prefs = {
-      language: refs.langSelect.value || "pt",
-      version: refs.versionSelect.value || "",
-      model: refs.modelSelect.value || "",
-    };
-    try {
-      await apiPost("/api/preferences", prefs);
+      localStorage.setItem(PREF_KEYS.language, refs.langSelect.value || "pt");
+      localStorage.setItem(PREF_KEYS.version, refs.versionSelect.value || "");
+      localStorage.setItem(PREF_KEYS.model, refs.modelSelect.value || "");
     } catch (_) {}
   }
 
@@ -2114,20 +2327,27 @@
     return book ? (book.chapters || 1) : 1;
   }
 
-  function populateChapterListFor(bookSelect, listRef, inputRef) {
+  function populateChapterListFor(bookSelect, selectRef) {
     const bookKey = getValue(bookSelect) || state.selectedBook;
     const count = bookKey ? getBookChapterCount(bookKey) : 1;
-    const datalistHtml = Array.from({ length: count }, (_, i) => `<option value="${i + 1}">`).join("");
-    if (listRef) listRef.innerHTML = datalistHtml;
-    if (inputRef) inputRef.setAttribute("placeholder", `1-${count}`);
+    const currentVal = selectRef ? selectRef.value : "1";
+    const options = Array.from({ length: count }, (_, i) => {
+      const n = i + 1;
+      return `<option value="${n}"${n === Number(currentVal) ? " selected" : ""}>Capítulo ${n}</option>`;
+    }).join("");
+    if (selectRef) selectRef.innerHTML = `<option value="">—</option>${options}`;
+    // Restore previous selection if still valid
+    if (selectRef && currentVal && Number(currentVal) >= 1 && Number(currentVal) <= count) {
+      selectRef.value = currentVal;
+    }
   }
 
   function populateChapterList() {
-    populateChapterListFor(refs.readingBookSelect, refs.readingChapterList, refs.readingChapterSelect);
-    populateChapterListFor(refs.sermonBook, refs.sermonChapterList, refs.sermonChapter);
-    populateChapterListFor(refs.devBook, refs.devChapterList, refs.devChapter);
-    populateChapterListFor(refs.chatBook, refs.chatChapterList, refs.chatChapter);
-    populateChapterListFor(refs.questionsBook, refs.questionsChapterList, refs.questionsChapter);
+    populateChapterListFor(refs.readingBookSelect, refs.readingChapterSelect);
+    populateChapterListFor(refs.sermonBook, refs.sermonChapter);
+    populateChapterListFor(refs.devBook, refs.devChapter);
+    populateChapterListFor(refs.chatBook, refs.chatChapter);
+    populateChapterListFor(refs.questionsBook, refs.questionsChapter);
   }
 
   function loadReadProgress() {
@@ -2468,7 +2688,14 @@
 
   async function callGenerate(kind, reference, context, request, options = {}) {
     const lang = getValue(refs.langSelect, "pt") || "pt";
-    const model = String(getValue(refs.modelSelect) || "").trim() || null;
+    const activeProvider = state.activeProvider || "ollama";
+    let model = null;
+    if (activeProvider === "ollama") {
+      model = String(getValue(refs.modelSelect) || "").trim() || null;
+    } else {
+      const cfg = state.providers?.[activeProvider];
+      model = cfg?.model || null;
+    }
     const payload = {
       kind,
       reference,
@@ -2476,11 +2703,15 @@
       request,
       language: lang,
       model,
+      provider: activeProvider,
       temperature: options.temperature ?? 0.2,
       max_tokens: options.maxTokens ?? 1800,
       timeout_sec: options.timeoutSec ?? 180,
     };
     const data = await apiPost("/api/ai/generate", payload);
+    if (data.response && data.response.startsWith("[ERRO:")) {
+      throw new Error(data.response);
+    }
     return data.response || "";
   }
 
@@ -2992,7 +3223,8 @@ return `
     await loadLanguages();
     await loadUiTranslations(getValue(refs.langSelect, "pt") || "pt");
     applyUiTranslations();
-    await loadOllamaModels();
+    updateSplash("Carregando modelos de IA...", 40);
+    await loadOllamaModels(true);
     await loadVersions();
     await loadBooks();
     await loadChapter();
@@ -3066,6 +3298,7 @@ return `
 
       updateSplash("Carregando recursos...", 30);
       await loadImportSourcesAndMeta();
+      await loadProviderConfigs();
       updateSplash("Preparando interface...", 75);
       loadReadProgress();
       renderAllHistories();
@@ -3259,8 +3492,34 @@ return `
         setStatus(getTranslation("messages.picpay_copied", "PicPay key copied."), true);
       });
     }
+
+    // Provider modal events
+    const providerBtn = byId("providerSettingsBtn");
+    if (providerBtn) providerBtn.addEventListener("click", openProviderModal);
+    const providerClose = byId("providerModalClose");
+    if (providerClose) providerClose.addEventListener("click", closeProviderModal);
+    const providerSelect = byId("activeProviderSelect");
+    if (providerSelect) {
+      providerSelect.addEventListener("change", async () => {
+        await setActiveProvider(providerSelect.value);
+        localStorage.setItem("activeProvider", providerSelect.value);
+        saveBackendPrefs();
+      });
+    }
+    // Close modal on overlay click
+    const modalOverlay = byId("providerModal");
+    if (modalOverlay) {
+      modalOverlay.addEventListener("click", (e) => {
+        if (e.target === modalOverlay) closeProviderModal();
+      });
+    }
   }
 
+  window.saveProvider = saveProvider;
+  window.testProvider = testProvider;
+  window.toggleKeyVisibility = toggleKeyVisibility;
+  window.openProviderModal = openProviderModal;
+  window.closeProviderModal = closeProviderModal;
   bootstrap();
 })();
 
