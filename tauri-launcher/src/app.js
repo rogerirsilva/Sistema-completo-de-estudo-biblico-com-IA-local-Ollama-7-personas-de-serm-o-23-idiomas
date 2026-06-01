@@ -1079,31 +1079,68 @@
           border: 1px solid var(--line, #334155); padding: 24px;
           animation: modal-in 0.25s ease-out;
         }
-        .modal-lg { max-width: 600px; }
+        .modal-lg {
+          width: min(920px, calc(100vw - 36px));
+          max-width: 920px;
+          max-height: min(90vh, 980px);
+          border-radius: 22px;
+          background:
+            linear-gradient(170deg, rgba(21, 32, 58, 0.92), rgba(11, 19, 37, 0.94)),
+            radial-gradient(circle at 86% -8%, rgba(103, 213, 255, 0.22), transparent 45%);
+          box-shadow: 0 22px 54px rgba(3, 9, 22, 0.6);
+        }
         @keyframes modal-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         .modal-header {
           display: flex; justify-content: space-between; align-items: center;
           margin-bottom: 20px;
+          position: sticky;
+          top: 0;
+          z-index: 3;
+          background: linear-gradient(180deg, rgba(18, 28, 52, 0.98), rgba(18, 28, 52, 0.82));
+          backdrop-filter: blur(8px);
+          padding: 10px 6px;
+          border-bottom: 1px solid rgba(148, 163, 184, 0.15);
         }
         .modal-header h3 { margin: 0; font-size: 18px; }
         .modal-body .field-group { margin-bottom: 20px; }
         .modal-body .field-group label { display: block; margin-bottom: 6px; font-size: 13px; color: #94a3b8; }
-        .providers-list { display: flex; flex-direction: column; gap: 12px; }
+        .providers-list {
+          display: grid;
+          gap: 14px;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          align-items: start;
+        }
         .provider-card {
-          border: 1px solid var(--line, #334155); border-radius: 12px; padding: 16px;
-          background: rgba(148, 163, 184, 0.03);
+          border: 1px solid rgba(148, 163, 184, 0.18);
+          border-radius: 16px;
+          padding: 16px;
+          background: linear-gradient(150deg, rgba(148, 163, 184, 0.08), rgba(30, 41, 59, 0.12));
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 10px 24px rgba(2, 8, 20, 0.35);
         }
         .provider-card-header {
           display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;
         }
-        .provider-name { font-weight: 600; font-size: 14px; }
-        .provider-status { font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+        .provider-name { font-weight: 700; font-size: 21px; letter-spacing: 0.01em; }
+        .provider-status { font-size: 12px; padding: 3px 9px; border-radius: 999px; font-weight: 600; }
         .provider-status.ok { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
         .provider-status.warn { background: rgba(234, 179, 8, 0.15); color: #eab308; }
         .provider-card-body label { display: block; font-size: 12px; color: #94a3b8; margin-bottom: 4px; margin-top: 8px; }
         .provider-card-body .field-row { display: flex; gap: 8px; }
         .provider-card-body .field-row .field { flex: 1; }
         .provider-card-actions { display: flex; gap: 8px; margin-top: 12px; justify-content: flex-end; }
+        @media (max-width: 768px) {
+          .modal-lg {
+            width: calc(100vw - 20px);
+            max-height: 92vh;
+            padding: 16px;
+            border-radius: 16px;
+          }
+          .providers-list { grid-template-columns: 1fr; gap: 12px; }
+          .provider-name { font-size: 18px; }
+          .provider-card-actions { justify-content: stretch; }
+          .provider-card-actions .ghost-button,
+          .provider-card-actions .primary-button { flex: 1; }
+        }
       </style>
 
     `
@@ -1497,7 +1534,8 @@
       "Explain the historical and theological context of the text, highlight keywords and the pastoral application of the text.",
       "Explain the historical and theological context of the text and apply it pastorally.",
       "Explique o contexto historico e teologico, destaque palavras-chave e a aplicacao pastoral do texto.",
-      "Explique o contexto historico e teologico do texto e aplique-o de forma pastoral."
+      "Explique o contexto historico e teologico do texto e aplique-o de forma pastoral.",
+      "Explique o contexto historico e teologico, pondere sobre palavras-chave e sugira aplicacoes pastorais."
     ];
     const srVal = String(refs.studyRequest?.value || "").trim();
     if (!srVal || OLD_DEFAULTS.includes(srVal)) {
@@ -1699,13 +1737,13 @@
   function providerLabel(pid) {
     const labels = {
       ollama: "\u{1F42A} " + getTranslation("providers.ollama_label", "Ollama (Local)"),
-      chatgpt: "ChatGPT",
-      deepseek: "DeepSeek",
-      grok: "Grok (xAI)",
-      openrouter: "OpenRouter",
-      target_ai: "Target.AI",
-      nvidia: "NVIDIA NIM",
-      gemini: "Google Gemini",
+      chatgpt: getTranslation("providers.provider_chatgpt", "ChatGPT"),
+      deepseek: getTranslation("providers.provider_deepseek", "DeepSeek"),
+      grok: getTranslation("providers.provider_grok", "Grok (xAI)"),
+      openrouter: getTranslation("providers.provider_openrouter", "OpenRouter"),
+      target_ai: getTranslation("providers.provider_target_ai", "Target.AI"),
+      nvidia: getTranslation("providers.provider_nvidia", "NVIDIA NIM"),
+      gemini: getTranslation("providers.provider_gemini", "Google Gemini"),
     };
     return labels[pid] || pid;
   }
@@ -2427,7 +2465,7 @@
     const rv = getReadVerses(bookKey, chapter);
     const total = state.chapterData ? Object.keys(state.chapterData.verses || {}).length : 0;
     const count = rv.verses.length;
-    refs.readingProgress.textContent = total > 0 ? getTranslation('messages.verses_read', '%d/%d verses read').replace('%d', count).replace('%d', total) : "";
+    refs.readingProgress.textContent = total > 0 ? getTranslation('messages.verses_read', '%d/%d versiculos lidos').replace('%d', count).replace('%d', total) : "";
   }
 
   function renderColorPalette() {

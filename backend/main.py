@@ -10,10 +10,11 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 
-from backend.config import LOCAL_JSON_DIR, TRANSLATIONS_DIR
+from backend.config import LOCAL_JSON_DIR, TRANSLATIONS_DIR, load_providers_config, save_providers_config
 from backend.models import ExportPdfRequest, ExegesisRequest, ExegesisResponse, GenerationRequest, GenerationResponse
 from backend.services.bible_service import list_languages, load_bible_data_by_language
 from backend.services.ollama_service import check_ollama_online, generate_with_ollama, list_ollama_models
+from backend.services.providers import get_provider, list_available_providers, provider_label, DEFAULT_MODELS
 
 load_dotenv()
 
@@ -50,6 +51,19 @@ def _resolve_version(data: dict[str, Any], version: str | None) -> tuple[str, di
 
 def _normalize_pdf_text(value: str) -> str:
     return str(value or "").encode("latin-1", "replace").decode("latin-1")
+
+
+def _translate_provider_error(error_code: str, provider: str) -> str:
+    friendly = {
+        "invalid_api_key": "Chave de API invalida. Verifique em Configuracoes.",
+        "rate_limit": "Limite de requisicoes excedido. Aguarde ou altere o provedor.",
+        "quota_exhausted": "Cota do provedor esgotada. Verifique seu plano.",
+        "timeout": "Tempo limite excedido. Tente novamente ou use o Ollama.",
+        "connection_error": "Sem conexao com o provedor. Verifique sua internet ou use o Ollama.",
+        "empty_response": "Provedor retornou resposta vazia. Tente novamente.",
+    }
+    msg = friendly.get(error_code, error_code)
+    return f"[ERRO: {provider}] {msg}"
 
 
 def _build_prompt(language: str, reference: str, context: str, request: str) -> str:
@@ -237,6 +251,39 @@ def exegesis(payload: ExegesisRequest) -> ExegesisResponse:
     if not payload.text.strip():
         raise HTTPException(status_code=400, detail="Texto biblico vazio")
 
+    # Provider externo
+    if payload.provider and payload.provider != "ollama":
+        config = load_providers_config()
+        provider_cfg = config["providers"].get(payload.provider, {})
+        if not provider_cfg.get("api_key"):
+            return ExegesisResponse(
+                model="", reference=payload.reference,
+                response="[ERRO] Chave de API nao configurada para este provedor."
+            )
+        provider = get_provider(payload.provider, provider_cfg)
+        if not provider:
+            return ExegesisResponse(
+                model="", reference=payload.reference,
+                response="[ERRO] Provedor nao suportado."
+            )
+        result = provider.generate(
+            prompt=payload.text,
+            kind="study",
+            model=payload.model or provider_cfg.get("model"),
+            timeout_sec=180,
+        )
+        if "error" in result:
+            return ExegesisResponse(
+                model="", reference=payload.reference,
+                response=_translate_provider_error(result["error"], payload.provider)
+            )
+        return ExegesisResponse(
+            model=result.get("model", payload.model or ""),
+            reference=payload.reference,
+            response=result.get("response", ""),
+        )
+
+    # Fallback Ollama
     lang = payload.language.lower()
     language_hint = {
         "pt": "Responda em portugues.",
@@ -276,8 +323,45 @@ def generate(payload: GenerationRequest) -> GenerationResponse:
     if not payload.request.strip():
         raise HTTPException(status_code=400, detail="Pedido vazio")
 
-    prompt = _build_prompt(payload.language, payload.reference, payload.context, payload.request)
+    # Provider externo (nao-Ollama)
+    if payload.provider and payload.provider != "ollama":
+        config = load_providers_config()
+        provider_cfg = config["providers"].get(payload.provider, {})
+        if not provider_cfg.get("api_key"):
+            return GenerationResponse(
+                kind=payload.kind, model="", reference=payload.reference,
+                response="[ERRO] Chave de API nao configurada para este provedor. "
+                         "Configure em Configuracoes ou use o Ollama como fallback."
+            )
+        provider = get_provider(payload.provider, provider_cfg)
+        if not provider:
+            return GenerationResponse(
+                kind=payload.kind, model="", reference=payload.reference,
+                response="[ERRO] Provedor nao suportado."
+            )
+        result = provider.generate(
+            prompt=payload.request,
+            kind=payload.kind,
+            model=payload.model or provider_cfg.get("model"),
+            max_tokens=payload.max_tokens,
+            temperature=payload.temperature,
+            timeout_sec=payload.timeout_sec,
+        )
+        if "error" in result:
+            error_msg = _translate_provider_error(result["error"], payload.provider)
+            return GenerationResponse(
+                kind=payload.kind, model="", reference=payload.reference,
+                response=error_msg
+            )
+        return GenerationResponse(
+            kind=payload.kind,
+            model=result.get("model", payload.model or ""),
+            reference=payload.reference,
+            response=result.get("response", ""),
+        )
 
+    # Fallback: Ollama (codigo existente)
+    prompt = _build_prompt(payload.language, payload.reference, payload.context, payload.request)
     try:
         result = generate_with_ollama(
             prompt=prompt,
@@ -288,11 +372,9 @@ def generate(payload: GenerationRequest) -> GenerationResponse:
         )
     except RuntimeError as exc:
         raise HTTPException(status_code=502, detail=str(exc)) from exc
-
     response = result.get("response", "").strip()
     if not response:
         raise HTTPException(status_code=502, detail="Ollama retornou resposta vazia")
-
     return GenerationResponse(
         kind=payload.kind,
         model=result.get("model", payload.model or ""),
@@ -309,6 +391,66 @@ def get_ollama_models() -> dict[str, Any]:
     except RuntimeError as exc:
         return {"online": False, "items": [], "error": str(exc)}
 
+
+# ===== PROVIDER ROUTES =====
+
+@app.get("/api/providers")
+def get_providers() -> dict[str, Any]:
+    config = load_providers_config()
+    safe_config: dict[str, Any] = {}
+    for pid, cfg in config.get("providers", {}).items():
+        safe_config[pid] = {k: v for k, v in cfg.items() if k != "api_key"}
+        safe_config[pid]["has_key"] = bool(cfg.get("api_key"))
+    safe_config["active_provider"] = config.get("active_provider", "ollama")
+    return safe_config
+
+
+@app.post("/api/providers/config")
+def save_provider_config(data: dict) -> dict[str, str]:
+    provider_id = data.get("provider_id")
+    if not provider_id:
+        raise HTTPException(status_code=400, detail="provider_id is required")
+    config = load_providers_config()
+    if provider_id not in config["providers"]:
+        config["providers"][provider_id] = {}
+    if "api_key" in data:
+        config["providers"][provider_id]["api_key"] = data["api_key"]
+    if "model" in data:
+        config["providers"][provider_id]["model"] = data["model"]
+    if "enabled" in data:
+        config["providers"][provider_id]["enabled"] = data["enabled"]
+    save_providers_config(config)
+    return {"status": "ok"}
+
+
+@app.post("/api/providers/active")
+def set_active_provider(data: dict) -> dict[str, str]:
+    provider = data.get("provider", "ollama")
+    config = load_providers_config()
+    config["active_provider"] = provider
+    save_providers_config(config)
+    return {"status": "ok"}
+
+
+@app.post("/api/providers/test")
+def test_provider(data: dict) -> dict[str, Any]:
+    provider_id = data.get("provider_id")
+    api_key = data.get("api_key", "")
+    model = data.get("model")
+    if not provider_id:
+        return {"ok": False, "error": "provider_id is required"}
+    cfg = {"api_key": api_key, "model": model or DEFAULT_MODELS.get(provider_id, "")}
+    provider = get_provider(provider_id, cfg)
+    if not provider:
+        return {"ok": False, "error": "Provedor nao encontrado"}
+    online = provider.check_online()
+    if online:
+        models = provider.list_models()
+        return {"ok": True, "models": models}
+    return {"ok": False, "error": "Falha ao conectar. Verifique a chave de API."}
+
+
+# ===== PDF EXPORT =====
 
 @app.post("/api/export/pdf")
 def export_pdf(payload: ExportPdfRequest) -> StreamingResponse:

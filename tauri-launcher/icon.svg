@@ -1,15 +1,154 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0f172a"/>
-      <stop offset="1" stop-color="#1d4ed8"/>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="40%" stop-color="#141f3e"/>
+      <stop offset="100%" stop-color="#1a3366"/>
     </linearGradient>
+    <linearGradient id="bgShine" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="30%" stop-color="#fbbf24"/>
+      <stop offset="70%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#92400e"/>
+    </linearGradient>
+    <linearGradient id="crossGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="30%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="pageLeft" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="50%" stop-color="#fffbeb"/>
+      <stop offset="100%" stop-color="#fef9c3"/>
+    </linearGradient>
+    <linearGradient id="pageRight" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="50%" stop-color="#fffbeb"/>
+      <stop offset="100%" stop-color="#fef9c3"/>
+    </linearGradient>
+    <linearGradient id="cover" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <filter id="bookShadow" x="-15%" y="-20%" width="130%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="crossGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect x="24" y="24" width="464" height="464" rx="88" fill="url(#bg)"/>
-  <rect x="120" y="116" width="272" height="280" rx="22" fill="#f8fafc" opacity="0.95"/>
-  <line x1="146" y1="170" x2="364" y2="170" stroke="#1e293b" stroke-width="12"/>
-  <line x1="146" y1="206" x2="334" y2="206" stroke="#334155" stroke-width="10"/>
-  <line x1="146" y1="238" x2="352" y2="238" stroke="#334155" stroke-width="10"/>
-  <line x1="146" y1="270" x2="322" y2="270" stroke="#334155" stroke-width="10"/>
-  <path d="M202 322l18 34 38 6-28 27 7 39-35-19-35 19 7-39-28-27 38-6z" fill="#16a34a"/>
+
+  <!-- Background -->
+  <rect x="24" y="24" width="464" height="464" rx="108" fill="url(#bgGrad)"/>
+  <rect x="24" y="24" width="464" height="464" rx="108" fill="url(#bgShine)"/>
+
+  <!-- Golden glow behind cross -->
+  <ellipse cx="256" cy="115" rx="90" ry="90" fill="#fbbf24" opacity="0.06" filter="url(#crossGlow)"/>
+
+  <!-- ===== OPEN BIBLE (larger, fills most of the icon) ===== -->
+  <g filter="url(#bookShadow)">
+    <!-- Cover -->
+    <path d="M60 168 L60 380 Q60 394 74 396 L438 396 Q452 394 452 380 L452 168 Q452 154 438 152 L74 152 Q60 154 60 168 Z" fill="url(#cover)" stroke="#020617" stroke-width="1"/>
+
+    <!-- Spine -->
+    <rect x="228" y="136" width="56" height="262" rx="6" fill="url(#cover)"/>
+
+    <!-- Left gold edge -->
+    <path d="M72 160 L72 378 Q72 390 84 392 L228 398 L228 140 L84 148 Q72 150 72 160 Z" fill="url(#gold)"/>
+
+    <!-- Right gold edge -->
+    <path d="M440 160 L440 378 Q440 390 428 392 L284 398 L284 140 L428 148 Q440 150 440 160 Z" fill="url(#gold)"/>
+
+    <!-- Left page -->
+    <path d="M84 148 L228 140 L228 398 L84 392 Q72 390 72 378 L72 160 Q72 150 84 148 Z" fill="url(#pageLeft)"/>
+
+    <!-- Right page -->
+    <path d="M428 148 L284 140 L284 398 L428 392 Q440 390 440 378 L440 160 Q440 150 428 148 Z" fill="url(#pageRight)"/>
+
+    <!-- Bookmark -->
+    <path d="M240 392 L240 450 Q240 456 244 454 L248 446 L252 454 Q256 456 256 450 L256 392" fill="#dc2626"/>
+
+    <!-- Cover edge highlights -->
+    <path d="M60 168 Q60 154 74 152" fill="none" stroke="#475569" stroke-width="2" opacity="0.6"/>
+    <path d="M452 168 Q452 154 438 152" fill="none" stroke="#475569" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <!-- ===== GOLDEN CROSS (prominent, centered above book) ===== -->
+  <g filter="url(#crossGlow)">
+    <rect x="236" y="44" width="40" height="105" rx="8" fill="url(#crossGrad)"/>
+    <rect x="206" y="70" width="100" height="32" rx="8" fill="url(#crossGrad)"/>
+    <rect x="238" y="46" width="8" height="101" rx="4" fill="#fef3c7" opacity="0.35"/>
+    <rect x="208" y="72" width="8" height="28" rx="4" fill="#fef3c7" opacity="0.35"/>
+  </g>
+
+  <!-- Subtle light rays -->
+  <g opacity="0.05">
+    <line x1="256" y1="44" x2="140" y2="20" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+    <line x1="256" y1="44" x2="372" y2="20" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- ===== 7 PERSONA SYMBOLS (large, bold, on the book) ===== -->
+
+  <!-- Top row (3) -->
+  <g fill="none" stroke="url(#gold)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 1. Analitico - Magnifying Glass -->
+    <g transform="translate(145, 220)">
+      <circle cx="0" cy="-1" r="14" stroke-width="4"/>
+      <line x1="10" y1="10" x2="22" y2="22" stroke-width="4"/>
+    </g>
+
+    <!-- 2. Expositivo - Scroll -->
+    <g transform="translate(256, 220)">
+      <path d="M-14 -16 L14 -16 L14 16 Q0 20 -14 16 Z" stroke-width="4"/>
+      <line x1="-8" y1="-6" x2="8" y2="-6" stroke-width="3"/>
+      <line x1="-8" y1="2" x2="8" y2="2" stroke-width="3"/>
+    </g>
+
+    <!-- 3. Narrativo - Flame -->
+    <g transform="translate(367, 220)">
+      <path d="M0 18 C-10 6 -8 -6 0 -18 C8 -6 10 6 0 18 Z" stroke-width="4"/>
+    </g>
+  </g>
+
+  <!-- Center: Cristocentrico - Cross (largest, on the book center) -->
+  <g fill="none" stroke="url(#gold)" stroke-linecap="round" stroke-linejoin="round" filter="url(#crossGlow)">
+    <g transform="translate(256, 305)">
+      <line x1="0" y1="-22" x2="0" y2="22" stroke-width="6"/>
+      <line x1="-18" y1="-8" x2="18" y2="-8" stroke-width="6"/>
+      <!-- Circle behind cross -->
+      <circle cx="0" cy="-8" r="30" stroke="url(#gold)" stroke-width="3" opacity="0.3" fill="#fbbf24" fill-opacity="0.05"/>
+    </g>
+  </g>
+
+  <!-- Bottom row (3) -->
+  <g fill="none" stroke="url(#gold)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 4. Devocional - Heart -->
+    <g transform="translate(145, 385)">
+      <path d="M0 16 C-18 2 -18 -12 -7 -16 C0 -19 0 -11 0 -11 C0 -11 0 -19 7 -16 C18 -12 18 2 0 16 Z" stroke-width="4"/>
+    </g>
+
+    <!-- 5. Profetico - Trumpet -->
+    <g transform="translate(256, 385)">
+      <path d="M-13 2 C-17 -10 -9 -18 0 -18 C9 -18 17 -10 13 2 L15 8 L-15 8 Z" stroke-width="4"/>
+      <line x1="0" y1="8" x2="0" y2="14" stroke-width="4"/>
+    </g>
+
+    <!-- 6. Apologetico - Shield -->
+    <g transform="translate(367, 385)">
+      <path d="M-15 -18 L15 -18 L12 8 Q0 18 -12 8 Z" stroke-width="4"/>
+    </g>
+  </g>
+
+  <!-- Connecting arc between symbols -->
+  <path d="M100 200 Q256 160 412 200" fill="none" stroke="url(#gold)" stroke-opacity="0.12" stroke-width="2"/>
+  <path d="M100 400 Q256 440 412 400" fill="none" stroke="url(#gold)" stroke-opacity="0.12" stroke-width="2"/>
 </svg>

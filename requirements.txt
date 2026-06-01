@@ -5,3 +5,4 @@ fpdf2>=2.7.9
 chromadb>=0.4.22
 fastapi>=0.115.0
 uvicorn[standard]>=0.30.0
+cryptography>=41.0.0

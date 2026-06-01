@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Biblical Study AI</title>
+  <link rel="icon" type="image/png" href="../icon.png" />
   <style>
     :root {
       --bg: #0b1220;
@@ -384,16 +385,16 @@
         try {
           await apiGet("/health");
           state.online = true;
-          setStatus("API online em http://localhost:8000", true);
+          setStatus("API online at http://localhost:8000", true);
           break;
         } catch (_) {
-          setStatus("Iniciando backend FastAPI... aguarde.", false);
+          setStatus("Starting backend FastAPI... please wait.", false);
           await new Promise((resolve) => setTimeout(resolve, 1200));
         }
       }
 
       if (!state.online) {
-        setStatus("API nao respondeu. Execute start_api.bat para diagnostico.", false);
+        setStatus("API did not respond. Run start_api.bat for diagnostics.", false);
         return;
       }
 
@@ -404,7 +405,7 @@
         await loadVersionsAndBooks();
         await loadChapter();
       } catch (err) {
-        setStatus(`Erro ao carregar dados: ${err.message}`, false);
+        setStatus(`Error loading data: ${err.message}`, false);
       }
     }
 
