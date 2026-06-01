@@ -118,7 +118,8 @@
     "chat_hist": "💭 Historia Rozmów",
     "import": "📥 Importuj Dane",
     "questions_gen": "❓ Generator Pytań",
-    "questions_hist": "📚 Historia Pytań"
+    "questions_hist": "📚 Historia Pytań",
+    "about": "O programie"
   },
   "messages": {
     "no_data": "Zaimportuj wersję Biblii, aby rozpocząć prowadzone czytanie",

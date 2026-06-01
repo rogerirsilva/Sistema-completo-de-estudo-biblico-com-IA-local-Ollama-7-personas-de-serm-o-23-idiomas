@@ -118,7 +118,8 @@
     "chat_hist": "💭 Chat History",
     "import": "📥 Veri İçe Aktar",
     "questions_gen": "❓ Soru Üretici",
-    "questions_hist": "📚 Soru Geçmişi"
+    "questions_hist": "📚 Soru Geçmişi",
+    "about": "Hakkında"
   },
   "messages": {
     "no_data": "Rehberli okumaya başlamak için bir İncil sürümü içe aktarın",

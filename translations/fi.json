@@ -118,7 +118,8 @@
     "chat_hist": "💭 Keskusteluhistoria",
     "import": "📥 Tuo tietoja",
     "questions_gen": "❓ Kysymysgeneraattori",
-    "questions_hist": "📚 Kysymyshistoria"
+    "questions_hist": "📚 Kysymyshistoria",
+    "about": "Tietoja"
   },
   "messages": {
     "no_data": "Tuo Raamatun versio aloittaaksesi",

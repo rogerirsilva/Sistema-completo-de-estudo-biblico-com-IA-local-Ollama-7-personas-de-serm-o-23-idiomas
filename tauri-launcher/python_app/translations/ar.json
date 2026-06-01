@@ -11,7 +11,8 @@
     "chat_hist": "💭 تاريخ المحادثات",
     "import": "📥 استيراد البيانات",
     "questions_gen": "❓ مولد الأسئلة",
-    "questions_hist": "📚 سجل الأسئلة"
+    "questions_hist": "📚 سجل الأسئلة",
+    "about": "حول"
   },
   "labels": {
     "bible_version": "نسخة الكتاب المقدس",

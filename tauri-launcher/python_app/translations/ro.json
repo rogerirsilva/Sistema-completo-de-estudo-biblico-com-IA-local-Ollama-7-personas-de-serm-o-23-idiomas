@@ -118,7 +118,8 @@
     "chat_hist": "💭 Istoric Conversații",
     "import": "📥 Importă Date",
     "questions_gen": "❓ Generator de Întrebări",
-    "questions_hist": "📚 Istoric Întrebări"
+    "questions_hist": "📚 Istoric Întrebări",
+    "about": "Despre"
   },
   "messages": {
     "no_data": "Importați o versiune a Bibliei pentru a începe lectura ghidată",

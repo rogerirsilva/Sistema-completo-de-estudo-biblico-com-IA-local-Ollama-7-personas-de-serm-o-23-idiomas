@@ -11,7 +11,8 @@
     "chat_hist": "💭 聊天历史",
     "import": "📥 导入数据",
     "questions_gen": "❓ 问题生成器",
-    "questions_hist": "📚 问题历史"
+    "questions_hist": "📚 问题历史",
+    "about": "关于"
   },
   "labels": {
     "bible_version": "圣经版本",

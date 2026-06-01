@@ -11,7 +11,8 @@
     "chat_hist": "💭 Chat-Historie",
     "import": "📥 Daten importieren",
     "questions_gen": "❓ Fragengenerator",
-    "questions_hist": "📚 Fragenverlauf"
+    "questions_hist": "📚 Fragenverlauf",
+    "about": "Über"
   },
   "labels": {
     "bible_version": "Bibelversion",

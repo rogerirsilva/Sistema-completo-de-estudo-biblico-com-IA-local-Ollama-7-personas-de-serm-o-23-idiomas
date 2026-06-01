@@ -145,7 +145,8 @@
     "chat_hist": "💭 Histórico Chat",
     "import": "📥 Importar Dados",
     "questions_gen": "❓ Gerar Perguntas",
-    "questions_hist": "📚 Histórico de Perguntas"
+    "questions_hist": "📚 Histórico de Perguntas",
+    "about": "Sobre"
   },
   "messages": {
     "no_data": "Importe uma versão bíblica para começar a leitura guiada.",

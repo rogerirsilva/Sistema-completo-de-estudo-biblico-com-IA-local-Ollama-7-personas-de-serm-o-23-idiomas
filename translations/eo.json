@@ -118,7 +118,8 @@
     "chat_hist": "💭 Chat History",
     "import": "📥 Importi Datumojn",
     "questions_gen": "❓ Questions Generator",
-    "questions_hist": "📚 Questions History"
+    "questions_hist": "📚 Questions History",
+    "about": "Pri"
   },
   "messages": {
     "no_data": "Importu Biblio-version por komenci gvidatan legadon",

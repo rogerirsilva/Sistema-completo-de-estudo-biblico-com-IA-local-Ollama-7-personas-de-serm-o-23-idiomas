@@ -11,7 +11,8 @@
     "chat_hist": "💭 Historial de Chat",
     "import": "📥 Importar Datos",
     "questions_gen": "❓ Generador de Preguntas",
-    "questions_hist": "📚 Historial de Preguntas"
+    "questions_hist": "📚 Historial de Preguntas",
+    "about": "Acerca de"
   },
   "buttons": {
     "generate": "✨ Generar",

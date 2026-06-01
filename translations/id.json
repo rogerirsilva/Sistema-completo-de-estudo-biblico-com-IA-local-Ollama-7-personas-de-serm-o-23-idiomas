@@ -118,7 +118,8 @@
     "chat_hist": "💭 Chat History",
     "import": "📥 Impor Data",
     "questions_gen": "❓ Generator Pertanyaan",
-    "questions_hist": "📚 Riwayat Pertanyaan"
+    "questions_hist": "📚 Riwayat Pertanyaan",
+    "about": "Tentang"
   },
   "messages": {
     "no_data": "Impor versi Alkitab untuk memulai pembacaan terpandu",

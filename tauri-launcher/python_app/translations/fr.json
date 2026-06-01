@@ -11,7 +11,8 @@
     "chat_hist": "💭 Historique des Discussions",
     "import": "📥 Importer des Données",
     "questions_gen": "❓ Générateur de Questions",
-    "questions_hist": "📚 Historique des Questions"
+    "questions_hist": "📚 Historique des Questions",
+    "about": "À propos"
   },
   "labels": {
     "bible_version": "Version de la Bible",

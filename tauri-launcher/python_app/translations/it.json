@@ -11,7 +11,8 @@
     "chat_hist": "💭 Cronologia Chat",
     "import": "📥 Importa Dati",
     "questions_gen": "❓ Generatore di Domande",
-    "questions_hist": "📚 Cronologia Domande"
+    "questions_hist": "📚 Cronologia Domande",
+    "about": "Informazioni"
   },
   "labels": {
     "bible_version": "Versione della Bibbia",

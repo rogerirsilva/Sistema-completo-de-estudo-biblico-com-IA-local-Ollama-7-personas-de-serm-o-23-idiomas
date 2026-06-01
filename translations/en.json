@@ -118,7 +118,8 @@
     "chat_hist": "💭 Chat History",
     "import": "📥 Import Data",
     "questions_gen": "❓ Questions Generator",
-    "questions_hist": "📚 Questions History"
+    "questions_hist": "📚 Questions History",
+    "about": "About"
   },
   "messages": {
     "no_data": "Import a Bible version to start guided reading.",

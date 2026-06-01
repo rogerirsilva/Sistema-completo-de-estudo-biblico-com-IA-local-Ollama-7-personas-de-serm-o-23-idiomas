@@ -120,7 +120,8 @@
     "chat_hist": "💭 Lịch Sử Trò Chuyện",
     "import": "📥 Nhập Dữ Liệu",
     "questions_gen": "❓ Trình Tạo Câu Hỏi",
-    "questions_hist": "📚 Lịch Sử Câu Hỏi"
+    "questions_hist": "📚 Lịch Sử Câu Hỏi",
+    "about": "Giới thiệu"
   },
   "messages": {
     "no_data": "Nhập phiên bản Kinh Thánh để bắt đầu đọc có hướng dẫn",

@@ -118,7 +118,8 @@
     "chat_hist": "💭 Chat History",
     "import": "📥 Leta Data",
     "questions_gen": "❓ Kizalishi cha Maswali",
-    "questions_hist": "📚 Historia ya Maswali"
+    "questions_hist": "📚 Historia ya Maswali",
+    "about": "Kuhusu"
   },
   "messages": {
     "no_data": "Agiza toleo la Biblia kuanza kusoma kwa mwongozo",
