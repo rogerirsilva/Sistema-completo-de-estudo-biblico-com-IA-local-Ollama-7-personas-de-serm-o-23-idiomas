@@ -43,33 +43,41 @@ if errorlevel 1 (
 )
 
 echo [OK] Build finished. Check output in tauri-launcher\src-tauri\target\release\bundle
+pause
 exit /b 0
 
 :prep_error
 echo [ERROR] Failed to prepare resources.
+pause
 exit /b 1
 
 :npm_missing
 echo [ERROR] npm not found. Install Node.js LTS: https://nodejs.org/
+pause
 exit /b 1
 
 :cargo_missing
 echo [ERROR] cargo not found. Install Rust: https://rustup.rs/
+pause
 exit /b 1
 
 :npm_install_error
 echo [ERROR] npm install failed.
+pause
 exit /b 1
 
 :icon_error
 echo [ERROR] Failed to generate Tauri icons.
+pause
 exit /b 1
 
 :build_error
 echo [ERROR] Build failed.
+pause
 exit /b 1
 
 :artifact_error
 echo [ERROR] Build command finished but installer artifact was not found.
 echo [ERROR] Expected .msi in bundle\msi or .exe in bundle\nsis.
+pause
 exit /b 1

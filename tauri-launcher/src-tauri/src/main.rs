@@ -5,7 +5,6 @@ use std::net::TcpStream;
 use std::os::windows::process::CommandExt;
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
-use tauri::Manager;
 
 const CREATE_NO_WINDOW: u32 = 0x08000000;
 
@@ -52,7 +51,7 @@ fn install_python_app_candidates() -> Vec<PathBuf> {
     candidates
 }
 
-fn resolve_python_app(app: &tauri::App) -> io::Result<PathBuf> {
+fn resolve_python_app(path_resolver: tauri::PathResolver) -> io::Result<PathBuf> {
     // 1. Installed executable dir candidates
     for candidate in install_python_app_candidates() {
         if candidate.exists() {
@@ -61,7 +60,7 @@ fn resolve_python_app(app: &tauri::App) -> io::Result<PathBuf> {
     }
 
     // 2. Resource dir (production resources)
-    if let Some(resource_dir) = app.path_resolver().resource_dir() {
+    if let Some(resource_dir) = path_resolver.resource_dir() {
         let candidate = resource_dir.join("python_app");
         if candidate.exists() {
             return Ok(candidate);
@@ -69,7 +68,7 @@ fn resolve_python_app(app: &tauri::App) -> io::Result<PathBuf> {
     }
 
     // 3. App data fallback (updater/runtime extracted location)
-    if let Some(app_data) = app.path_resolver().app_data_dir() {
+    if let Some(app_data) = path_resolver.app_data_dir() {
         let candidate = app_data.join("python_app");
         if candidate.exists() {
             return Ok(candidate);
@@ -126,7 +125,7 @@ fn ensure_backend_started(app: tauri::AppHandle) -> Result<bool, String> {
     if is_backend_running() {
         return Ok(false);
     }
-    let workdir = resolve_python_app(&app).map_err(|e| e.to_string())?;
+    let workdir = resolve_python_app(app.path_resolver()).map_err(|e| e.to_string())?;
     start_backend(&workdir).map_err(|e| e.to_string())?;
     Ok(true)
 }
@@ -139,7 +138,7 @@ fn main() {
             kill_process_on_port(8000);
             std::thread::sleep(std::time::Duration::from_secs(1));
             // Start fresh backend
-            let workdir = resolve_python_app(app)?;
+            let workdir = resolve_python_app(app.path_resolver())?;
             start_backend(&workdir)?;
             Ok(())
         })
