@@ -2330,15 +2330,19 @@
   function populateChapterListFor(bookSelect, selectRef) {
     const bookKey = getValue(bookSelect) || state.selectedBook;
     const count = bookKey ? getBookChapterCount(bookKey) : 1;
-    const currentVal = selectRef ? selectRef.value : "1";
+    const prevVal = selectRef ? selectRef.value : "";
     const options = Array.from({ length: count }, (_, i) => {
       const n = i + 1;
-      return `<option value="${n}"${n === Number(currentVal) ? " selected" : ""}>Capítulo ${n}</option>`;
+      return `<option value="${n}">${n}</option>`;
     }).join("");
-    if (selectRef) selectRef.innerHTML = `<option value="">—</option>${options}`;
-    // Restore previous selection if still valid
-    if (selectRef && currentVal && Number(currentVal) >= 1 && Number(currentVal) <= count) {
-      selectRef.value = currentVal;
+    if (selectRef) selectRef.innerHTML = options;
+    // Restore previous selection or default to chapter 1
+    if (selectRef) {
+      if (prevVal && Number(prevVal) >= 1 && Number(prevVal) <= count) {
+        selectRef.value = prevVal;
+      } else {
+        selectRef.value = "1";
+      }
     }
   }
 
