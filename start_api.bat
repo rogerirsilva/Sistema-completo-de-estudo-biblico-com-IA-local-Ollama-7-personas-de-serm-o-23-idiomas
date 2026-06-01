@@ -59,14 +59,14 @@ if not exist "%BUNDLED%" (
   )
 )
 
-echo [INFO] Starting API at http://localhost:8000 >> "%LOG%"
-echo [INFO] Docs at http://localhost:8000/docs >> "%LOG%"
+echo [INFO] Starting API at http://127.0.0.1:8000 >> "%LOG%"
+echo [INFO] Docs at http://127.0.0.1:8000/docs >> "%LOG%"
 echo [INFO] Log file: %LOG%
 
 REM Use --reload only if TURBO_DEV is set (dev mode)
 if defined TURBO_DEV (
-  "%PY%" -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
+  "%PY%" -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload >> "%LOG%" 2>&1
 ) else (
-  "%PY%" -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
+  "%PY%" -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 >> "%LOG%" 2>&1
 )
 exit /b %errorlevel%
