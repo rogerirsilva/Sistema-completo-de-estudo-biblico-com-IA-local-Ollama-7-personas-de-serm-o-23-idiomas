@@ -3311,9 +3311,10 @@ return `
 
   async function bootstrap() {
     try {
+      const MAX_HEALTH_ATTEMPTS = 45;
       let attempt = 0;
       updateSplash("Iniciando servidor...", 5);
-      while (true) {
+      while (attempt < MAX_HEALTH_ATTEMPTS) {
         try {
           await apiGet("/health");
           state.online = true;
@@ -3336,6 +3337,29 @@ return `
           }
           await new Promise((resolve) => setTimeout(resolve, 1200));
         }
+      }
+
+      if (!state.online) {
+        updateSplash("Servidor offline. Abrindo interface em modo local...", 28);
+
+        try {
+          await loadUiTranslations(getValue(refs.langSelect, "pt") || "pt");
+        } catch (_) {}
+
+        applyUiTranslations();
+        loadReadProgress();
+        bindHistoryControls();
+        createMultiBookContainers();
+        updateDisabledFields();
+        bindEvents();
+        updateBadges();
+        updateDirection();
+
+        setStatus(getTranslation("messages.api_offline_boot", "Backend offline. Interface aberta em modo local."), false);
+        updateSplash("Interface pronta (modo offline)", 100);
+        setTimeout(hideSplash, 700);
+        setActiveTab("about");
+        return;
       }
 
       updateSplash("Carregando recursos...", 30);
