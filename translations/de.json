@@ -259,5 +259,36 @@
   "sections": {
     "import_data": "Bibeldaten importieren",
     "folder_structure": "📁 Ordnerstruktur nach Sprache"
+  },
+  "providers": {
+    "active_provider": "Aktiver Anbieter",
+    "api_key": "API-Schlüssel",
+    "model": "Modell",
+    "save": "Speichern",
+    "test": "Testen",
+    "configured": "Konfiguriert",
+    "no_key": "Kein Schlüssel",
+    "providers_title": "KI-Anbieter",
+    "ollama_label": "Ollama (Lokal)"
+  },
+  "about": {
+    "title": "Biblische Studienpanel",
+    "subtitle": "Exegese, Predigten, Devotional und theologischer Chat mit lokalem AI",
+    "dedication_title": "Dedikation",
+    "dedication_text": "Diese Anwendung wurde von jemandem erstellt, der nicht viel über Programmierung versteht, aber sein Bestes gegeben hat. Ich bin ein kleiner Programmierer und IT-Support, der nicht reisen kann, um das Evangelium zu predigen, aber ich hoffe, dass durch diese Werkzeuge es möglich ist, vielen Brüdern und Schwestern dabei zu helfen, sich auf die Worte Gottes zu konzentrieren und sie zu verstehen.",
+    "church": "Mitglied der Nova Igreja Batista, Stadt Manaus, Amazonas, wo ich gelernt habe, dass das Wort Gottes sehr wichtig für jeden von uns ist.",
+    "encouragement_title": "Ermunterung",
+    "verse_phil": "\"Ich kann alles durch ihn tun, der mich stärkt.\"",
+    "verse_ref": "— Philippus 4:13",
+    "verse_john": "\"Ich kam, dass sie das Leben haben und es in Fülle haben mögen.\"",
+    "verse_john_ref": "— Johannes 10:10",
+    "encouragement_body": "Denken Sie daran: dieses Leben ist nur vorübergehend. Unser Ziel ist Christus, und er ist der Einzige, der das Leben — ein reiches Leben — hat. Möge diese Werkzeuge ein Licht für diejenigen sein, die nach der Wahrheit suchen.",
+    "purpose": "Für diejenigen, die keine physische Bibel in ihren Händen tragen können, für diejenigen, die nicht die Freiheit des Wortes haben, wissen Sie: das Wort Gottes kehrt nie leer zurück.",
+    "translation_title": "Übersetzungen",
+    "translation_note": "Wenn irgendwo die Übersetzung nicht gut ist, entschuldigen wir uns. Wir suchen immer nach Verbesserung. Wenn Sie einen Fehler oder eine schlecht übersetzte Passage finden, melden Sie ihn bitte auf GitHub.",
+    "links_title": "Links",
+    "github_link": "GitHub - Melden Sie Fehler / Vorschläge für Verbesserungen",
+    "download_link": "Offizielle kostenlose Verteilung — Herunterladen",
+    "thanks": "Möge Gott segnen Ihre Lektüre und Meditation auf die Worte. Soli Deo Gloria."
   }
 }

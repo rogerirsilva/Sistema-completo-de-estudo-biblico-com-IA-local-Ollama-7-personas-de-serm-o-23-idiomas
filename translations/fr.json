@@ -259,5 +259,36 @@
   "sections": {
     "import_data": "Importer des données bibliques",
     "folder_structure": "📁 Structure des Dossiers par Langue"
+  },
+  "providers": {
+    "active_provider": "Fournisseur Actif",
+    "api_key": "Clé API",
+    "model": "Modèle",
+    "save": "Enregistrer",
+    "test": "Tester",
+    "configured": "Configuré",
+    "no_key": "Pas de clé",
+    "providers_title": "Fournisseurs d'IA",
+    "ollama_label": "Ollama (Local)"
+  },
+  "about": {
+    "title": "Biblical Study Panel",
+    "subtitle": "Exégèse, Sermons, Devotional et Théologique Chat avec l'IA locale",
+    "dedication_title": "Dédicace",
+    "dedication_text": "Cette application a été créée par quelqu'un qui ne comprend pas grand-chose à la programmation, mais a donné son meilleur. Je suis un petit programmeur et support IT qui ne peut pas voyager pour prêcher l'évangile, mais j'espère que grâce à cet outil il sera possible d'aider de nombreux frères et sœurs à méditer et à comprendre la Parole de Dieu.",
+    "church": "Membre de Nova Igreja Batista, Ville de Manaus, Amazonas, où j'ai appris que la Parole de Dieu est très importante pour chacun d'entre nous.",
+    "encouragement_title": "Encouragement",
+    "verse_phil": "\"Je peux faire tout par Celui qui me renforce.\"",
+    "verse_ref": "— Philippiens 4:13",
+    "verse_john": "\"Je suis venu pour qu'ils aient la vie, et qu'elle soit abondante.\"",
+    "verse_john_ref": "— Jean 10:10",
+    "encouragement_body": "Rappel : cette vie est temporaire. Notre but est le Christ, et c'est Lui qui a la vie — la vie en abondance. Que cet outil soit une lumière pour ceux qui cherchent la vérité.",
+    "purpose": "Pour ceux qui ne peuvent pas porter un Bible physique dans leurs mains, pour ceux qui n'ont pas la liberté de parole, sachant que la Parole de Dieu ne revient jamais vide.",
+    "translation_title": "Traductions",
+    "translation_note": "Si quelque part la traduction n'est pas bonne, nous nous excusons. Nous sommes toujours à la recherche d'améliorer. Si vous trouvez un bug ou un texte mal traduit, veuillez le signaler sur GitHub.",
+    "links_title": "Liens",
+    "github_link": "GitHub - Signaler les bugs / Suggérer des améliorations",
+    "download_link": "Distribution officielle gratuite — Télécharger",
+    "thanks": "Que Dieu bénisse votre lecture et méditation sur la Parole. Soli Deo Gloria."
   }
 }

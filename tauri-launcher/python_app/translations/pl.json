@@ -242,5 +242,36 @@
     "context_label": "Kontekst:",
     "explanation_label": "Wyjaśnienie:",
     "timestamp_format": "%m/%d/%Y at %I:%M %p"
+  },
+  "providers": {
+    "active_provider": "Aktywny dostawca",
+    "api_key": "Klucz API",
+    "model": "Model",
+    "save": "Zapisz",
+    "test": "Testuj",
+    "configured": "Skonfigurowano",
+    "no_key": "Brak klucza",
+    "providers_title": "Dostawcy AI",
+    "ollama_label": "Ollama (Lokalny)"
+  },
+  "about": {
+    "title": "Panel Studiów Bibliowych",
+    "subtitle": "Eksegesja, Predańcze, Współczesne i Teologiczne Rozmowy z Lokalnym AI",
+    "dedication_title": "Poświęcenie",
+    "dedication_text": "Ta aplikacja została stworzona przez kogoś, kto nie wie dużo o programowaniu, ale dał swój najlepszy wkład. Jestem mały programistą i wsparciem IT, który nie może podróżować, aby promować gospodarkę Bożą, ale marzę, że dzięki tej narzędziu będzie możliwe pomоч wielu braciom i siostrzakom w medytacji i zrozumieniu Słowa Boga.",
+    "church": "Członek Nowej Igry Batysty w Miasteczku Manausie, Amazonas, gdzie dowiadziałem się, że słowo Boga jest bardzo ważne dla każdego z nas.",
+    "encouragement_title": "Współczucie zmotywowania",
+    "verse_phil": "Mogę zrobić wszystko dzięki Temu, kto wzmocnia mnie.",
+    "verse_ref": "Filipiński 4:13",
+    "verse_john": "Przybyłem, aby mogli mieć życie, i mieć je w nieskończoności.",
+    "verse_john_ref": "- Jan 10:10",
+    "encouragement_body": "Pamiętaj: ta życie jest tymczasowe. Naszym celem jest Chrystus, a on jest jedynym, kto ma życie - życie w bogactwie. Pусть to narzędzie będzie światłem dla tych, którzy szukają prawdy.",
+    "purpose": "Dla tych, którzy nie mogą trzymać fizycznego Biblii w ręku, dla tych, którzy nie mają swobody mowy, pamiętaj, że słowo Boże nigdy nie wraca puste.",
+    "translation_title": "Tłumaczenia",
+    "translation_note": "Jeśli gdzieś tłumaczenie nie jest dobre, przepraszamy. Zawsze szukamy sposobów ulepszenia. Jeśli znajdziesz jakieś błąd lub słabo przetłumaczony tekst, prosimy o zgłoszenie go na GitHub.",
+    "links_title": "Linki",
+    "github_link": "GitHub - Zgłoś błędy / Sugestuj poprawy",
+    "download_link": "Darmowa oficjalna dystrybucja - Pobierz",
+    "thanks": "Bóg błogosławiaj Twoje czytanie i medytacje na Słowa. Soli Deo Gloria."
   }
 }

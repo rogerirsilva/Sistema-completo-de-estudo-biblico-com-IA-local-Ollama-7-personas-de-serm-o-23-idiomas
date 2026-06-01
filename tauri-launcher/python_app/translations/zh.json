@@ -259,5 +259,36 @@
   "sections": {
     "import_data": "导入圣经数据",
     "folder_structure": "📁 按语言的文件夹结构"
+  },
+  "providers": {
+    "active_provider": "活跃提供商",
+    "api_key": "API密钥",
+    "model": "模型",
+    "save": "保存",
+    "test": "测试",
+    "configured": "已配置",
+    "no_key": "无密钥",
+    "providers_title": "AI提供商",
+    "ollama_label": "Ollama (本地)"
+  },
+  "about": {
+    "title": "Biblical Study Panel",
+    "subtitle": "Exegesis, Sermons, Devotional and Theological Chat with local AI",
+    "dedication_title": "Dedication",
+    "dedication_text": "This application was made by someone who does not understand much about programming, but gave his best. I am a small programmer and IT support who cannot travel to preach the gospel, but I hope that through this tool it will be possible to help many brothers and sisters to meditate and understand the Word of God.",
+    "church": "Member of Nova Igreja Batista, City of Manaus, Amazonas, where I learned that the Word of God is very important for each one of us.",
+    "encouragement_title": "Encouragement",
+    "verse_phil": "\"I can do all things through Him who strengthens me.\"",
+    "verse_ref": "— Philippians 4:13",
+    "verse_john": "\"I came that they may have life, and have it abundantly.\"",
+    "verse_john_ref": "— John 10:10",
+    "encouragement_body": "Remember: this life is temporary. Our goal is Christ, and He is the only one who has life — life in abundance. May this tool be a light for those who seek the truth.",
+    "purpose": "For those who cannot carry a physical Bible in their hands, for those who do not have freedom of speech, know that the Word of God never returns empty.",
+    "translation_title": "Translations",
+    "translation_note": "If somewhere the translation is not good, we apologize. We are always looking to improve. If you find any bug or poorly translated text, please report it on GitHub.",
+    "links_title": "Links",
+    "github_link": "GitHub - Report bugs / Suggest improvements",
+    "download_link": "Official free distribution — Download",
+    "thanks": "May God bless your reading and meditation on the Word. Soli Deo Gloria."
   }
 }

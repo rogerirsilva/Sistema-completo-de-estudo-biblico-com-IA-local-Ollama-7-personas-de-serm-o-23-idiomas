@@ -242,5 +242,36 @@
     "context_label": "Context:",
     "explanation_label": "Explicație:",
     "timestamp_format": "%m/%d/%Y at %I:%M %p"
+  },
+  "providers": {
+    "active_provider": "Furnizor Activ",
+    "api_key": "Cheie API",
+    "model": "Model",
+    "save": "Salvează",
+    "test": "Testează",
+    "configured": "Configurat",
+    "no_key": "Fără cheie",
+    "providers_title": "Furnizori AI",
+    "ollama_label": "Ollama (Local)"
+  },
+  "about": {
+    "title": "Panoul de Studiu Biblic",
+    "subtitle": "Exegesiște, Predațiuni, Conversații Devotionale și Teologice cu IA Locală",
+    "dedication_title": "Dedicare",
+    "dedication_text": "Această aplicație a fost făcută de cineva care nu înțelege mult despre programare, dar a dat cea mai bună. Sunt un mic programator și sprijin IT care nu poate călca pentru a preda biserica, dar sper că prin această instrumentalitate va fi posibil să ajutăm mulți broasi și sestre să mediteze și să înțeleagă cuvântul lui Dumnezeu.",
+    "church": "Membre al Noua Igreja Batista, orașul Manaus, Amazonas, unde am învățat că cuvântul de Dumnezeu este foarte important pentru fiecare dintre noi.",
+    "encouragement_title": "Încurajare",
+    "verse_phil": "Pot să fac toate lucrurile prin El care mă încurajează.",
+    "verse_ref": "Filiipeni 4:13",
+    "verse_john": "Am venit pentru ca ei să aibă viață și să o aibă în abundență.",
+    "verse_john_ref": "- Ioan 10:10",
+    "encouragement_body": "Ține minte: această viață este temporară. Obiectivul nostru este Crist și el este singurul care are viață - viață în abundență. Poate acest instrument fie o luminoasă pentru cei care căută adevărul.",
+    "purpose": "Pentru cei care nu pot lua Biblia fizică în mână, pentru cei care nu au libertatea de vorbire, știți că cuvântul lui Dumnezeu niciodată nu se întoarce gol.",
+    "translation_title": "Traduceri",
+    "translation_note": "Dacă într-un anumit loc traducerea nu este bună, ne cerem scuze. Lucrăm întotdeauna pentru a îmbunătăți. Dacă găsiți orice bug sau text tradus greu, vă rog să raportați acest lucru pe GitHub.",
+    "links_title": "Legături",
+    "github_link": "GitHub - Raportează bug-uri / Sugerează îmbunătățiri",
+    "download_link": "Distribuire oficială gratuită - Descărcare",
+    "thanks": "Poate Dumnezeu vă bleskească citirea și meditația asupra cuvântului. Soli Deo Gloria."
   }
 }

@@ -242,5 +242,36 @@
     "context_label": "Context:",
     "explanation_label": "Explanation:",
     "timestamp_format": "%m/%d/%Y at %I:%M %p"
+  },
+  "providers": {
+    "active_provider": "Active Provider",
+    "api_key": "API Key",
+    "model": "Model",
+    "save": "Save",
+    "test": "Test",
+    "configured": "Configured",
+    "no_key": "No key",
+    "providers_title": "AI Providers",
+    "ollama_label": "Ollama (Local)"
+  },
+  "about": {
+    "title": "Panel Studi Alkitab",
+    "subtitle": "Eksegese, Sermon, Devosi dan Percakapan Teologi dengan AI lokal",
+    "dedication_title": "Dedikasi",
+    "dedication_text": "Aplikasi ini dibuat oleh seseorang yang tidak mengerti banyak tentang pemrograman, tetapi memberikan yang terbaik. Saya adalah seorang programmer kecil dan dukungan IT yang tidak dapat berkelana untuk menyampaikan injil, namun saya harap melalui alat ini akan mungkin membantu banyak saudara-saudari untuk meditasi dan memahami Firman Allah.",
+    "church": "Anggota dari Nova Igreja Batista, Kota Manaus, Amazonas, di mana saya belajar bahwa Firman Allah sangat penting bagi setiap orang.",
+    "encouragement_title": "Penggalangan Semangat",
+    "verse_phil": "\"Aku dapat melakukan segala sesuatu melalui Dia yang memperkuat aku.\"",
+    "verse_ref": "— Filipi 4:13",
+    "verse_john": "\"Aku datang agar mereka memiliki hidup, dan hidup itu dalam kesempurnaan.\"",
+    "verse_john_ref": "— Yohanes 10:10",
+    "encouragement_body": "Ingatlah: kehidupan ini sementara. Tujuan kita adalah Kristus, dan Dia satu-satunya yang memiliki hidup — hidup dalam kesempurnaan. Semoga alat ini menjadi cahaya bagi mereka yang mencari kebenaran.",
+    "purpose": "Bagi mereka yang tidak dapat membawa Alkitab fisik di tangan mereka, bagi mereka yang tidak memiliki kebebasan berbicara, ketahuilah bahwa Firman Allah tidak akan kembali kosong.",
+    "translation_title": "Terjemahan",
+    "translation_note": "Jika di mana saja terjemahan tidak baik, kami meminta maaf. Kami selalu mencari untuk meningkatkan. Jika Anda menemukan bug atau teks yang diterjemahkan buruk, silakan melaporkannya di GitHub.",
+    "links_title": "Tautan",
+    "github_link": "GitHub - Laporan bug / Suggest perbaikan",
+    "download_link": "Distribusi resmi gratis — Unduh",
+    "thanks": "Semoga Allah memberkati membaca dan meditasi pada Firman. Soli Deo Gloria."
   }
 }

@@ -242,5 +242,36 @@
     "context_label": "Context:",
     "explanation_label": "Explanation:",
     "timestamp_format": "%m/%d/%Y at %I:%M %p"
+  },
+  "providers": {
+    "active_provider": "Mtoa Huduma Anayetumika",
+    "api_key": "Ufunguo wa API",
+    "model": "Muundo",
+    "save": "Hifadhi",
+    "test": "Jaribu",
+    "configured": "Imesakinishwa",
+    "no_key": "Hakuna ufunguo",
+    "providers_title": "Watoa Huduma wa AI",
+    "ollama_label": "Ollama (Mtaa)"
+  },
+  "about": {
+    "title": "Paneli la Kufasiri Biblia",
+    "subtitle": "Uchambuzi, Hotuba, Mawasiliano ya Kiroho na Chat ya AI ya eneo hilo",
+    "dedication_title": "Mafanikio",
+    "dedication_text": "Tatizo hili lilitengenezwa na mtu ambaye hauelewi sana juu ya programu, lakini alitumia uwezo wake. Ni mwanaprogramu mdogo na usaidizi wa IT ambaye hawezi kufanya safari ili kumwongoza wengine kuhusu Injili, lakini nilihisi kwamba kupitia zana hii itakuwa rahisi kuwasaidia watu wengi kujifunza na kuelewa Neno la Mungu.",
+    "church": "Mwanachama wa Nova Igreja Batista, Manaus, Amazonas, ambapo nilijua kwamba Neno la Mungu ni muhimu kwa kila mmoja wetu.",
+    "encouragement_title": "Ujumbe",
+    "verse_phil": "Ninaweza kufanya vyote kwa yeye anayeongeza nafsi yangu.",
+    "verse_ref": "- Filipi 4:13",
+    "verse_john": "Nilikuja kwamba wawajue maisha, na yawe ya kutosha.",
+    "verse_john_ref": "- Yohana 10:10",
+    "encouragement_body": "Kumbuka: maisha haya ni ya muda mfupi. Lengo letu ni Kristo, na yeye ndiye pekee anayejua maisha - maisha ya kutosha. Ndiaye zana hii iwe chanzo cha ajabu kwa wale ambao wanahitaji ukweli.",
+    "purpose": "Kwa watu wasio na Biblia za kawaida, kwa watu wasio na uhuru wa kujieleza, tafakari kwamba Neno la Mungu halijali kuishia usiofaa.",
+    "translation_title": "Mabishano",
+    "translation_note": "Iwapo hapa translation haifai, tunapenda. Tumepewa kufanya maendeleo yote mawili. Ikiwa unajua bugi au maelezo yoyote ya kutojulikana, tafuta GitHub.",
+    "links_title": "Mawasiliano",
+    "github_link": "GitHub - Report bugs / Suggest improvements",
+    "download_link": "Uzalishaji wa kuanzia - Download",
+    "thanks": "Mungu aweze kutubariki ujifunzaji wako na ufikiaji wa Neno la Mungu. Soli Deo Gloria."
   }
 }

@@ -242,5 +242,36 @@
     "context_label": "Context:",
     "explanation_label": "Explanation:",
     "timestamp_format": "%m/%d/%Y at %I:%M %p"
+  },
+  "providers": {
+    "active_provider": "Aktiivinen Palveluntarjoaja",
+    "api_key": "API-avain",
+    "model": "Malli",
+    "save": "Tallenna",
+    "test": "Testaa",
+    "configured": "Määritetty",
+    "no_key": "Ei avainta",
+    "providers_title": "AI-palveluntarjoajat",
+    "ollama_label": "Ollama (Paikallinen)"
+  },
+  "about": {
+    "title": "Biblillinen tutkimuspaneeli",
+    "subtitle": "Exegesis, saarnat, devotional ja teologinen keskustelu paikallisella AI:lla",
+    "dedication_title": "Dedikaatio",
+    "dedication_text": "Tämä sovellus on tehty jollakin, joka ei ymmärrä paljon ohjelmointia, mutta antoi parhaansa. Olen pieni ohjelmoija ja IT-tuki, joka ei voi matkustaa saarnomaan evankeliumia, mutta toivon, että tämän työkalun avulla voidaan auttaa monia veljiä ja sisaria meditoimaan ja ymmärtämään Jumalan sanaa.",
+    "church": "Jäsen Nova Igreja Batista, Manausin kaupunki, Amazonas, jossa opin, että Jumalan sana on hyvin tärkeää jokaiselle meistä.",
+    "encouragement_title": "Houkutus",
+    "verse_phil": "\"Minulla on voimaa kaikkea tehdä hänen avustuksellaan.\"",
+    "verse_ref": "— Filippiläisiä 4:13",
+    "verse_john": "\"Tulin, että he saavat elämän ja sen saa paljon.\"",
+    "verse_john_ref": "— Johanneusta 10:10",
+    "encouragement_body": "Muista: tämä elämä on väliaikainen. Meidän tavoitteemme on Kristus, ja hän on ainoa, jolla on elämä — runsas elämä. Toivon, että tämä työkalu on valo niille, jotka etsivät totuutta.",
+    "purpose": "Niille, jotka eivät voi kantaa fyysistä Raamattua käsiinsä, niille, jotka eivät ole vapautuneita puhumaan, tiedetään, että Jumalan sana ei palaa tyhjänä.",
+    "translation_title": "Käännökset",
+    "translation_note": "Jos jossain käännös on huono, olemme syyntakeisia. Olemme aina etsimässä parannuksia. Jos löydät bugin tai huonosti käännetyt tekstit, ilmoita niistä GitHub:lle.",
+    "links_title": "Linkit",
+    "github_link": "GitHub - Ilmoita bugin / Etsi parannuksia",
+    "download_link": "Virallinen ilmaisjakelu — Lataa",
+    "thanks": "May God bless your reading and meditation on the Word. Soli Deo Gloria."
   }
 }

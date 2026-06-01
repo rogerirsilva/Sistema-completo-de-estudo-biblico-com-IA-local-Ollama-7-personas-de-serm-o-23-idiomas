@@ -242,5 +242,36 @@
     "context_label": "Context:",
     "explanation_label": "Explanation:",
     "timestamp_format": "%m/%d/%Y at %I:%M %p"
+  },
+  "providers": {
+    "active_provider": "Aktiva Provizanto",
+    "api_key": "API-ŝlosilo",
+    "model": "Modelo",
+    "save": "Konservi",
+    "test": "Testi",
+    "configured": "Agordita",
+    "no_key": "Neniom ŝlosilo",
+    "providers_title": "AI-provizantoj",
+    "ollama_label": "Ollama (Loka)"
+  },
+  "about": {
+    "title": "Biblia Studa Rondopo",
+    "subtitle": "Ekzegezo, Predikoj, Devocia kaj Teologia Diskuto kun lokaj AI",
+    "dedication_title": "Dediko",
+    "dedication_text": "Tiu aplikilo estis farita de iu, kiu ne komprenas multe pri programado, sed donis sian plejbon. Mi estas malgranda programisto kaj IT-apogo, kiu ne povas vojaĝi por prediki la evangelion, sed esperas ke per tiu ilo eblas helpi multajn fratojn kaj fratinojn mediti kaj kompreni la Veron de Dio.",
+    "church": "Membro de Nova Igrejo Baptista, Urbo Manaus, Amazonas, kie mi lernis ke la Vorto de Dio estas tre grava por ĉiu el ni.",
+    "encouragement_title": "Incentivo",
+    "verse_phil": "\"Mi povas fari ĉion per Li, kiu fortigas min.\"",
+    "verse_ref": "— Filipoj 4:13",
+    "verse_john": "\"Mi venis por ke ili havu vivon, kaj ke ili havu ĝin abunde.\"",
+    "verse_john_ref": "— Johano 10:10",
+    "encouragement_body": "Memoru: tiu vivo estas tempora. Nia celo estas Kristo, kaj Li sola havas vivon — abundan vivon. Esperu ke tiu ilo estu lumo por tiuj, kiuj serĉas la veron.",
+    "purpose": "Por tiuj, kiuj ne povas porti fizikan Biblion en siaj manoj, por tiuj, kiuj ne havas liberecon de parolo, sciu ke la Vorto de Dio neniam revenas vakan.",
+    "translation_title": "Tradukoj",
+    "translation_note": "Se iomverko la traduko estas malbona, ni pardonpetas. Ni ĉiam serĉas plibonigi. Se vi trovas eraron aŭ malbone tradukitan tekston, bonvolu raporti ĝin en GitHub.",
+    "links_title": "Ligoj",
+    "github_link": "GitHub - Raportu erarojn / Sugestu mejlojn",
+    "download_link": "Oficiala libera distribuo — Download",
+    "thanks": "Miaj dankoj al Dio por via legado kaj meditado pri la Vorto. Soli Deo Gloria."
   }
 }

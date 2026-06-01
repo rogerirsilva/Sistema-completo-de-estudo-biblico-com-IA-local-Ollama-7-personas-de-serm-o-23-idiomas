@@ -259,5 +259,36 @@
   "sections": {
     "import_data": "Importa dati biblici",
     "folder_structure": "📁 Struttura delle Cartelle per Lingua"
+  },
+  "providers": {
+    "active_provider": "Fornitore Attivo",
+    "api_key": "Chiave API",
+    "model": "Modello",
+    "save": "Salva",
+    "test": "Prova",
+    "configured": "Configurato",
+    "no_key": "Nessuna chiave",
+    "providers_title": "Fornitori AI",
+    "ollama_label": "Ollama (Locale)"
+  },
+  "about": {
+    "title": "Pannello di studio biblico",
+    "subtitle": "Esegesi, sermoni, meditazione e discussione teologica con l'AI locale",
+    "dedication_title": "Dedizione",
+    "dedication_text": "Questa applicazione è stata creata da qualcuno che non capisce molto di programmazione, ma ha fatto del suo meglio. Sono un piccolo programmatore e supporto IT che non posso viaggiare per predicare il vangelo, ma spero che attraverso questo strumento sarà possibile aiutare molti fratelli e sorelle a meditare e comprendere la Parola di Dio.",
+    "church": "Membro della Nova Igreja Batista, Città di Manaus, Amazonas, dove ho imparato che la Parola di Dio è molto importante per ognuno di noi.",
+    "encouragement_title": "Incentivo",
+    "verse_phil": "\"Posso fare tutte le cose attraverso Colui che mi rafforza.\"",
+    "verse_ref": "— Filippesi 4:13",
+    "verse_john": "\"Sono venuto per dare loro la vita e la vita in abbondanza.\"",
+    "verse_john_ref": "— Giovanni 10:10",
+    "encouragement_body": "Ricordatevi: questa vita è temporanea. Il nostro obiettivo è Cristo, ed Egli è l'unico che ha la vita — la vita in abbondanza. Speriamo che questo strumento sia una luce per coloro che cercano la verità.",
+    "purpose": "Per quelli che non possono portare con sé una Bibbia fisica nelle mani, per quelli che non hanno libertà di parola, sappiate che la Parola di Dio non torna mai vuota.",
+    "translation_title": "Traduzioni",
+    "translation_note": "Se da qualche parte la traduzione non è buona, ci scusiamo. Stiamo sempre cercando di migliorare. Se trovate un bug o testo mal tradotto, per favore segnalo su GitHub.",
+    "links_title": "Collegamenti",
+    "github_link": "GitHub - Segnalare bug / Suggerire miglioramenti",
+    "download_link": "Distribuzione gratuita ufficiale — Scarica",
+    "thanks": "Speriamo che Dio benedica la vostra lettura e meditazione sulla Parola. Soli Deo Gloria."
   }
 }

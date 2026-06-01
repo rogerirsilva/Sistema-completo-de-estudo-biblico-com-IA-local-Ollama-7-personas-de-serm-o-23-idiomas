@@ -242,5 +242,36 @@
     "context_label": "Bağlam:",
     "explanation_label": "Açıklama:",
     "timestamp_format": "%m/%d/%Y at %I:%M %p"
+  },
+  "providers": {
+    "active_provider": "Aktif Sağlayıcı",
+    "api_key": "API Anahtarı",
+    "model": "Model",
+    "save": "Kaydet",
+    "test": "Test Et",
+    "configured": "Yapılandırıldı",
+    "no_key": "Anahtar yok",
+    "providers_title": "Yapay Zeka Sağlayıcıları",
+    "ollama_label": "Ollama (Yerel)"
+  },
+  "about": {
+    "title": "Kutsal Okuma Paneli",
+    "subtitle": "Yorumlama, Sermonlar, Dini Konuşmalar ve Teolojik Konuşmalar ile Yerel AI",
+    "dedication_title": "Söz Verme",
+    "dedication_text": "Bu uygulamayı programlama hakkında çok az bilgiye sahip biri yaptı ama en iyisini verdi. Küçük bir yazılımcı ve IT destekiyim, evine gitmekle gelen göreve sahip değilim ama bu aracın sayesinde birçok kardeşin ve kızın Allah kelimesini düşünmelerine ve kelimelerini anlamalarına yardımcı olabileceğimi umuyorum.",
+    "church": "Manaus şehrindeki Nova Batı Kilisesi üyesiyim, burada Allah kelimesinin herkes için çok önemli olduğunu öğrendim.",
+    "encouragement_title": "Teşvik",
+    "verse_phil": "Bütün şeyleri onunla güçlendiren kişi aracılığıyla yapabilirim.",
+    "verse_ref": "- Filippinler 4:13",
+    "verse_john": "Günlük yaşamı ve zengin bir hayat için geldim.",
+    "verse_john_ref": "- Yohannes 10:10",
+    "encouragement_body": "Unutmayın: bu hayatını geçici olarak geçirmek. Amacımız Kutsal, ve O sadece olan kişi - zengin bir hayat olan kişi. Bu araç, doğruluğu arayanların ışığı olabilir.",
+    "purpose": "Elinde fiziksel bir Kutsal Kitap taşıyamayanlar için, konuşma özgürlüğüne sahip olmayanlar için, Allah kelimesi her zaman boş dönmeyeceğini unutmayın.",
+    "translation_title": "Çeviriler",
+    "translation_note": "Bazı yerlerde çeviri kötü ise özür dileriz. Her zaman iyileştirmeye çalışıyoruz. Eğer herhangi bir hata veya kötü çevrilmiş metin bulursanız, lütfen GitHub üzerinde bildirin.",
+    "links_title": "Bağlantılar",
+    "github_link": "GitHub - Hataları rapor et / Önerileri sun",
+    "download_link": "Resmi ücretsiz dağıtım - İndir",
+    "thanks": "Allah'ın okuma ve kelimeler üzerinde meditasyonunuzu yaratsın. Solu Deo Gloria."
   }
 }

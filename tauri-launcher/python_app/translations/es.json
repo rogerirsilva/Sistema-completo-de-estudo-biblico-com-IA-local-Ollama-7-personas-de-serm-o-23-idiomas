@@ -290,5 +290,36 @@
   },
   "help": {
     "filter_versions": "Dejar vacío para importar todas las versiones disponibles de la carpeta"
+  },
+  "providers": {
+    "active_provider": "Proveedor Activo",
+    "api_key": "Clave de API",
+    "model": "Modelo",
+    "save": "Guardar",
+    "test": "Probar",
+    "configured": "Configurado",
+    "no_key": "Sin clave",
+    "providers_title": "Proveedores de IA",
+    "ollama_label": "Ollama (Local)"
+  },
+  "about": {
+    "title": "Panel de Estudio Bíblico",
+    "subtitle": "Exégesis, sermones, devocional y charla teológica con IA local",
+    "dedication_title": "Dedicación",
+    "dedication_text": "Esta aplicación fue creada por alguien que no entiende mucho sobre programación, pero dio lo mejor de sí. Soy un pequeño programador y soporte IT que no puedo viajar a predicar el evangelio, pero espero que a través de esta herramienta sea posible ayudar a muchos hermanos y hermanas a meditar y entender la Palabra de Dios.",
+    "church": "Miembro de Nova Igreja Batista, Ciudad de Manaus, Amazonas, donde aprendí que la Palabra de Dios es muy importante para cada uno de nosotros.",
+    "encouragement_title": "Aliento",
+    "verse_phil": "\"Puedo hacer todas las cosas a través del que me fortalece.\"",
+    "verse_ref": "— Filipenses 4:13",
+    "verse_john": "\"He venido para que tengan vida, y la tengan en abundancia.\"",
+    "verse_john_ref": "— Juan 10:10",
+    "encouragement_body": "Recuerda: esta vida es temporal. Nuestro objetivo es Cristo, y Él es el único que tiene vida — vida en abundancia. Que esta herramienta sea una luz para aquellos que buscan la verdad.",
+    "purpose": "Para aquellos que no pueden llevar una Biblia física en sus manos, para aquellos que no tienen libertad de expresión, sabes que la Palabra de Dios nunca regresa vacía.",
+    "translation_title": "Traducciones",
+    "translation_note": "Si en algún lugar la traducción no es buena, nos disculpamos. Siempre estamos buscando mejorar. Si encuentras algún bug o texto mal traducido, por favor informarlo en GitHub.",
+    "links_title": "Enlaces",
+    "github_link": "GitHub - Informar bugs / Sugirir mejoras",
+    "download_link": "Distribución oficial gratuita — Descargar",
+    "thanks": "Que Dios bendiga tu lectura y meditación en la Palabra. Soli Deo Gloria."
   }
 }

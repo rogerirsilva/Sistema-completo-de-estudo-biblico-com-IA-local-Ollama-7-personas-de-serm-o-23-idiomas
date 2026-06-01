@@ -244,5 +244,36 @@
     "context_label": "Context:",
     "explanation_label": "Explanation:",
     "timestamp_format": "%m/%d/%Y at %I:%M %p"
+  },
+  "providers": {
+    "active_provider": "Nhà cung cấp đang hoạt động",
+    "api_key": "Khóa API",
+    "model": "Mô hình",
+    "save": "Lưu",
+    "test": "Kiểm tra",
+    "configured": "Đã cấu hình",
+    "no_key": "Không có khóa",
+    "providers_title": "Nhà cung cấp AI",
+    "ollama_label": "Ollama (Cục bộ)"
+  },
+  "about": {
+    "title": "Bảng Phân tích Kinh Thánh",
+    "subtitle": "Phân tích, Khuyến khích, Chia sẻ và Thảo luận Teological với AI địa phương",
+    "dedication_title": "Trị Đạo",
+    "dedication_text": "Ứng dụng này được tạo ra bởi một người không hiểu nhiều về lập trình, nhưng đã cố gắng hết sức. Tôi là một nhà phát triển nhỏ và hỗ trợ IT không thể đi đến giảng dạy Tin Lành, nhưng tôi hy vọng rằng thông qua công cụ này sẽ có thể giúp nhiều anh chị em để suy ngẫm và hiểu Kinh Thánh.",
+    "church": "Thành viên của Nova Igreja Batista, Thành phố Manaus, Amazonas, nơi tôi đã học được rằng Kinh Thánh rất quan trọng đối với mỗi người chúng ta.",
+    "encouragement_title": "Hỗ trợ",
+    "verse_phil": "Tôi có thể làm mọi thứ thông qua Người mạnh mẽ sẽ giúp đỡ tôi.",
+    "verse_ref": "- Philippians 4:13",
+    "verse_john": "Tôi đến đây để họ có cuộc sống và có cuộc sống bội.",
+    "verse_john_ref": "- John 10:10",
+    "encouragement_body": "Nhớ lại: cuộc đời này là tạm thời. Mục tiêu của chúng ta là Chúa, và chỉ Người mới có cuộc sống - cuộc sống bội. Mong rằng công cụ này sẽ là ánh sáng cho những người đang tìm kiếm sự thật.",
+    "purpose": "Đối với những người không thể mang một cuốn Kinh Thánh vật lý trong tay, đối với những người không có tự do ngôn luận, hãy biết rằng Kinh Thánh không bao giờ trả về rỗng.",
+    "translation_title": "Phiên dịch",
+    "translation_note": "Nếu ở đâu đó phiên dịch không tốt, chúng tôi xin lỗi. Chúng tôi luôn cố gắng cải thiện nó. Nếu bạn tìm thấy bất kỳ lỗi nào hoặc văn bản được dịch kém, hãy báo cáo cho GitHub.",
+    "links_title": "Liên kết",
+    "github_link": "GitHub - Báo cáo lỗi / Đề xuất cải tiến",
+    "download_link": "Distribución miễn phí chính thức - Tải xuống",
+    "thanks": "May God bless your reading and meditation on the Word. Soli Deo Gloria."
   }
 }
