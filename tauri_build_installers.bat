@@ -8,6 +8,20 @@ echo ================================================
 echo Build installers with Tauri
 echo ================================================
 
+REM Kill locking processes
+echo [INFO] Closing potentially locking processes...
+taskkill /F /IM "Biblical Study AI.exe" /T >nul 2>&1
+taskkill /F /IM "python.exe" /T >nul 2>&1
+taskkill /F /IM "msiexec.exe" /T >nul 2>&1
+timeout /t 2 /nobreak >nul
+
+set "BUNDLE_MSI=%ROOT%tauri-launcher\src-tauri\target\release\bundle\msi"
+if exist "%BUNDLE_MSI%" (
+    echo [INFO] Cleaning old MSI bundle folder to prevent Access Denied...
+    rmdir /s /q "%BUNDLE_MSI%" 2>nul
+    mkdir "%BUNDLE_MSI%" 2>nul
+)
+
 call "%ROOT%prepare_tauri_resources.bat"
 if errorlevel 1 goto :prep_error
 

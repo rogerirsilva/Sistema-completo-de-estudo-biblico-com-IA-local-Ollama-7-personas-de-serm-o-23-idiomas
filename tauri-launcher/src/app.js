@@ -114,6 +114,7 @@
         <div class="status-row">
           <div id="apiStatus" class="status warn">Conectando…</div>
           <button id="refreshButton" class="ghost-button">Recarregar</button>
+          <button id="restartBackendBtn" class="ghost-button" title="Reiniciar servidor backend" style="display:none">Reiniciar</button>
         </div>
 
         <div class="panel-group" id="settingsPanel">
@@ -1151,6 +1152,7 @@
 
   const refs = {
     apiStatus: byId("apiStatus"),
+    restartBackendBtn: byId("restartBackendBtn"),
     refreshButton: byId("refreshButton"),
     settingsToggle: byId("settingsToggle"),
     settingsBody: byId("settingsBody"),
@@ -3319,9 +3321,11 @@ return `
       state.reconnectAttempts += 1;
       if (window.__TAURI__ && (state.reconnectAttempts === 1 || state.reconnectAttempts % 3 === 0)) {
         try {
-          await window.__TAURI__.invoke("ensure_backend_started");
+          await window.__TAURI__.invoke("restart_backend");
         } catch (_) {
-          // Command may be unavailable on older builds.
+          try {
+            await window.__TAURI__.invoke("ensure_backend_started");
+          } catch (_2) {}
         }
       }
 
@@ -3329,13 +3333,14 @@ return `
       state.online = true;
       state.reconnectAttempts = 0;
       setStatus(getTranslation("messages.api_online", "API online at http://localhost:8000"), true);
+      if (refs.restartBackendBtn) refs.restartBackendBtn.style.display = "none";
       await refreshEverything();
       if (state.reconnectTimer) {
         clearInterval(state.reconnectTimer);
         state.reconnectTimer = null;
       }
     } catch (_) {
-      // Keep retrying in background.
+      if (refs.restartBackendBtn) refs.restartBackendBtn.style.display = "";
     } finally {
       state.reconnectInProgress = false;
     }
@@ -3350,9 +3355,23 @@ return `
 
   async function bootstrap() {
     try {
-      const MAX_HEALTH_ATTEMPTS = 12;
+      const MAX_HEALTH_ATTEMPTS = 20;
       let attempt = 0;
-      updateSplash("Iniciando servidor...", 5);
+      updateSplash("Iniciando servidor backend...", 5);
+
+      // Try to get backend status via Tauri IPC first
+      if (window.__TAURI__) {
+        try {
+          const status = await window.__TAURI__.invoke("get_backend_status");
+          if (status.running) {
+            state.online = true;
+            updateSplash("Servidor ja esta rodando!", 20);
+          } else if (status.last_error) {
+            updateSplash(status.last_error, 8);
+          }
+        } catch (_) {}
+      }
+
       while (attempt < MAX_HEALTH_ATTEMPTS) {
         try {
           await apiGet("/health");
@@ -3362,8 +3381,26 @@ return `
         } catch (_) {
           attempt++;
           const progress = Math.min(22, 5 + attempt * 0.6);
-          updateSplash("Conectando ao servidor...", progress);
-          if (window.__TAURI__ && attempt % 5 === 0) {
+          updateSplash("Aguardando servidor responder...", progress);
+
+          // Every 3 attempts, try to force-start via Tauri
+          if (window.__TAURI__ && attempt % 3 === 0) {
+            try {
+              const status = await window.__TAURI__.invoke("get_backend_status");
+              if (!status.running) {
+                updateSplash(status.last_error || "Backend offline - tentando reiniciar...", progress);
+                await window.__TAURI__.invoke("restart_backend");
+              }
+            } catch (_2) {
+              // Try legacy command
+              try {
+                await window.__TAURI__.invoke("ensure_backend_started");
+              } catch (_3) {}
+            }
+          }
+
+          // Every 7 attempts, read the log for details
+          if (window.__TAURI__ && attempt % 7 === 0) {
             try {
               const log = await window.__TAURI__.invoke("read_log");
               const lines = log.split("\n").filter(Boolean);
@@ -3380,6 +3417,8 @@ return `
 
       if (!state.online) {
         updateSplash("Servidor offline. Abrindo interface em modo local...", 28);
+
+        if (refs.restartBackendBtn) refs.restartBackendBtn.style.display = "";
 
         try {
           await loadUiTranslations(getValue(refs.langSelect, "pt") || "pt");
@@ -3451,6 +3490,32 @@ return `
     });
 
     refs.refreshButton.addEventListener("click", refreshEverything);
+    if (refs.restartBackendBtn) {
+      refs.restartBackendBtn.addEventListener("click", async () => {
+        refs.restartBackendBtn.disabled = true;
+        refs.restartBackendBtn.textContent = "Reiniciando...";
+        setStatus("Reiniciando servidor...", false);
+        try {
+          if (window.__TAURI__) {
+            await window.__TAURI__.invoke("restart_backend");
+          }
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          if (await apiGet("/health").then(() => true).catch(() => false)) {
+            state.online = true;
+            setStatus("API online", true);
+            refs.restartBackendBtn.style.display = "none";
+            refreshEverything();
+          } else {
+            setStatus("Servidor não respondeu após reinício", false);
+          }
+        } catch (e) {
+          setStatus("Falha ao reiniciar servidor", false);
+        } finally {
+          refs.restartBackendBtn.disabled = false;
+          refs.restartBackendBtn.textContent = "Reiniciar";
+        }
+      });
+    }
     if (refs.settingsToggle) {
       refs.settingsToggle.addEventListener("click", toggleSettingsPanel);
     }

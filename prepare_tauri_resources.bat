@@ -89,5 +89,24 @@ if errorlevel 1 (
 )
 :after_build
 
+REM ===================================================================
+REM Setup Portable Python (embedded) — fully offline Python for users
+REM ===================================================================
+call :setup_portable_python
+
 echo [OK] Resources ready at %TARGET%
+exit /b 0
+
+REM ===================================================================
+REM Subroutine: setup_portable_python
+REM Delegates to PowerShell for robust portable Python setup
+REM ===================================================================
+:setup_portable_python
+echo [INFO] Setting up Portable Python via PowerShell...
+powershell -NoProfile -ExecutionPolicy Bypass -File "%ROOT%tools\setup_portable_python.ps1" -TargetDir "%TARGET%"
+if errorlevel 1 (
+  echo [WARN] Portable Python setup had issues. Will use system Python as fallback.
+) else (
+  echo [OK] Portable Python setup completed.
+)
 exit /b 0

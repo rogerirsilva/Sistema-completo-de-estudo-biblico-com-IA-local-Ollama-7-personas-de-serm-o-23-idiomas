@@ -13,19 +13,30 @@ echo ================================================ >> "%LOG%"
 
 set "PY="
 
-REM --- 1. Check bundled packages (production: python_app/bundled_packages/) ---
-set "BUNDLED=%~dp0tauri-launcher\python_app\bundled_packages"
-if exist "%BUNDLED%" (
+REM --- 1. Check bundled packages ---
+REM We check three locations:
+REM a) Right here (Production MSI/NSIS)
+REM b) One level up (Generic structure)
+REM c) Dev structure (tauri-launcher/python_app)
+
+if exist "%~dp0bundled_packages" (
+  set "BUNDLED=%~dp0bundled_packages"
+) else if exist "%~dp0..\bundled_packages" (
+  set "BUNDLED=%~dp0..\bundled_packages"
+) else if exist "%~dp0tauri-launcher\python_app\bundled_packages" (
+  set "BUNDLED=%~dp0tauri-launcher\python_app\bundled_packages"
+)
+
+if defined BUNDLED (
   echo [INFO] Bundled packages found at %BUNDLED% >> "%LOG%"
   set "PYTHONPATH=%BUNDLED%;%PYTHONPATH%"
 )
 
 REM --- 2. Find a Python interpreter ---
 
-REM Check local .venv (dev: .venv at project root)
+REM Check local .venv
 if exist "%~dp0.venv\Scripts\python.exe" set "PY=%~dp0.venv\Scripts\python.exe"
-
-REM Fallback: tauri bundle venv
+if not defined PY if exist "%~dp0..\.venv\Scripts\python.exe" set "PY=%~dp0..\.venv\Scripts\python.exe"
 if not defined PY if exist "%~dp0tauri-launcher\python_app\.venv\Scripts\python.exe" set "PY=%~dp0tauri-launcher\python_app\.venv\Scripts\python.exe"
 
 REM System Python
